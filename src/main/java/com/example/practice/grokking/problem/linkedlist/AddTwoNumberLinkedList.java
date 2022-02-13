@@ -1,6 +1,4 @@
-package com.example.practice.leetcode.problem;
-
-import com.example.practice.grokking.problem.linkedlist.ListNode;
+package com.example.practice.grokking.problem.linkedlist;
 
 /**
  * You are given two non-empty linked lists representing two non-negative
@@ -18,7 +16,7 @@ public class AddTwoNumberLinkedList {
 	
     public static ListNode<Integer> addTwoNumbers(ListNode<Integer> l1, ListNode<Integer> l2) {
         
-        ListNode<Integer> result = new ListNode<>();
+        ListNode<Integer> result = new ListNode<Integer>(0);
         result.value = 0;
         int reminder = 0;
         
