@@ -57,14 +57,13 @@ public class StreamsExamples {
 
     private static void filterExamples() {
         List<String> words = Arrays.asList("tst", "one", "two", "three", "four", "five", "rotator", "deified");
-        Stream<String> wordsStream = words.stream();
 
         System.out.println("\n1. Simple filtering");
-        List<String> longWords = wordsStream.filter(s -> s.length() > 3).collect(Collectors.toList());
+        List<String> longWords = words.stream().filter(s -> s.length() > 3).collect(Collectors.toList());
         System.out.println(longWords);
 
         System.out.println("\n2. A little more complex filtering");
-        List<String> palindromes = wordsStream
+        List<String> palindromes = words.stream()
                 .filter(s -> s.equals(new StringBuilder(s).reverse().toString()))
                 .collect(Collectors.toList());
         System.out.println(palindromes);
@@ -73,54 +72,52 @@ public class StreamsExamples {
     private static void aggregatingOperationsExamples() {
         List<String> words = Arrays.stream("Once upon a midnight dreary while I pondered weak and weary".split("\\s+"))
                 .collect(Collectors.toList());
-        Stream<String> wordsStream = words.stream();
 
         System.out.println("\n1. Check if all items satisfy a criterion:");
-        boolean noWordsLongerThan9 = wordsStream.allMatch(w -> w.length() <= 9);
-        boolean theSame = wordsStream.noneMatch(w -> w.length() > 9);
+        boolean noWordsLongerThan9 = words.stream().allMatch(w -> w.length() <= 9);
+        boolean theSame = words.stream().noneMatch(w -> w.length() > 9);
         System.out.println(noWordsLongerThan9);
 
         System.out.println("\n2. Check if any item satisfies a criterion:");
-        boolean hasShortWords = wordsStream.anyMatch(w -> w.length() < 3);
+        boolean hasShortWords = words.stream().anyMatch(w -> w.length() < 3);
         System.out.println(hasShortWords);
 
         System.out.println("\n3. Average over the items");
         //Note the last call. If stream contains no items, it will return 0.0;
-        double average = wordsStream.mapToInt(String::length).average().orElse(0.0);
+        double average = words.stream().mapToInt(String::length).average().orElse(0.0);
         System.out.println(average);
 
         System.out.println("\n4. Count items that satisfy a criterion:");
-        long wordsWithE = wordsStream.filter(w -> w.contains("e")).count();
+        long wordsWithE = words.stream().filter(w -> w.contains("e")).count();
         System.out.println(wordsWithE);
 
         System.out.println("\n5. Max and sum");
-        int maxWordLength = wordsStream.mapToInt(String::length).max().orElse(0); //min is the same
-        int sumWordLength = wordsStream.mapToInt(String::length).sum();
+        int maxWordLength = words.stream().mapToInt(String::length).max().orElse(0); //min is the same
+        int sumWordLength = words.stream().mapToInt(String::length).sum();
         System.out.println("max: " + maxWordLength + ", sum: " + sumWordLength);
     }
 
     private static void moreFunnyExamples() {
         List<String> words = Arrays.stream("These examples cover only a small part of Java 8 Streams.".split("\\s+"))
                 .collect(Collectors.toList());
-        Stream<String> wordStream = words.stream();
         System.out.println("\nInput words: " + words + "\n\n");
 
         System.out.println("\n1. Join to string:");
-        String noDelimiter = wordStream.collect(Collectors.joining());
+        String noDelimiter = words.stream().collect(Collectors.joining());
         System.out.println(noDelimiter);
-        String withDelimiter = wordStream.map(it -> Integer.toString(it.length())).collect(Collectors.joining(" + "));
+        String withDelimiter = words.stream().map(it -> Integer.toString(it.length())).collect(Collectors.joining(" + "));
         System.out.println(withDelimiter);
 
         System.out.println("\n2. Concat two streams:");
-        List<String> concat = Stream.concat(wordStream,
-                        wordStream.map(s -> new StringBuilder(s).reverse().toString()))
+        List<String> concat = Stream.concat(words.stream(),
+                        words.stream().map(s -> new StringBuilder(s).reverse().toString()))
                 .collect(Collectors.toList());
         System.out.println(concat);
 
         System.out.println("\n3. Create a Map from stream");
         //toMap takes two arguments: the first is the function to get keys (we pass identity there -- it is a function
         //that returns exactly its argument, like `x -> x`, and the second one to get values.)
-        Map<String, Integer> map = wordStream.collect(Collectors.toMap(Function.identity(), String::length));
+        Map<String, Integer> map = words.stream().collect(Collectors.toMap(Function.identity(), String::length));
         System.out.println(map);
 
         System.out.println("\n4. Distinct items of a stream:");
@@ -160,7 +157,7 @@ public class StreamsExamples {
         // Flat map is similar to map: it iterates over every item in the stream and calls the function which you
         // pass as the argument. But your function should return not a single value but a stream. And flat map then
         // concatenates all the streams returned.
-        List<Character> chars = wordStream
+        List<Character> chars = words.stream()
                 .flatMap(w -> w.chars().mapToObj(c -> (char) c))
                 .collect(Collectors.toList());
         System.out.println(chars);
@@ -168,7 +165,7 @@ public class StreamsExamples {
         System.out.println("\n10. Group by");
         // The result is a map where for each value of the function passed to groupingBy there is a list of the stream
         // items which had this value.
-        Map<Integer, List<String>> wordsByLength = wordStream.collect(Collectors.groupingBy(String::length));
+        Map<Integer, List<String>> wordsByLength = words.stream().collect(Collectors.groupingBy(String::length));
         System.out.println(wordsByLength);
     }
 }
