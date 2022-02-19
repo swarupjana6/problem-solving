@@ -1,4 +1,4 @@
-package com.practice.educative.grokking.modifiedBinarySearch;
+package com.practice.educative.grokking.modifiedbinarysearch;
 
 public class BinarySearch {
 

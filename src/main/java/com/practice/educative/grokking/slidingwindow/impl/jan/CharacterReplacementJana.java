@@ -1,7 +1,9 @@
 /**
  * 
  */
-package com.practice.educative.grokking.sliding;
+package com.practice.educative.grokking.slidingwindow.impl.jan;
+
+import com.practice.educative.grokking.slidingwindow.CharacterReplacement;
 
 import java.util.HashMap;
 import java.util.List;
@@ -27,9 +29,10 @@ Input: String="abccde", k=1
 Output: 3
 Explanation: Replace the 'b' or 'd' with 'c' to have the longest repeating substring "ccc".
  */
-public class CharacterReplacement {
-	
-	public static int findLength(String str, int k) {
+public class CharacterReplacementJana implements CharacterReplacement {
+
+	@Override
+	public int findLength(String str, int k) {
 	    
 		int maxCnt = 0;
 		int count = 0;
@@ -64,15 +67,4 @@ public class CharacterReplacement {
 		
 	    return maxCnt;
 	  }
-
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		
-		System.out.println(CharacterReplacement.findLength("aabccbb", 2));
-	    System.out.println(CharacterReplacement.findLength("abbcb", 1));
-	    System.out.println(CharacterReplacement.findLength("abccde", 1));
-	}
-
 }
