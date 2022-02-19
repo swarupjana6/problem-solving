@@ -1,5 +1,7 @@
 package com.practice.educative.grokking.slidingwindow.impl.jan;
 
+import com.practice.educative.grokking.slidingwindow.NoRepeatSubstring;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,8 +24,10 @@ Explanation: Longest substrings with distinct characters are "abc" & "cde".
  * @author SKJ-PC
  *
  */
-public class NoRepeatSubstringJana {
-	public static int findLength(String str) {
+public class NoRepeatSubstringJana implements NoRepeatSubstring {
+
+	@Override
+	public int findLength(String str) {
 		int maxCnt = 0;
 		int count = 0;
 		int windowStart = 0;
@@ -42,10 +46,4 @@ public class NoRepeatSubstringJana {
 		}
 		return maxCnt;
 	}
-	
-	public static void main(String[] args) {
-	    System.out.println("Length of the longest substring: " + NoRepeatSubstringJana.findLength("aabccbb"));
-	    System.out.println("Length of the longest substring: " + NoRepeatSubstringJana.findLength("abbbb"));
-	    System.out.println("Length of the longest substring: " + NoRepeatSubstringJana.findLength("abccde"));
-	  }
 }
