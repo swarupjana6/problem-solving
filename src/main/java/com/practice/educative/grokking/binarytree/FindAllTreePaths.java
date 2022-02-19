@@ -4,6 +4,5 @@ import java.util.List;
 
 public interface FindAllTreePaths {
 
-    List<List<Integer>> findPaths(TreeNode<Integer> root, Integer sum);
-
+    public abstract List<List<Integer>> findPaths(TreeNode<Integer> root, Integer sum);
 }
