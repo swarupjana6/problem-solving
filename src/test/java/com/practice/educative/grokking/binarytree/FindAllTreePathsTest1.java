@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class FindAllTreePathsTest1 {
 
-    public static TreeNode getTreeNodeData1() {
+    TreeNode getTreeNodeData1() {
         TreeNode root = new TreeNode(12);
         root.left = new TreeNode(7);
         root.right = new TreeNode(1);
@@ -21,27 +21,27 @@ public class FindAllTreePathsTest1 {
         return root;
     }
 
-    public static int getSumData1() {
+    int getSumData1() {
         return 23;
     }
 
     @DisplayName("Test FindAllTreePathsJana.findPaths()")
     @Test
-    public static void testFindPathsJana() {
+    void testFindPathsJana() {
         assertEquals("5", "5");
         System.out.println("Tree paths with sum " + getSumData1() + ": " + new FindAllTreePathsJana().findPaths(getTreeNodeData1(), getSumData1()));
     }
 
     @DisplayName("Test FindAllTreePathsTapan.findPaths()")
     @Test
-    public static void testFindPathsTapan() {
+    void testFindPathsTapan() {
         assertEquals("5", "5");
         System.out.println("Tree paths with sum " + getSumData1() + ": " + new FindAllTreePathsTapan().findPaths(getTreeNodeData1(), getSumData1()));
     }
 
     @DisplayName("Test FindAllTreePathsMayur.findPaths()")
     @Test
-    public static void testFindPathsMayur() {
+    void testFindPathsMayur() {
         assertEquals("5", "5");
         System.out.println("Tree paths with sum " + getSumData1() + ": " + new FindAllTreePathsMayur().findPaths(getTreeNodeData1(), getSumData1()));
     }
