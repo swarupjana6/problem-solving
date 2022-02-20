@@ -7,14 +7,14 @@ import org.junit.jupiter.api.Test;
 class NoRepeatSubstringTest {
 
     @Test
-    public static void findLengthJana() {
+    void findLengthJana() {
         System.out.println("Length of the longest substring: " + new NoRepeatSubstringJana().findLength("aabccbb"));
         System.out.println("Length of the longest substring: " + new NoRepeatSubstringJana().findLength("abbbb"));
         System.out.println("Length of the longest substring: " + new NoRepeatSubstringJana().findLength("abccde"));
     }
 
     @Test
-    public static void findLengthTapan() {
+    void findLengthTapan() {
         System.out.println("Length of the longest substring: " + new NoRepeatSubstringTap().findLength("aabccbb"));
         System.out.println("Length of the longest substring: " + new NoRepeatSubstringTap().findLength("abbbb"));
         System.out.println("Length of the longest substring: " + new NoRepeatSubstringTap().findLength("abccde"));
