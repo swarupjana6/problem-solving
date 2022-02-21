@@ -1,4 +1,4 @@
-package com.practice.others.javaconcepts;
+package com.practice.javaconcepts;
 
 import java.util.Arrays;
 import java.util.HashMap;
