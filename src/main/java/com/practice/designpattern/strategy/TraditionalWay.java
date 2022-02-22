@@ -14,8 +14,8 @@ public class TraditionalWay {
     private static Context getContext(String action) {
         Context context = new Context();
         if (action == "Total") context.setStrategy(new Total());
-        if (action == "TotalEven") context.setStrategy(new EvenTotal());
-        if (action == "TotalOdd") context.setStrategy(new OddTotal());
+        else if (action == "TotalEven") context.setStrategy(new EvenTotal());
+        else if (action == "TotalOdd") context.setStrategy(new OddTotal());
         return context;
     }
 }
