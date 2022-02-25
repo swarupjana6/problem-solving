@@ -1,7 +1,7 @@
 package com.practice.solid.singleresponsibility.good;
 
-public interface Printable {
+public interface Printable<T> {
 
-    public String getContent();
+    public T getContent();
 
 }

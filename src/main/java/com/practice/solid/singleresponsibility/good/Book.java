@@ -30,6 +30,7 @@ public class Book implements Printable {
         this.name = name;
     }
 
+    @Override
     public String getContent() {
         return text;
     }
