@@ -1,6 +1,6 @@
 package com.practice.solid.singleresponsibility.good;
 
-public class Book implements Printable {
+public class Book {
 
     private String author;
     private String text;
@@ -30,8 +30,4 @@ public class Book implements Printable {
         this.name = name;
     }
 
-    @Override
-    public String getContent() {
-        return text;
-    }
 }
