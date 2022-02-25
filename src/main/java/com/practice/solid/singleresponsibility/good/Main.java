@@ -17,12 +17,9 @@ public class Main {
 		Book book = new Book();
 		TextFormatter formatter = new TextFormatter();
 		ConsolePrint consolePrint = new ConsolePrint();
-		FilePrint filePrint = new FilePrint("D://file.txt");
-		
 		String formattedText = formatter.format(book.getText(), book.getAuthor());
 		
 		consolePrint.print(formattedText);
-		filePrint.print(formattedText);
 		
 	}
 
