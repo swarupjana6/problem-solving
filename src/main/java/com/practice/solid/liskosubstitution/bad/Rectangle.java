@@ -2,27 +2,27 @@ package com.practice.solid.liskosubstitution.bad;
 
 public class Rectangle {
 
-    private double width;
-    private double height;
+    private double length;
 
-    public double getWidth() {
-        return width;
+    private double breadth;
+
+    public double getLength() {
+        return length;
     }
 
-    public void setWidth(double width) {
-        this.width = width;
+    public void setLength(double length) {
+        this.length = length;
     }
 
-    public double getHeight() {
-        return height;
+    public double getBreadth() {
+        return breadth;
     }
 
-    public void setHeight(double height) {
-        this.height = height;
+    public void setBreadth(double breadth) {
+        this.breadth = breadth;
     }
 
     public double area() {
-        return width * height;
+        return length * breadth;
     }
-
 }

@@ -12,5 +12,4 @@ public class PrinterDesk {
     public void printFile() {
         printer.print("File Content");
     }
-
 }

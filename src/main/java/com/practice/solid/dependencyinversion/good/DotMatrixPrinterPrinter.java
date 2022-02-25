@@ -12,6 +12,7 @@ public class DotMatrixPrinterPrinter implements Printer {
         this.inc = inc;
     }
 
+    @Override
     public void print(String text) {
         System.out.println(text);
     }

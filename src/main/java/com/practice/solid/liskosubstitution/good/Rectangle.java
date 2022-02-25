@@ -2,24 +2,25 @@ package com.practice.solid.liskosubstitution.good;
 
 public class Rectangle {
 
-    private double width;
-    private double height;
+    private double length;
 
-    public Rectangle(double width, double height) {
+    private double breadth;
+
+    public Rectangle(double length, double height) {
         super();
-        this.width = width;
-        this.height = height;
+        this.length = length;
+        this.breadth = height;
     }
 
-    public double getWidth() {
-        return width;
+    public double getLength() {
+        return length;
     }
 
-    public double getHeight() {
-        return height;
+    public double getBreadth() {
+        return breadth;
     }
 
     public double area() {
-        return width * height;
+        return length * breadth;
     }
 }

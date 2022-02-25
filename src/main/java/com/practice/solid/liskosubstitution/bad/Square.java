@@ -1,17 +1,17 @@
 package com.practice.solid.liskosubstitution.bad;
 
+/** **/
 public class Square extends Rectangle {
 
     @Override
-    public void setHeight(double height) {
-        super.setHeight(height);
-        super.setWidth(height);
+    public void setLength(double length) {
+        super.setLength(length);
+        super.setBreadth(length);
     }
 
     @Override
-    public void setWidth(double width) {
-        super.setHeight(width);
-        super.setWidth(width);
+    public void setBreadth(double breadth) {
+        super.setLength(breadth);
+        super.setBreadth(breadth);
     }
-
 }
