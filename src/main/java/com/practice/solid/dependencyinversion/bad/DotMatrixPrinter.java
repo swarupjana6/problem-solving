@@ -1,6 +1,6 @@
 package com.practice.solid.dependencyinversion.bad;
 
-public class DotMatrixPrinterPrinter {
+public class DotMatrixPrinter {
 
     private String inc;
 

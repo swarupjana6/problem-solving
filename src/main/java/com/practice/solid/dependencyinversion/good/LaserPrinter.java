@@ -1,6 +1,6 @@
 package com.practice.solid.dependencyinversion.good;
 
-public class DotMatrixPrinterPrinter implements Printer {
+public class LaserPrinter implements Printer {
 
     private String inc;
 
@@ -14,6 +14,7 @@ public class DotMatrixPrinterPrinter implements Printer {
 
     @Override
     public void print(String text) {
-        System.out.println(text);
+        System.out.println("Printing from LaserPrinter" + text);
     }
 }
+

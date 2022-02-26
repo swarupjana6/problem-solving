@@ -2,10 +2,9 @@ package com.practice.solid.dependencyinversion.good;
 
 public class PrinterDesk {
 
-    private DotMatrixPrinterPrinter printer;
+    private Printer printer;
 
-    public PrinterDesk(DotMatrixPrinterPrinter printer) {
-        super();
+    public PrinterDesk(Printer printer) {
         this.printer = printer;
     }
 
