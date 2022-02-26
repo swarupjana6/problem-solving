@@ -6,9 +6,9 @@ public class Rectangle {
 
     private double breadth;
 
-    public Rectangle(double length, double height) {
+    public Rectangle(double length, double breadth) {
         this.length = length;
-        this.breadth = height;
+        this.breadth = breadth;
     }
 
     public double getLength() {

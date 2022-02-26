@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class SquareTest {
 
     @Test
-    public void testRectangle() {
+    public void testSquare() {
         Rectangle r = getRectangle();
         assertEquals(25, (r.getLength() * r.getBreadth()));
     }
