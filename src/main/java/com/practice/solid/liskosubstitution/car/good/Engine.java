@@ -6,7 +6,4 @@ public class Engine {
         System.out.println("Engine On!!");
     }
 
-    public void powerOn(int i) {
-        System.out.println("Power on " + i);
-    }
 }

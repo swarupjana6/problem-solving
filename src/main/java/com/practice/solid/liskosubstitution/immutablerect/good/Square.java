@@ -1,4 +1,4 @@
-package com.practice.solid.liskosubstitution.rect.good;
+package com.practice.solid.liskosubstitution.immutablerect.good;
 
 public class Square extends Rectangle {
 

@@ -1,13 +1,16 @@
 package com.practice.solid.liskosubstitution.car.good;
 
-public class ElectricCar implements Car, EngineCar {
+public class ElectricCar implements Car , ElectricCarStarter {
 
-    @Override
-    public void turnOnEngine() {
-        throw new AssertionError("I don't have an engine!");
-    }
+    private ElectricMotor electricMotor;
 
     @Override
     public void accelerate() {
+        System.out.println("Accelerating electric car!!");
+    }
+
+    @Override
+    public void turnOnElectricMotor() {
+        electricMotor.switchOnMotor();
     }
 }

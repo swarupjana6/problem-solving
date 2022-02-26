@@ -1,7 +1,5 @@
-package com.practice.solid.liskosubstitution.rect.good;
+package com.practice.solid.liskosubstitution.immutablerect.good;
 
-import com.practice.solid.liskosubstitution.rect.good.Rectangle;
-import com.practice.solid.liskosubstitution.rect.good.Square;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

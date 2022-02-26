@@ -11,6 +11,6 @@ public class MotorCar implements Car, EngineCar {
 
     @Override
     public void accelerate() {
-        engine.powerOn(1000);
+        System.out.println("Accelerating Engine Car!!");
     }
 }
