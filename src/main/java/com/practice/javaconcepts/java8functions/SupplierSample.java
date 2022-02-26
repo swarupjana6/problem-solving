@@ -11,6 +11,8 @@ public class SupplierSample {
      * <p>
      * A SUPPLIER is a simple interface which indicates that this implementation is a supplier of results
      * One of the primary usage of this interface to enable deferred execution
+     *
+     * accepts no parameter and returns generic type
      **/
 
     public static void supplier() {
