@@ -7,7 +7,6 @@ public class Rectangle {
     private double breadth;
 
     public Rectangle(double length, double height) {
-        super();
         this.length = length;
         this.breadth = height;
     }
