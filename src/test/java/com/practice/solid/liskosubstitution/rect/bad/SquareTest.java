@@ -1,5 +1,7 @@
-package com.practice.solid.liskosubstitution.bad;
+package com.practice.solid.liskosubstitution.rect.bad;
 
+import com.practice.solid.liskosubstitution.rect.bad.Rectangle;
+import com.practice.solid.liskosubstitution.rect.bad.Square;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

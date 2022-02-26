@@ -1,4 +1,4 @@
-package com.practice.solid.liskosubstitution.bad;
+package com.practice.solid.liskosubstitution.rect.bad;
 
 public class Rectangle {
 
