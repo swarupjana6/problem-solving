@@ -6,12 +6,15 @@ public class TraditionalWay {
 
     public static void main(String[] args) {
         List<Integer> nums = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
-        System.out.println(getContext("Total").executeStrategy(nums));
-        System.out.println(getContext("TotalEven").executeStrategy(nums));
-        System.out.println(getContext("TotalOdd").executeStrategy(nums));
+        System.out.println(DecideContext.getContext("Total").executeStrategy(nums));
+        System.out.println(DecideContext.getContext("TotalEven").executeStrategy(nums));
+        System.out.println(DecideContext.getContext("TotalOdd").executeStrategy(nums));
     }
+}
 
-    private static Context getContext(String action) {
+class DecideContext {
+
+    public static Context getContext(String action) {
         Context context = new Context();
         if (action == "Total") context.setStrategy(new Total());
         else if (action == "TotalEven") context.setStrategy(new EvenTotal());
@@ -53,7 +56,6 @@ class OddTotal implements TotalValues {
         return total;
     }
 }
-
 
 class Context {
     private TotalValues strategy;
