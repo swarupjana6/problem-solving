@@ -29,12 +29,22 @@ class Lazy<T> {
         this.supplier = supplier;
     }
 
+    private void before() {
+        System.out.println("Initializing before compute call");
+    }
+
     public T get() {
-        if(instance == null) {
+        if (instance == null) {
+            before();
             instance = supplier.get();
             supplier = null;
+            after();
         }
 
         return instance;
+    }
+
+    private void after() {
+        System.out.println("Clean up/Logging after compute..");
     }
 }
