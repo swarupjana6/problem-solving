@@ -29,7 +29,7 @@ public class CollectorsExamples {
     }
 
     public static List<Person> createUniquePeople() {
-        return List.of(new Person("Sara", 20),
+        return List.of(new Person("George", 20),
                 new Person("Sara", 22),
                 new Person("Nancy", 20),
                 new Person("Paula", 32),
