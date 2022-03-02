@@ -39,7 +39,7 @@ public class CollectorsExamples {
                 new Person("Jill", 11));
     }
 
-    public static void totalAgeOfPersons() {
+    public static void totalAgeOfPeople() {
         System.out.println(createPeople().stream()
                 .map(Person::getAge)
                 //.reduce(0, (total, age) -> total + age);
@@ -47,7 +47,7 @@ public class CollectorsExamples {
                 .reduce(0, Integer::sum));
     }
 
-    public static void getPersonsGreaterThan30InUpperCase() {
+    public static void getPeopleGreaterThan30InUpperCase() {
         /*
            Question::
            get the list of names, in uppercase, of those who are older than 30
@@ -140,11 +140,11 @@ public class CollectorsExamples {
     }
 
     public static void getGroupBasedOnNames() {
-        List<Person> persons = createPeople();
+        List<Person> people = createPeople();
         Map<String, List<Person>> groupByName = new HashMap<>();
 
         // Imperative way
-        for (Person person : persons) {
+        for (Person person : people) {
             List<Person> list;
             if (groupByName.containsKey(person.getName())) {
                 list = groupByName.get(person.getName());
@@ -160,67 +160,94 @@ public class CollectorsExamples {
         // Functional way
         Collector<Person, ?, Map<String, List<Integer>>> agesGroupByNameCollector = groupingBy(Person::getName, mapping(Person::getAge, toList()));
         // Collector (function, Collector(function, Collector))
-        Map<String, List<Integer>> getAgesGroupByName = persons.stream().collect(agesGroupByNameCollector);
+        Map<String, List<Integer>> getAgesGroupByName = people.stream().collect(agesGroupByNameCollector);
         System.out.println(groupByName);
     }
 
     public static void getGroupCountOnNames() {
-        List<Person> persons = createPeople();
+        List<Person> people = createPeople();
         // Collector (function, Collector())
-        Map<String, Long> countByNames1 = persons.stream()
+        Map<String, Long> countByNames1 = people.stream()
                 .collect(groupingBy(Person::getName, counting()));
         System.out.println(countByNames1);
 
-        Map<String, Integer> countByNames2 = persons.stream()
+        Map<String, Integer> countByNames2 = people.stream()
                 .collect(groupingBy(Person::getName, collectingAndThen(counting(), Long::intValue)));
         System.out.println(countByNames2);
     }
 
     public static void getSumBasedOnAge() {
-        List<Person> persons = createPeople();
-        Integer sumAge = persons.stream()
+        List<Person> people = createPeople();
+        Integer sumAge = people.stream()
                 .mapToInt(Person::getAge)
                 .sum();
         System.out.println(sumAge);
     }
 
     public static void getMaxBasedOnAge() {
-        List<Person> persons = createPeople();
+        List<Person> people = createPeople();
 
-        OptionalInt maxAge = persons.stream()
+        OptionalInt maxAge = people.stream()
                 .mapToInt(Person::getAge)
                 .max();
         System.out.println(maxAge.getAsInt());
 
-        Optional<Person> personWithMaxAge = persons.stream()
+        Optional<Person> personWithMaxAge = people.stream()
                 .collect(maxBy(comparing(Person::getAge)));
         System.out.println(personWithMaxAge.get());
 
-        String personNameWithMaxAge = persons.stream()
+        String personNameWithMaxAge = people.stream()
                 .collect(collectingAndThen(maxBy(comparing(Person::getAge))
                         , person -> person.map(Person::getName).orElse("")));
-        System.out.println(personWithMaxAge);
-
-
+        System.out.println(personNameWithMaxAge);
     }
 
     public static void getMinBasedOnAge() {
-        List<Person> persons = createPeople();
+        List<Person> people = createPeople();
 
-        OptionalInt minAge = persons.stream()
+        OptionalInt minAge = people.stream()
                 .mapToInt(Person::getAge)
                 .max();
         System.out.println(minAge.getAsInt());
 
-        Optional<Person> personWithMinAge = persons.stream()
+        Optional<Person> personWithMinAge = people.stream()
                 .collect(maxBy(comparing(Person::getAge)));
         System.out.println(personWithMinAge.get());
     }
 
+    public static void mapVsMappingFilterVsFiltering() {
+        List<Person> people = createPeople();
+
+        people.stream()
+                .collect(groupingBy(Person::getAge
+                        , mapping(Person::getName, toList())));
+
+        people.stream()
+                .collect(groupingBy(Person::getAge,
+                        mapping(Person::getName, filtering(name -> name.length() > 4, toList()))));
+
+    }
+
+    public static void flatMapAndFlatMapping() {
+        List<Integer> numbers = List.of(1, 2, 3);
+
+        // One to One Function
+        //Stream<T>.map(f11) ==> Stream<R>
+        System.out.println(numbers.stream()
+                .map(e -> e * 2)
+                .collect(toList()));
+
+        // One to Many Function
+        //Stream<T>.map(f1n) ==> Stream<List<R>>
+        System.out.println(numbers.stream()
+                .map(e -> List.of(e - 1, e + 1))
+                .collect(toList()));
+    }
+
     public static void main(String[] args) {
          /*
-        totalAgeOfPersons();
-        getPersonsGreaterThan30InUpperCase();
+        totalAgeOfPeople();
+        getPeopleGreaterThan30InUpperCase();
         getNameAndAgeInMap();
         getAllAgeValues();
         getAllEvenOddAgedValues();
