@@ -9,11 +9,13 @@ public class VarTypeInferenceExample {
 
         //DOES NOT WORK
         /**
-         private var localVar;
+         var localVar;
          localVar = "tom";
          **/
 
         String localStr = "tom";
         var localVar = "tom";
+        var localVar1 = 19;
+        var localVar2 = new Object();
     }
 }
