@@ -40,7 +40,7 @@ public class FunctionConsumerSupplierPredicate {
     }
 
     public static void whenNamesPresentUseBothConsumer() {
-        List<String> cities = List.of("Sydney", "Mumbai", "New York", "London");
+        List<String> cities = Arrays.asList("Sydney", "Mumbai", "New York", "London");
 
         // Consumers
         // uppercaseConsumer is ugly because of the String's immutability feature
