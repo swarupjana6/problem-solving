@@ -12,11 +12,9 @@ import java.util.stream.Collectors;
 
 public class FunctionConsumerSupplierPredicate {
 
-    // Prints string
     private static final Consumer<String> PRINT_STRING_CONSUMER = System.out::println;
 
-    // Accepts String......Returns Integer
-    private static final Function<String, Integer> STRING_LENGTH_FUNCTION = String::length;
+    private static final Function<String, Integer> STRING_LENGTH_FUNCTION = String::length; // Accepts String......Returns Integer
 
     private static final Predicate<String> STARTS_WITH_M_PREDICATE = str -> "M".startsWith(str);
 
@@ -34,27 +32,20 @@ public class FunctionConsumerSupplierPredicate {
      * A CONSUMER is a functional interface that accepts a single input and returns no output
      **/
 
-    public static void whenNamesPresentConsumeAll() {
-        List<String> cities = List.of("Sydney", "Mumbai", "New York", "London");
-        cities.stream().forEach(PRINT_STRING_CONSUMER);
-    }
-
-    public static void whenNamesPresentUseBothConsumer() {
+    public static void testConsumer() {
+        /**Print all cities**/
         List<String> cities = Arrays.asList("Sydney", "Mumbai", "New York", "London");
+        cities.stream().forEach(PRINT_STRING_CONSUMER);
 
-        // Consumers
+        /**Uppercase and Print all cities**/
         // uppercaseConsumer is ugly because of the String's immutability feature
         Consumer<List<String>> uppercaseConsumer = list -> {
-            for (int i = 0; i < list.size(); i++) {
-                list.set(i, list.get(i).toUpperCase());
-            }
+            for (int i = 0; i < list.size(); i++) list.set(i, list.get(i).toUpperCase());
         };
         Consumer<List<String>> printConsumer = list -> list.stream().forEach(System.out::println);
-
         uppercaseConsumer.andThen(printConsumer).accept(cities);
-    }
 
-    public static void consumerForRandomEntity() {
+        /**Uppercase attr and Print all Random Entities**/
         List<RandomEntity> newClassList = List.of(new RandomEntity("abc"), new RandomEntity("pqr"), new RandomEntity("xyz"));
         Consumer<List<RandomEntity>> upperNewClass = list -> list.forEach(element -> element.setAttr(element.getAttr().toUpperCase()));
         Consumer<List<RandomEntity>> printNewClass = list -> list.stream().forEach(System.out::println);
@@ -72,7 +63,9 @@ public class FunctionConsumerSupplierPredicate {
      **/
 
     public static void testFunctions() {
-        List<String> names = Arrays.asList("Swarup", "Tapan", "Mayur", "Milind", "Jaswinder", "Rahul", "Ganapathy");
+        List<String> names = List.of("Swarup", "Tapan", "Mayur", "Milind", "Jaswinder", "Rahul", "Ganapathy");
+
+        /**Collect of length of names from the names list**/
         List<Integer> nameLength = names.stream().map(STRING_LENGTH_FUNCTION).collect(Collectors.toList());
         System.out.println(nameLength);
     }
@@ -83,11 +76,13 @@ public class FunctionConsumerSupplierPredicate {
      * A PREDICATE interface represents a boolean-valued-function of an argument.
      * This is mainly used to filter data from a Java Stream.
      **/
-    public static void testPredicateAndComposition() {
-        List<String> names = Arrays.asList("Swarup", "Tapan", "Mayur", "Milind", "Jaswinder", "Rahul", "Ganapathy");
+    public static void testPredicate() {
+        List<String> names = List.of("Swarup", "Tapan", "Mayur", "Milind", "Jaswinder", "Rahul", "Ganapathy");
 
+        /**Print names that starts-with M**/
         names.stream().filter(STARTS_WITH_M_PREDICATE).forEach(System.out::println);
 
+        /**Print names that starts-with M and length greater than 5**/
         Predicate<String> andPredicate = STARTS_WITH_M_PREDICATE.and(LENGTH_GREATER_THAN_5_PREDICATE);
         names.stream().filter(andPredicate).forEach(System.out::println);
     }
@@ -108,11 +103,9 @@ public class FunctionConsumerSupplierPredicate {
     }
 
     public static void main(String[] args) {
-        whenNamesPresentConsumeAll();
-        whenNamesPresentUseBothConsumer();
-        consumerForRandomEntity();
+        testConsumer();
 
-        testPredicateAndComposition();
+        testPredicate();
 
         testFunctions();
 
