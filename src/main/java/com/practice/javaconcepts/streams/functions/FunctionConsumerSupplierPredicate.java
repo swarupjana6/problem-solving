@@ -12,6 +12,22 @@ import java.util.stream.Collectors;
 
 public class FunctionConsumerSupplierPredicate {
 
+    // Prints string
+    private static final Consumer<String> PRINT_STRING_CONSUMER = System.out::println;
+
+    // Accepts String......Returns Integer
+    private static final Function<String, Integer> STRING_LENGTH_FUNCTION = String::length;
+
+    private static final Predicate<String> STARTS_WITH_M_PREDICATE = str -> "M".startsWith(str);
+
+    private static final Predicate<String> LENGTH_GREATER_THAN_5_PREDICATE = str -> str.length() > 5;
+
+    private static final Supplier<Double> RANDOM_DOUBLE_SUPPLIER = () -> Math.random();
+
+    private static final DoubleSupplier PRIMITIVE_DOUBLE_SUPPLIER = Math::random;
+
+    private static final Optional<Double> OPTIONAL_DOUBLE = Optional.empty();
+
     /**
      * >>>>>>>>>> CONSUMER <<<<<<<<<<
      * <p>
@@ -20,8 +36,7 @@ public class FunctionConsumerSupplierPredicate {
 
     public static void whenNamesPresentConsumeAll() {
         List<String> cities = List.of("Sydney", "Mumbai", "New York", "London");
-        Consumer<String> printConsumer = System.out::println;
-        cities.stream().forEach(printConsumer);
+        cities.stream().forEach(PRINT_STRING_CONSUMER);
     }
 
     public static void whenNamesPresentUseBothConsumer() {
@@ -58,9 +73,7 @@ public class FunctionConsumerSupplierPredicate {
 
     public static void testFunctions() {
         List<String> names = Arrays.asList("Swarup", "Tapan", "Mayur", "Milind", "Jaswinder", "Rahul", "Ganapathy");
-        // Accepts String......Returns Integer
-        Function<String, Integer> nameMappingFunction = String::length;
-        List<Integer> nameLength = names.stream().map(nameMappingFunction).collect(Collectors.toList());
+        List<Integer> nameLength = names.stream().map(STRING_LENGTH_FUNCTION).collect(Collectors.toList());
         System.out.println(nameLength);
     }
 
@@ -70,17 +83,13 @@ public class FunctionConsumerSupplierPredicate {
      * A PREDICATE interface represents a boolean-valued-function of an argument.
      * This is mainly used to filter data from a Java Stream.
      **/
-    public static void testPredicate() {
-        List<String> names = Arrays.asList("Swarup", "Tapan", "Mayur", "Milind", "Jaswinder", "Rahul", "Ganapathy");
-        Predicate<String> nameStartsWithM = str -> str.startsWith("M");
-        names.stream().filter(nameStartsWithM).forEach(System.out::println);
-    }
-
     public static void testPredicateAndComposition() {
         List<String> names = Arrays.asList("Swarup", "Tapan", "Mayur", "Milind", "Jaswinder", "Rahul", "Ganapathy");
-        Predicate<String> startPredicate = str -> str.startsWith("M");
-        Predicate<String> lengthPredicate = str -> str.length() > 5;
-        names.stream().filter(startPredicate.and(lengthPredicate)).forEach(System.out::println);
+
+        names.stream().filter(STARTS_WITH_M_PREDICATE).forEach(System.out::println);
+
+        Predicate<String> andPredicate = STARTS_WITH_M_PREDICATE.and(LENGTH_GREATER_THAN_5_PREDICATE);
+        names.stream().filter(andPredicate).forEach(System.out::println);
     }
 
     /**
@@ -93,13 +102,9 @@ public class FunctionConsumerSupplierPredicate {
      **/
 
     public static void testSupplier() {
-        Supplier<Double> doubleSupplier = () -> Math.random();
-        DoubleSupplier primitiveDoubleSupplier = Math::random;
-        Optional<Double> optionalDouble = Optional.empty();
-
-        System.out.println(doubleSupplier.get());
-        System.out.println(primitiveDoubleSupplier.getAsDouble());
-        System.out.println(optionalDouble.orElseGet(doubleSupplier));
+        System.out.println(RANDOM_DOUBLE_SUPPLIER.get());
+        System.out.println(PRIMITIVE_DOUBLE_SUPPLIER.getAsDouble());
+        System.out.println(OPTIONAL_DOUBLE.orElseGet(RANDOM_DOUBLE_SUPPLIER));
     }
 
     public static void main(String[] args) {
@@ -107,7 +112,6 @@ public class FunctionConsumerSupplierPredicate {
         whenNamesPresentUseBothConsumer();
         consumerForRandomEntity();
 
-        testPredicate();
         testPredicateAndComposition();
 
         testFunctions();
