@@ -1,0 +1,22 @@
+@startuml
+!define DARKGREEN
+!include https://raw.githubusercontent.com/Drakemor/RedDress-PlantUML/master/style.puml
+
+class BaseClass {
+    -int count;
+    #int number;
+    +String name;
+    ~methodOne();
+    methodTwo();
+}
+note top: This class is a \n base class
+
+BaseClass <|-left-  InheritanceClass
+BaseClass <--   DependencyClass
+BaseClass --    AssociationClass
+BaseClass o--   CompositionClass
+BaseClass *--   AggregationClass
+BaseClass <.right.   DottedClass
+
+
+@enduml

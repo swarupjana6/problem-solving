@@ -1,0 +1,27 @@
+@startuml
+!define DARKGREEN
+!include https://raw.githubusercontent.com/Drakemor/RedDress-PlantUML/master/style.puml
+
+class Editor {
+    -String content;
+    createState();
+    restoreState();
+}
+note top: Originator
+
+class EditorState {
+    -String content;
+}
+note right: Memento \n mean: an object kept as a reminder of a person or event.
+
+class History {
+    -List states;
+    push(state);
+    pop();
+}
+note top: Caretaker
+
+History *-- EditorState
+Editor <--   EditorState
+
+@enduml
