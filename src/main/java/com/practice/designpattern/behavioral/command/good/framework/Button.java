@@ -1,4 +1,4 @@
-package com.practice.designpattern.command.good.framework;
+package com.practice.designpattern.behavioral.command.good.framework;
 
 import lombok.Getter;
 import lombok.Setter;

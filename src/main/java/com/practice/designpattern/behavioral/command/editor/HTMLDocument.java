@@ -1,4 +1,4 @@
-package com.practice.designpattern.command.editor;
+package com.practice.designpattern.behavioral.command.editor;
 
 import lombok.Getter;
 import lombok.Setter;

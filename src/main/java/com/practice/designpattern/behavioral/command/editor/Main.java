@@ -1,7 +1,7 @@
-package com.practice.designpattern.command.editor;
+package com.practice.designpattern.behavioral.command.editor;
 
-import com.practice.designpattern.command.editor.impls.BoldCommand;
-import com.practice.designpattern.command.editor.impls.UndoCommand;
+import com.practice.designpattern.behavioral.command.editor.impls.BoldCommand;
+import com.practice.designpattern.behavioral.command.editor.impls.UndoCommand;
 
 public class Main {
 

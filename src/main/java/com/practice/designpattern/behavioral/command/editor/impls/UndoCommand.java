@@ -1,7 +1,7 @@
-package com.practice.designpattern.command.editor.impls;
+package com.practice.designpattern.behavioral.command.editor.impls;
 
-import com.practice.designpattern.command.editor.History;
-import com.practice.designpattern.command.editor.framework.Command;
+import com.practice.designpattern.behavioral.command.editor.History;
+import com.practice.designpattern.behavioral.command.editor.framework.Command;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 

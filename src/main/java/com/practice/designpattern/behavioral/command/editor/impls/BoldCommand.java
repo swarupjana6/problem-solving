@@ -1,8 +1,8 @@
-package com.practice.designpattern.command.editor.impls;
+package com.practice.designpattern.behavioral.command.editor.impls;
 
-import com.practice.designpattern.command.editor.HTMLDocument;
-import com.practice.designpattern.command.editor.History;
-import com.practice.designpattern.command.editor.framework.UndoableCommand;
+import com.practice.designpattern.behavioral.command.editor.History;
+import com.practice.designpattern.behavioral.command.editor.framework.UndoableCommand;
+import com.practice.designpattern.behavioral.command.editor.HTMLDocument;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 

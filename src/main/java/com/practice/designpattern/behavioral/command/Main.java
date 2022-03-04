@@ -1,11 +1,11 @@
-package com.practice.designpattern.command;
+package com.practice.designpattern.behavioral.command;
 
-import com.practice.designpattern.command.good.impls.AddCustomerCommand;
-import com.practice.designpattern.command.good.impls.BlackAndWhiteCommand;
-import com.practice.designpattern.command.good.impls.CompositeCommand;
-import com.practice.designpattern.command.good.CustomerService;
-import com.practice.designpattern.command.good.impls.ResizeCommand;
-import com.practice.designpattern.command.good.framework.Button;
+import com.practice.designpattern.behavioral.command.good.framework.Button;
+import com.practice.designpattern.behavioral.command.good.impls.AddCustomerCommand;
+import com.practice.designpattern.behavioral.command.good.impls.BlackAndWhiteCommand;
+import com.practice.designpattern.behavioral.command.good.impls.CompositeCommand;
+import com.practice.designpattern.behavioral.command.good.CustomerService;
+import com.practice.designpattern.behavioral.command.good.impls.ResizeCommand;
 
 public class Main {
 

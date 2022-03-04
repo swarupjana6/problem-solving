@@ -1,6 +1,6 @@
-package com.practice.designpattern.command.good.impls;
+package com.practice.designpattern.behavioral.command.good.impls;
 
-import com.practice.designpattern.command.good.framework.Command;
+import com.practice.designpattern.behavioral.command.good.framework.Command;
 
 import java.util.ArrayList;
 import java.util.List;

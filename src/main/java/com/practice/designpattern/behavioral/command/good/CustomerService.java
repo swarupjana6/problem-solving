@@ -1,4 +1,4 @@
-package com.practice.designpattern.command.good;
+package com.practice.designpattern.behavioral.command.good;
 
 public class CustomerService {
 
