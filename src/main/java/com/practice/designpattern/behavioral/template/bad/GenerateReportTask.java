@@ -1,12 +1,13 @@
-package com.practice.designpattern.behavioral.strategy.template.bad;
+package com.practice.designpattern.behavioral.template.bad;
 
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 public class GenerateReportTask {
 
+    @NonNull
     private AuditTrailTask auditTrailTask;
-
-    public GenerateReportTask(AuditTrailTask auditTrailTask) {
-        this.auditTrailTask = auditTrailTask;
-    }
 
     public void execute() {
         auditTrailTask.record();

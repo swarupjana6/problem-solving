@@ -1,6 +1,6 @@
-package com.practice.designpattern.behavioral.strategy.template.good.task;
+package com.practice.designpattern.behavioral.template.good.task;
 
-import com.practice.designpattern.behavioral.strategy.template.good.Task;
+import com.practice.designpattern.behavioral.template.good.Task;
 
 public class TransferMoneyTask extends Task {
 

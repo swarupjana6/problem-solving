@@ -1,6 +1,6 @@
-package com.practice.designpattern.behavioral.strategy.template;
+package com.practice.designpattern.behavioral.template;
 
-import com.practice.designpattern.behavioral.strategy.template.good.task.TransferMoneyTask;
+import com.practice.designpattern.behavioral.template.good.task.TransferMoneyTask;
 
 public class Main {
 

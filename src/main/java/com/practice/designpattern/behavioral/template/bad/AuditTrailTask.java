@@ -1,4 +1,4 @@
-package com.practice.designpattern.behavioral.strategy.template.bad;
+package com.practice.designpattern.behavioral.template.bad;
 
 public class AuditTrailTask {
 

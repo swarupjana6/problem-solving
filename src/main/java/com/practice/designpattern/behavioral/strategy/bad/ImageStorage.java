@@ -1,15 +1,13 @@
 package com.practice.designpattern.behavioral.strategy.bad;
 
+import lombok.AllArgsConstructor;
+
+@AllArgsConstructor
 public class ImageStorage {
 
     private String compressor;
 
     private String filter;
-
-    public ImageStorage(String compressor, String filter) {
-        this.compressor = compressor;
-        this.filter = filter;
-    }
 
     public void store(String fileName) {
         // Step 1: Image compression algo

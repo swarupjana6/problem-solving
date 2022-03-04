@@ -1,15 +1,16 @@
-package com.practice.designpattern.behavioral.strategy.template.good;
+package com.practice.designpattern.behavioral.template.good;
 
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 public abstract class Task {
 
+    @NonNull
     private AuditTrailTask auditTrailTask;
 
     public Task() {
         this.auditTrailTask = new AuditTrailTask();
-    }
-
-    public Task(AuditTrailTask auditTrailTask) {
-        this.auditTrailTask = auditTrailTask;
     }
 
     public void execute() {
