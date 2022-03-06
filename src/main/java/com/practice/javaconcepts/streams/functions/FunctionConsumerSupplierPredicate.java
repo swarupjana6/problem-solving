@@ -1,5 +1,11 @@
 package com.practice.javaconcepts.streams.functions;
 
+import lombok.Getter;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -111,4 +117,15 @@ public class FunctionConsumerSupplierPredicate {
 
         testSupplier();
     }
+}
+
+
+@ToString
+@RequiredArgsConstructor
+class RandomEntity {
+
+    @Getter
+    @Setter
+    @NonNull
+    private String attr;
 }
