@@ -1,4 +1,4 @@
-package com.practice.problems.stack.nextlargestelement;
+package com.practice.problems.others;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -8,9 +8,9 @@ import java.util.Stack;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class NearestGreaterToLeftIndex {
+public class PreviousGreaterElementIndex {
 
-    public List<Integer> bruteForce(List<Integer> inputList) {
+    public List<Integer> prevMax1(List<Integer> inputList) {
         List<Integer> outputList = new ArrayList<>();
         outputList.add(0);
 
@@ -34,28 +34,31 @@ public class NearestGreaterToLeftIndex {
         return outputList;
     }
 
-    public List<Integer> stackImplementation(List<Integer> inputList) {
+    public List<Integer> prevMax2(List<Integer> inputList) {
         int n = inputList.size();
         Integer[] nextGreatest = new Integer[n];
 
+        Stack<Integer> prevElements = new Stack<>();
         Stack<Integer> prevElementsIndex = new Stack<>();
         int counter = 0;
         for (int i = 0; i < n; i++) {
             int currentElement = inputList.get(i);
             nextGreatest[i] = i;
 
-            while (!prevElementsIndex.empty()) {
+            while (!prevElements.empty()) {
                 ++counter;
+                int top = prevElements.peek();
                 int topIndex = prevElementsIndex.peek();
-                int topElem = inputList.get(topIndex);
-                if (topElem > currentElement) {
+                if (top > currentElement) {
                     nextGreatest[i] = i - topIndex;
                     break;
                 } else {
+                    prevElements.pop();
                     prevElementsIndex.pop();
                 }
             }
 
+            prevElements.push(currentElement);
             prevElementsIndex.push(i);
         }
 
@@ -69,7 +72,7 @@ public class NearestGreaterToLeftIndex {
         List<Integer> inputList3 = IntStream.rangeClosed(1, 10).boxed().sorted(Collections.reverseOrder()).collect(Collectors.toList());
         List<Integer> inputList = inputList3;
         System.out.println("InputList   :: " + inputList);
-        System.out.println("OutputList  :: " + new NearestGreaterToLeftIndex().bruteForce(inputList));
-        System.out.println("OutputList  :: " + new NearestGreaterToLeftIndex().stackImplementation(inputList));
+        System.out.println("OutputList  :: " + new PreviousGreaterElementIndex().prevMax1(inputList));
+        System.out.println("OutputList  :: " + new PreviousGreaterElementIndex().prevMax2(inputList));
     }
 }
