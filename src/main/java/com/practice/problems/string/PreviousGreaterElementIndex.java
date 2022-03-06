@@ -1,4 +1,4 @@
-package com.practice.others.string;
+package com.practice.problems.string;
 
 import java.util.ArrayList;
 import java.util.Arrays;

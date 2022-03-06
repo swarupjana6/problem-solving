@@ -1,4 +1,4 @@
-package com.practice.others.string;
+package com.practice.problems.string;
 
 import java.util.Arrays;
 import java.util.HashMap;
