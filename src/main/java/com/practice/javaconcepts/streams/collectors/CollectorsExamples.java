@@ -3,6 +3,7 @@ package com.practice.javaconcepts.streams.collectors;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,7 +28,6 @@ public class CollectorsExamples {
                 new Person("Jack", 72),
                 new Person("Jill", 11));
     }
-
     public static List<Person> createUniquePeople() {
         return List.of(new Person("George", 20),
                 new Person("Sara", 22),
@@ -86,9 +86,8 @@ public class CollectorsExamples {
     public static void getNameAndAgeInMap() {
         // Imperative Way
         Map<String, Integer> nameAndAge = new HashMap<>();
-        for (Person person : createUniquePeople()) {
+        for (Person person : createUniquePeople())
             nameAndAge.put(person.getName(), person.getAge());
-        }
         System.out.println(nameAndAge);
 
         // Functional Way
@@ -103,7 +102,7 @@ public class CollectorsExamples {
                 //.collect(toList());
                 .collect(toUnmodifiableList());
 
-        // For unmodifiable list this will cause ERROR
+        //For unmodifiable list following code will cause ERROR
         //ages.add(99);
 
         System.out.println(ages);
@@ -158,10 +157,10 @@ public class CollectorsExamples {
         System.out.println(groupByName);
 
         // Functional way
-        Collector<Person, ?, Map<String, List<Integer>>> agesGroupByNameCollector = groupingBy(Person::getName, mapping(Person::getAge, toList()));
+        Collector<Person, ?, Map<String, List<Integer>>> groupByNameCollectAge = groupingBy(Person::getName, mapping(Person::getAge, toList()));
         // Collector (function, Collector(function, Collector))
-        Map<String, List<Integer>> getAgesGroupByName = people.stream().collect(agesGroupByNameCollector);
-        System.out.println(groupByName);
+        Map<String, List<Integer>> getAgesGroupByName = people.stream().collect(groupByNameCollectAge);
+        System.out.println(getAgesGroupByName);
     }
 
     public static void getGroupCountOnNames() {
@@ -245,7 +244,6 @@ public class CollectorsExamples {
     }
 
     public static void main(String[] args) {
-         /*
         totalAgeOfPeople();
         getPeopleGreaterThan30InUpperCase();
         getNameAndAgeInMap();
@@ -253,17 +251,20 @@ public class CollectorsExamples {
         getAllEvenOddAgedValues();
         getCommaSeparatedNamesOfPersonGreaterThan30InUpperCase();
         getGroupBasedOnNames();
-          */
         getGroupCountOnNames();
+        getSumBasedOnAge();
+        getMaxBasedOnAge();
+        getMinBasedOnAge();
+        mapVsMappingFilterVsFiltering();
+        flatMapAndFlatMapping();
     }
 }
 
 @Getter
 @Setter
 @AllArgsConstructor
+@ToString
 class Person {
-
     private String name;
-
     private int age;
 }
