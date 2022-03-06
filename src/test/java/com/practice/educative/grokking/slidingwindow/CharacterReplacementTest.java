@@ -1,6 +1,5 @@
 package com.practice.educative.grokking.slidingwindow;
 
-import com.practice.educative.grokking.slidingwindow.impl.jan.CharacterReplacementJana;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

@@ -5,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-import com.practice.educative.grokking.slidingwindow.impl.may.MaxFruitCountOf2TypesMay;
-import com.practice.educative.grokking.slidingwindow.impl.tap.MaxFruitCountOf2TypesTap;
+import com.practice.problems.grokking.educative.slidingwindow.impl.may.MaxFruitCountOf2TypesMay;
+import com.practice.problems.grokking.educative.slidingwindow.impl.tap.MaxFruitCountOf2TypesTap;
 
 class MaxFruitCountOf2TypesTest {
 

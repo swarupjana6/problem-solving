@@ -1,7 +1,7 @@
 package com.practice.educative.grokking.slidingwindow;
 
-import com.practice.educative.grokking.slidingwindow.impl.jan.NoRepeatSubstringJana;
-import com.practice.educative.grokking.slidingwindow.impl.tap.NoRepeatSubstringTap;
+import com.practice.problems.grokking.educative.slidingwindow.impl.jan.NoRepeatSubstringJana;
+import com.practice.problems.grokking.educative.slidingwindow.impl.tap.NoRepeatSubstringTap;
 import org.junit.jupiter.api.Test;
 
 class NoRepeatSubstringTest {
