@@ -1,8 +1,9 @@
 package com.practice.educative.grokking.binarytree;
 
-import com.practice.educative.grokking.binarytree.impl.jan.FindAllTreePathsJana;
-import com.practice.educative.grokking.binarytree.impl.myr.FindAllTreePathsMayur;
-import com.practice.educative.grokking.binarytree.impl.tap.FindAllTreePathsTapan;
+import com.practice.problems.grokking.educative.binarytree.TreeNode;
+import com.practice.problems.grokking.educative.binarytree.impl.jan.FindAllTreePathsJana;
+import com.practice.problems.grokking.educative.binarytree.impl.myr.FindAllTreePathsMayur;
+import com.practice.problems.grokking.educative.binarytree.impl.tap.FindAllTreePathsTapan;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
