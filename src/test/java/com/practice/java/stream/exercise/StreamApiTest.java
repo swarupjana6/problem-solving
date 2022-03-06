@@ -1,27 +1,22 @@
-/**
- * 
- */
 package com.practice.java.stream.exercise;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-
-import com.practice.data.model.Customer;
-
-import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author swjana
@@ -101,7 +96,6 @@ public class StreamApiTest {
 	}
 
 	private List<Customer> getCustomers() {
-		
 		List<Customer> list = new ArrayList<>();
 		list.add(new Customer(1L, "Stefan Walker", 1));
 		list.add(new Customer(2L, "Daija Von", 1));
@@ -121,4 +115,14 @@ public class StreamApiTest {
 		Map<Object, Boolean> map = new ConcurrentHashMap<>();
 		return t -> map.putIfAbsent(keyExtractor.apply(t), Boolean.TRUE) == null;
 	}
+}
+
+@Builder
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+class Customer {
+	private Long id;
+	private String name;
+	private Integer tier;
 }
