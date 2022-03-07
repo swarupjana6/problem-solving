@@ -1,10 +1,11 @@
 Stack<a name="TOP"></a>
 ===================
 
-1. Nearest Greater to Left  (NGL)
+1. <i> Nearest Greater to Left  (NGL)
 2. Nearest Greater to Right (NGR)
 3. Nearest Smaller to Left  (NSL)
 4. Nearest Smaller to Right (NSR)
+</i>
 5. Stock Span Problem
 6. Maximum Area Of Histogram
 7. Maximum Area of Rectangle in Binary Matrix
@@ -63,5 +64,8 @@ Additional step: forEach(index -> index - results.get(index))
 ## Maximum Area of Histogram - NSL & NSR ##
 Similar To : Nearest Smaller to Left + Nearest Smaller to Right 
 
-<img src="histogram.png" alt="histogram" width="200"/>
+<img src="histogram.png" alt="histogram" width="300"/>
 
+## Maximum Area of Histogram - NSL & NSR ##
+
+<img src="max-area-rectangle.png" alt="rectangle" width="300"/>
