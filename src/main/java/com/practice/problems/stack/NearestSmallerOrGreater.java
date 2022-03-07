@@ -1,6 +1,5 @@
 package com.practice.problems.stack;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedList;
@@ -55,7 +54,7 @@ public class NearestSmallerOrGreater {
         outputList.add(resultIndex);
     }
 
-    private static List<Integer> nearestGreatestLeft(List<Integer> inputList) {
+    private static List<Integer> nearestGreaterToLeft(List<Integer> inputList) {
         AtomicInteger counter = new AtomicInteger();
         Stack<Integer> indexStack = new Stack<>();
         List<Integer> outputList = new LinkedList<>();
@@ -67,7 +66,7 @@ public class NearestSmallerOrGreater {
         return outputList;
     }
 
-    private static List<Integer> nearestGreatestRight(List<Integer> inputList) {
+    private static List<Integer> nearestGreaterToRight(List<Integer> inputList) {
         AtomicInteger counter = new AtomicInteger();
         Stack<Integer> indexStack = new Stack<>();
         List<Integer> outputList = new LinkedList<>();
@@ -80,7 +79,7 @@ public class NearestSmallerOrGreater {
         return outputList;
     }
 
-    private static List<Integer> nearestSmallestLeft(List<Integer> inputList) {
+    private static List<Integer> nearestSmallerToLeft(List<Integer> inputList) {
         AtomicInteger counter = new AtomicInteger();
         Stack<Integer> indexStack = new Stack<>();
         List<Integer> outputList = new LinkedList<>();
@@ -92,7 +91,7 @@ public class NearestSmallerOrGreater {
         return outputList;
     }
 
-    private static List<Integer> nearestSmallestRight(List<Integer> inputList) {
+    private static List<Integer> nearestSmallerToRight(List<Integer> inputList) {
         AtomicInteger counter = new AtomicInteger();
         Stack<Integer> indexStack = new Stack<>();
         List<Integer> outputList = new LinkedList<>();
@@ -115,10 +114,10 @@ public class NearestSmallerOrGreater {
     }
 
     private static void call(List<Integer> inputList) {
-        nearestGreatestRight(inputList);
-        nearestGreatestLeft(inputList);
-        nearestSmallestRight(inputList);
-        nearestSmallestLeft(inputList);
+        nearestGreaterToRight(inputList);
+        nearestGreaterToLeft(inputList);
+        nearestSmallerToRight(inputList);
+        nearestSmallerToLeft(inputList);
         //nearestGreatest(new ArrayList<>(inputList), "nearestGreaterToLeft", false);
         //nearestSmallest(IntStream.rangeClosed(0, inputList.size() - 1), new ArrayList<>(inputList), "nearestSmallerToLeft");
         //nearestSmallest(IntStream.rangeClosed(0, inputList.size() - 1), inputList, "nearestSmallerToRight");

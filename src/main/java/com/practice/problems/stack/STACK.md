@@ -1,7 +1,7 @@
 Stack<a name="TOP"></a>
 ===================
 
-# Nearest Greatest #
+# Nearest Greater #
 
 These problems require following things
 1. Stack to store previous indexes
@@ -20,7 +20,7 @@ Steps | Condition                                       | Operation
 
 For Right >> The output is revered
 
-# Nearest Smallest #
+# Nearest Smaller #
 
 For Right >> Traverse from END to START
 
