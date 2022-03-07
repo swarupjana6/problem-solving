@@ -71,8 +71,8 @@ public class PreviousGreaterElementIndex {
         List<Integer> inputList2 = IntStream.rangeClosed(1, 10).boxed().collect(Collectors.toList());
         List<Integer> inputList3 = IntStream.rangeClosed(1, 10).boxed().sorted(Collections.reverseOrder()).collect(Collectors.toList());
         List<Integer> inputList = inputList3;
-        System.out.println("InputList   :: " + inputList);
-        System.out.println("OutputList  :: " + new PreviousGreaterElementIndex().prevMax1(inputList));
-        System.out.println("OutputList  :: " + new PreviousGreaterElementIndex().prevMax2(inputList));
+        System.out.println("InputList   :: " + inputList1);
+        System.out.println("OutputList  :: " + new PreviousGreaterElementIndex().prevMax1(inputList1));
+        //System.out.println("OutputList  :: " + new PreviousGreaterElementIndex().prevMax2(inputList));
     }
 }

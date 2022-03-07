@@ -66,6 +66,6 @@ Similar To : Nearest Smaller to Left + Nearest Smaller to Right
 
 <img src="histogram.png" alt="histogram" width="300"/>
 
-## Maximum Area of Histogram - NSL & NSR ##
+## Maximum Area of Rectangle - NSL & NSR ##
 
 <img src="max-area-rectangle.png" alt="rectangle" width="300"/>

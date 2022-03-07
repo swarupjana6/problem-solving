@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
 
-import static com.practice.problems.stack.NearestSmallerOrGreater.nearestGreatest;
+import static com.practice.problems.stack.NearestSmallerOrGreater.nearestGreaterToLeft;
 import static java.util.stream.Collectors.toList;
 
 /**
@@ -17,7 +17,7 @@ public class StockSpanProblem {
     public static final String LOG_STR = "\n%s %s\n I/P \t\t:: %s \n O/P \t\t:: %s \n-------";
 
     private static List<Integer> stockSpan(List<Integer> inputList) {
-        List<Integer> outputList = nearestGreatest(inputList, true);
+        List<Integer> outputList = nearestGreaterToLeft(inputList, -1);
 
         // Nearest Greatest MINUS Current Index
         List<Integer> finalResults = IntStream.rangeClosed(0, outputList.size() - 1).map(index -> index - outputList.get(index)).boxed().collect(toList());
