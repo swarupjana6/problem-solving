@@ -1,11 +1,12 @@
 Stack<a name="TOP"></a>
 ===================
 
-# Nearest Greater #
-
+# Nearest Smaller / Greater #
 These problems require following things
 1. Stack to store previous indexes
 2. Output Array
+
+## Nearest Greater ##
 
 For Right >> Traverse from END to START
 
@@ -20,7 +21,7 @@ Steps | Condition                                       | Operation
 
 For Right >> The output is revered
 
-# Nearest Smaller #
+## Nearest Smaller ##
 
 For Right >> Traverse from END to START
 
@@ -34,3 +35,10 @@ Steps | Condition                                          | Operation
 4th |                                                    | stack.push current index
 
 For Right >> The output is revered
+
+## Stock Span Problem ##
+
+Consecutive smaller or equal before it
+
+Note : This problem is same as Nearest Greater
+Additional step: forEach(index -> index - results.get(index))
