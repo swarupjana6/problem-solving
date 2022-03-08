@@ -1,21 +1,19 @@
 Stack<a name="TOP"></a>
 ===================
 
-<i>
-1. Nearest Greater to Left  (NGL)
-2. Nearest Greater to Right (NGR)
-3. Nearest Smaller to Left  (NSL)
-4. Nearest Smaller to Right (NSR)
-</i>
-5. Stock Span Problem
-6. Maximum Area Of Histogram
-7. Maximum Area of Rectangle in Binary Matrix
-8. Rain water trapping
-9. Implementing a Min Stack
-10. Implementing Stack Using Heap
-11. The Celebrity Problem
-12. Longest Valid Parenthesis
-13. Iterative Tower Of Hanoi
+1. - [x] <i> Nearest Greater to Left  (NGL) </i> 
+2. - [x] <i> Nearest Greater to Right (NGR) </i>
+3. - [x] <i> Nearest Smaller to Left  (NSL) </i>
+4. - [x] <i> Nearest Smaller to Right (NSR) </i>
+5. - [x] Stock Span Problem
+6. - [x] Maximum Area Of Histogram
+7. - [x] Maximum Area of Rectangle in Binary Matrix
+8. - [x] Rain water trapping
+9. - [x] Implementing a Min Stack
+10. - [ ] Implementing Stack Using Heap
+11. - [ ]  The Celebrity Problem
+12. - [ ]  Longest Valid Parenthesis
+13. - [ ]  Iterative Tower Of Hanoi
 
 # Nearest Smaller / Greater #
 These problems require following things
