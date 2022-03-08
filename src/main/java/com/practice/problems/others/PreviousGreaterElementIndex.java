@@ -1,7 +1,6 @@
 package com.practice.problems.others;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import lombok.extern.log4j.Log4j2;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,9 +10,8 @@ import java.util.Stack;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+@Log4j2
 public class PreviousGreaterElementIndex {
-
-    private static final Logger log = LogManager.getLogger(PreviousGreaterElementIndex.class);
 
     public List<Integer> prevMax1(List<Integer> inputList) {
         List<Integer> outputList = new ArrayList<>();
