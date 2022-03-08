@@ -1,5 +1,7 @@
 package com.practice.problems.stack;
 
+import lombok.extern.log4j.Log4j2;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -11,10 +13,11 @@ import static com.practice.problems.stack.NearestSmallerOrGreater.nearestSmaller
  * <p>
  * This problem is SIMILAR to nearestSmallestLeft PLUS nearestSmallestRight
  **/
+@Log4j2
 public class MaximumAreaHistogram {
 
     public static void main(String[] args) {
-        System.out.format("MAXIMUM AREA IN HISTOGRAM :: %s\n", histogramArea(Arrays.asList(6, 2, 5, 4, 5, 1, 6)));
+        log.info("MAXIMUM AREA IN HISTOGRAM :: %s\n", histogramArea(Arrays.asList(6, 2, 5, 4, 5, 1, 6)));
     }
 
     public static Integer histogramArea(List<Integer> inputList) {

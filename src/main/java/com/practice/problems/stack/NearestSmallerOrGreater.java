@@ -1,5 +1,7 @@
 package com.practice.problems.stack;
 
+import lombok.extern.log4j.Log4j2;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedList;
@@ -7,7 +9,7 @@ import java.util.List;
 import java.util.Stack;
 import java.util.stream.Collectors;
 
-
+@Log4j2
 public class NearestSmallerOrGreater {
 
     /*
@@ -15,7 +17,7 @@ public class NearestSmallerOrGreater {
      * if we are unable to find then -1
      *
      * */
-    public static final String LOG_STR = "%s %s\n I/P List \t\t\t:: %s \n O/P Indexes \t\t:: %s \n O/P Elements \t\t:: %s \n-------\n";
+    public static final String LOG_STR = "{} {}\n I/P List \t\t\t:: {} \n O/P Indexes \t\t:: {} \n O/P Elements \t\t:: {} \n-------\n";
 
     public static List<Integer> nearestGreaterToLeft(List<Integer> inputList, int pseudoIndex) {
         Stack<Integer> indexStack = new Stack<>();
@@ -39,7 +41,7 @@ public class NearestSmallerOrGreater {
         }
 
         String outputStr = outputList.stream().map(i -> i != -1 && i < outputList.size() ? inputList.get(i) : i).collect(Collectors.toList()).toString();
-        System.out.format(LOG_STR, new Exception().getStackTrace()[0].getMethodName(), "'i' moving from left2right >>>>>>", inputList, outputList, outputStr);
+        log.debug(LOG_STR, new Exception().getStackTrace()[0].getMethodName(), "'i' moving from left2right >>>>>>", inputList, outputList, outputStr);
         return outputList;
     }
 
@@ -66,9 +68,8 @@ public class NearestSmallerOrGreater {
 
         Collections.reverse(outputList);
 
-
         String outputStr = outputList.stream().map(i -> i != -1 && i < outputList.size() ? inputList.get(i) : i).collect(Collectors.toList()).toString();
-        System.out.format(LOG_STR, new Exception().getStackTrace()[0].getMethodName(), "'i' moving from right2left <<<<<<<", inputList, outputList, outputStr);
+        log.debug(LOG_STR, new Exception().getStackTrace()[0].getMethodName(), "'i' moving from right2left <<<<<<<", inputList, outputList, outputStr);
         return outputList;
     }
 
@@ -94,14 +95,13 @@ public class NearestSmallerOrGreater {
         }
 
         String outputStr = outputList.stream().map(i -> i != -1 && i < outputList.size() ? inputList.get(i) : i).collect(Collectors.toList()).toString();
-        System.out.format(LOG_STR, new Exception().getStackTrace()[0].getMethodName(), " 'i' moving from left2right >>>>>>", inputList, outputList, outputStr);
+        log.debug(LOG_STR, new Exception().getStackTrace()[0].getMethodName(), " 'i' moving from left2right >>>>>>", inputList, outputList, outputStr);
         return outputList;
     }
 
     public static List<Integer> nearestSmallerToRight(List<Integer> inputList, int pseudoIndex) {
         Stack<Integer> indexStack = new Stack<>();
         List<Integer> outputList = new LinkedList<>();
-
 
         for (int i = inputList.size() - 1; i >= 0; i--) {
             int resultIndex = i;
@@ -123,7 +123,7 @@ public class NearestSmallerOrGreater {
         Collections.reverse(outputList);
 
         String outputStr = outputList.stream().map(i -> i != -1 && i < outputList.size() ? inputList.get(i) : i).collect(Collectors.toList()).toString();
-        System.out.format(LOG_STR, new Exception().getStackTrace()[0].getMethodName(), "'i' moving from right2left <<<<<<<", inputList, outputList, outputStr);
+        log.debug(LOG_STR, new Exception().getStackTrace()[0].getMethodName(), "'i' moving from right2left <<<<<<<", inputList, outputList, outputStr);
         return outputList;
     }
 
