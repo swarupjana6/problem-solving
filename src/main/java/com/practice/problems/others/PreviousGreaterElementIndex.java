@@ -1,5 +1,8 @@
 package com.practice.problems.others;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -9,6 +12,8 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class PreviousGreaterElementIndex {
+
+    private static final Logger log = LogManager.getLogger(PreviousGreaterElementIndex.class);
 
     public List<Integer> prevMax1(List<Integer> inputList) {
         List<Integer> outputList = new ArrayList<>();
@@ -30,7 +35,7 @@ public class PreviousGreaterElementIndex {
             if (j == -1) outputList.add(i);
         }
 
-        System.out.format("Brut force::  %s\n", counter);
+        log.info("Brut force:: {}\n", counter);
         return outputList;
     }
 
@@ -62,7 +67,7 @@ public class PreviousGreaterElementIndex {
             prevElementsIndex.push(i);
         }
 
-        System.out.format("StackImplementation:: %s\n", counter);
+        log.info("StackImplementation:: {}\n", counter);
         return Arrays.asList(nextGreatest);
     }
 
@@ -71,8 +76,8 @@ public class PreviousGreaterElementIndex {
         List<Integer> inputList2 = IntStream.rangeClosed(1, 10).boxed().collect(Collectors.toList());
         List<Integer> inputList3 = IntStream.rangeClosed(1, 10).boxed().sorted(Collections.reverseOrder()).collect(Collectors.toList());
         List<Integer> inputList = inputList3;
-        System.out.println("InputList   :: " + inputList);
-        System.out.println("OutputList  :: " + new PreviousGreaterElementIndex().prevMax1(inputList));
-        System.out.println("OutputList  :: " + new PreviousGreaterElementIndex().prevMax2(inputList));
+        log.info("InputList   :: " + inputList);
+        log.info("OutputList  :: " + new PreviousGreaterElementIndex().prevMax1(inputList));
+        log.info("OutputList  :: " + new PreviousGreaterElementIndex().prevMax2(inputList));
     }
 }
