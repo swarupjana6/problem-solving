@@ -56,9 +56,6 @@ Similar To : Nearest Greater Left
 
 Consecutive smaller or equal before it
 
-
-
-Note : This problem is same as Nearest Greater
 Additional step: forEach(index -> index - results.get(index))
 
 ## Maximum Area of Histogram - NSL & NSR ##

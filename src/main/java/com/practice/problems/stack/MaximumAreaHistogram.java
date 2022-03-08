@@ -14,10 +14,10 @@ import static com.practice.problems.stack.NearestSmallerOrGreater.nearestSmaller
 public class MaximumAreaHistogram {
 
     public static void main(String[] args) {
-        System.out.format("MAXIMUM AREA IN HISTOGRAM :: %s\n", area(Arrays.asList(6, 2, 5, 4, 5, 1, 6)));
+        System.out.format("MAXIMUM AREA IN HISTOGRAM :: %s\n", histogramArea(Arrays.asList(6, 2, 5, 4, 5, 1, 6)));
     }
 
-    private static Integer area(List<Integer> inputList) {
+    public static Integer histogramArea(List<Integer> inputList) {
         List<Integer> widthLeft = nearestSmallerToLeft(inputList, -1);
         List<Integer> widthRight = nearestSmallerToRight(inputList, inputList.size());
         List<Integer> area = new ArrayList<>();
