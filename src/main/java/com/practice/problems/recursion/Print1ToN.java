@@ -7,13 +7,16 @@ public class Print1ToN {
     }
 
     public static void print(int n) {
+        // BASE CONDITION
         if (n == 1) {
             System.out.format("%d ", n);
             return;
         }
 
+        // HYPOTHESIS
         print(n - 1);
 
+        // INDUCTION
         System.out.format("%d ", n);
     }
 }

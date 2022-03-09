@@ -14,11 +14,11 @@ public class HeightOfBinaryTree {
         // BASE CONDITION
         if (root == null) return 0;
 
-        // HYPOTHESIS STEP
+        // HYPOTHESIS
         int leftHeight = height(root.left());
         int leftRight = height(root.right());
 
-        // INDUCTION STEP
+        // INDUCTION
         return 1 + Math.max(leftHeight, leftRight);
     }
 
