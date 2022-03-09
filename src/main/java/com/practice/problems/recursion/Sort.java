@@ -13,25 +13,25 @@ public class Sort {
         var input = input1;
 
         log.info("Before : {}", input);
-        sort(input);
+        sortList(input);
         log.info("After : {}", input);
     }
 
-    private static void sort(List<Integer> input) {
+    private static void sortList(List<Integer> input) {
         // BASE CONDITION
-        if (input.size() == 0) return;
+        if (input.size() == 1) return;
 
         // HYPOTHESIS
-        int temp = input.remove(input.size() - 1);
-        sort(input);
+        int removedElement = input.remove(input.size() - 1);
+        sortList(input);
 
         // INDUCTION
-        // Insert temp that was removed in HYPOTHESIS into the input list
-        // insertIterative(input, temp);       // Instead of using the recursion again we can Iteratively solve the Induction step
-        insertRecursively(input, temp);
+        // Insert removedElement that was removed in HYPOTHESIS into the input list
+        // insertIterative(input, removedElement);       // Instead of using the recursion again we can Iteratively solve the Induction step
+        insertElement(input, removedElement);
     }
 
-    private static void insertRecursively(List<Integer> subList, Integer element) {
+    private static void insertElement(List<Integer> subList, Integer element) {
         // BASE CONDITION
         if (subList.size() == 0 || subList.get(subList.size() - 1) <= element) {
             subList.add(subList.size(), element);
@@ -39,14 +39,14 @@ public class Sort {
         }
 
         // HYPOTHESIS
-        int temp = subList.remove(subList.size() - 1);
+        int removedElement = subList.remove(subList.size() - 1);
 
         // INDUCTION
-        insertRecursively(subList, element);
-        subList.add(temp);
+        insertElement(subList, element);
+        subList.add(removedElement);
     }
 
-    private static void insertIterative(List<Integer> subList, int element) {
+    private static void insertIterative(List<Integer> subList, Integer element) {
         if (subList.size() == 0 || element >= subList.get(subList.size() - 1)) {
             subList.add(subList.size(), element);
             return;

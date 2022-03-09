@@ -10,9 +10,9 @@
 1. - [x] Print 1 to N
 2. - [x] Height of a Binary Tree
 3. - [x] Sort an Array
-4. - [ ] Sort a Stack
+4. - [x] Sort a Stack
 5. - [ ] Stock Span Problem
-6. - [ ] Delete middle element
+6. - [ ] Delete middle element in a Stack
 7. - [ ] Reverse a stack
 8. - [ ] Kth Symbol in Grammar
 9. - [ ] Tower of Hanoi
