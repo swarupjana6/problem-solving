@@ -11,19 +11,18 @@
 2. - [x] Height of a Binary Tree
 3. - [x] Sort an Array
 4. - [x] Sort a Stack
-5. - [ ] Stock Span Problem
-6. - [ ] Delete middle element in a Stack
-7. - [ ] Reverse a stack
-8. - [ ] Kth Symbol in Grammar
-9. - [ ] Tower of Hanoi
-10. - [ ] Print Subsets
-11. - [ ]  Print Unique Subsets
-12. - [ ]  Permutation with Spaces
-13. - [ ]  Permutation with Case Change
-14. - [ ]  Letter case Permutation
-15. - [ ]  General all balanced Parentheses
-16. - [ ]  Print N-Bit Binary Number having more 1's than 0's for any prefix
-17. - [ ]  Josephus Problem | Game of Death in Circle | Execution in Circle
+5. - [x] Delete middle element in a Stack
+6. - [ ] Reverse a stack
+7. - [ ] Kth Symbol in Grammar
+8. - [ ] Tower of Hanoi
+9. - [ ] Print Subsets
+10. - [ ]  Print Unique Subsets
+11. - [ ]  Permutation with Spaces
+12. - [ ]  Permutation with Case Change
+13. - [ ]  Letter case Permutation
+14. - [ ]  General all balanced Parentheses
+15. - [ ]  Print N-Bit Binary Number having more 1's than 0's for any prefix
+16. - [ ]  Josephus Problem | Game of Death in Circle | Execution in Circle
 
 ## How to make Recursive Tree ? ##
 
