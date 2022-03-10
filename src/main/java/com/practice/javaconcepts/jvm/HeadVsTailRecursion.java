@@ -9,7 +9,7 @@ public class HeadVsTailRecursion {
     @SneakyThrows
     public static void main(String[] args) {
         log.info("Head Recursion : {}", headRecursive(10));
-        log.info("Tail Recursion : {}", tailRecursive(5, 1));
+        log.info("Tail Recursion : {}", tailRecursive(10, 1));
     }
 
     // After recursion returns another operation is performed -> n * (value of returned function)
@@ -20,7 +20,7 @@ public class HeadVsTailRecursion {
 
     // After recursion returns NO operation is performed -> (value of returned function)
     public static Integer tailRecursive(int n, int a) {
-        if (n == 0 || n == 1) return 1;
+        if (n == 0 || n == 1) return a;
         else return tailRecursive(n - 1, n * a);
     }
 }
