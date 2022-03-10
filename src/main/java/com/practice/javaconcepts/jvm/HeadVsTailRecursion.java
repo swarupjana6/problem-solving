@@ -1,13 +1,15 @@
 package com.practice.javaconcepts.jvm;
 
+import lombok.SneakyThrows;
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
 public class HeadVsTailRecursion {
 
+    @SneakyThrows
     public static void main(String[] args) {
-        log.info("Head Recursion : {}", headRecursive(6));
-        log.info("Tail Recursion : {}", tailRecursive(6, 1));
+        log.info("Head Recursion : {}", headRecursive(10));
+        log.info("Tail Recursion : {}", tailRecursive(5, 1));
     }
 
     // After recursion returns another operation is performed -> n * (value of returned function)
