@@ -13,7 +13,7 @@
 4. - [x] Sort a Stack
 5. - [x] Delete middle element in a Stack
 6. - [x] Reverse a stack
-7. - [ ] Kth Symbol in Grammar
+7. - [x] K<sup>th</sup> Symbol in Grammar
 8. - [ ] Tower of Hanoi
 9. - [ ] Print Subsets
 10. - [ ]  Print Unique Subsets
