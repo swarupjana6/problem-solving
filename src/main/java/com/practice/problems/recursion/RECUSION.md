@@ -16,8 +16,8 @@
 7. - [x] K<sup>th</sup> Symbol in Grammar
 8. - [x] Tower of Hanoi
 9. - [x] Print Subsets
-10. - [ ]  Print Unique Subsets
-11. - [ ]  Permutation with Spaces
+10. - [x]  Print Unique Subsets
+11. - [x]  Permutation with Spaces
 12. - [ ]  Permutation with Case Change
 13. - [ ]  Letter case Permutation
 14. - [ ]  General all balanced Parentheses
