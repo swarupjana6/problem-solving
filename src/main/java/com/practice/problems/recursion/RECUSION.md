@@ -14,8 +14,8 @@
 5. - [x] Delete middle element in a Stack
 6. - [x] Reverse a stack
 7. - [x] K<sup>th</sup> Symbol in Grammar
-8. - [ ] Tower of Hanoi
-9. - [ ] Print Subsets
+8. - [x] Tower of Hanoi
+9. - [x] Print Subsets
 10. - [ ]  Print Unique Subsets
 11. - [ ]  Permutation with Spaces
 12. - [ ]  Permutation with Case Change
