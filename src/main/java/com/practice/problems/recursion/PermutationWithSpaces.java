@@ -18,19 +18,22 @@ public class PermutationWithSpaces {
     }
 
     private static void solve(String input, String output, Set<String> outputs) {
+        // Check if Leaf node reached
         if (input.length() == 0) {
             outputs.add("'" + output + "'");
             return;
         }
 
+        // STEP 2 :: Calculate output for this step
         String output1 = output;
         String output2 = output;
-
         output1 += " " + input.substring(0, 1);
         output2 += input.substring(0, 1);
 
+        // STEP 3 :: Reduce the input for next step
         input = input.substring(1);
 
+        // STEP 4 :: Call next step branches
         solve(input, output1, outputs);
         solve(input, output2, outputs);
     }
