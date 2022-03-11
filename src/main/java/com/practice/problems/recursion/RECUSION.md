@@ -19,8 +19,8 @@
 10. - [x]  Print Unique Subsets
 11. - [x]  Permutation with Spaces
 12. - [x]  Permutation with Case Change
-13. - [ ]  Letter case Permutation
-14. - [ ]  General all balanced Parentheses
+13. - [x]  Letter case Permutation
+14. - [x]  General all balanced Parentheses
 15. - [ ]  Print N-Bit Binary Number having more 1's than 0's for any prefix
 16. - [ ]  Josephus Problem | Game of Death in Circle | Execution in Circle
 
