@@ -23,17 +23,22 @@
 * Managed by `Minor GC` aka `Young GC`
 * Eden Space: New objects are `created`. 
 * Survivor Space: Objects that `survived` the minor GC are stored. (contains halves, `S0` & `S1`)
+* `Minor GC` happens when Eden space is full. There is need to move long living object from Eden to Survivor space.
+* At the time of `Minor GC` execution one of the survivor space is made empty.
 
 ### Old generation ###
 * Old generation aka `Tenured Space`
 * Objects that reached the maximum tenure threshold during minor GC live. 
 * Managed by `Major GC`.
+* When `Major GC` happens ??????
 
 ## GCs Types ##
 
+This happens for both Minor and Major.
+
 ### Mark & Sweep - GC ###
 
-* AKA stop the world GCs
+* AKA `stop the world` GCs
 
 > `Marking` Objects in use or reachable from GC roots(Stack pointers) recursively are marked as alive.
 
@@ -48,8 +53,8 @@
 |      GCs      |        Flag        |      Cores       | Data Sets |                                                                                   More Detail                                                                                    |
 |:-------------:|:------------------:|:----------------:|:---------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 |    Serial     |  -XX:+UseSerialGC  | single-processor |   Small   |                                                                                        -                                                                                         |
-|   Parallel    | -XX:+UseParallelGC |  muti-processor  |   large   |                                                             intended for applications with medium to large data sets                                                             |
-| Garbage-First |    -XX:+UseG1GC    | mutli-processor  |     -     |                                focus on low pause times and high throughput. Enabled by default on most modern machines and OS with large memory.                                |
+|   Parallel    | -XX:+UseParallelGC | multi-processor  |   large   |                                                             intended for applications with medium to large data sets                                                             |
+| Garbage-First |    -XX:+UseG1GC    | multi-processor  |     -     |                                focus on low pause times and high throughput. Enabled by default on most modern machines and OS with large memory.                                |
 |       Z       |    -XX:+UseZGC     |        -         |     -     | Experimental GC introduced in JDK 11 </br> scalable low-latency collector </br> intended for applications that require low latency and/or use a very large heap(multi-terabytes) |
 
 Reference :

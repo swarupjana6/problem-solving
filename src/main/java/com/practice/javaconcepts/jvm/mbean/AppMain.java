@@ -11,10 +11,17 @@ import static com.practice.javaconcepts.jvm.mbean.ConsoleApp.startConsoleApp;
 public class AppMain {
 
     public static void main(String[] args) throws Exception {
+        // STEP 1:: Start Hawtio WAR to access MBean objects attributes via HTTP endpoint. (Note: The MBean can also be accessed by JConsole, JDK Mission Control etc.)
         runHawtio();
-        Calculator calculator = new Calculator();
-        registerWithJmxAgent(calculator);
-        startConsoleApp(calculator);
+
+        // STEP 2:: Create MBean object that you need to monitor for our case it is Calculator
+        Calculator c1 = new Calculator();
+
+        // STEP 3:: Register Calculator object with JMX Agent so that it can be monitored
+        registerWithJmxAgent(c1);
+
+        // STEP 4:: Start console application to use the Calculation object
+        startConsoleApp(c1);
     }
 
     private static void runHawtio() throws Exception {
