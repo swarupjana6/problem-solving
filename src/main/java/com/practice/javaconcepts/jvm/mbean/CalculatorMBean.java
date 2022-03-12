@@ -1,0 +1,32 @@
+package com.practice.javaconcepts.jvm.mbean;
+
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
+public interface CalculatorMBean {
+    void setDecimalPlaces(int decimalPlaces);
+    int getDecimalPlaces();
+}
+
+class Calculator implements CalculatorMBean {
+
+    private int decimalPlaces = 2;
+
+    public double add(double d1, double d2) {
+        BigDecimal bd1 = new BigDecimal(d1);
+        BigDecimal bd2 = new BigDecimal(d2);
+
+        BigDecimal sum = bd1.add(bd2);
+        return sum.setScale(decimalPlaces, RoundingMode.HALF_UP).doubleValue();
+    }
+
+    @Override
+    public void setDecimalPlaces(int decimalPlaces) {
+        this.decimalPlaces = decimalPlaces;
+    }
+
+    @Override
+    public int getDecimalPlaces() {
+        return decimalPlaces;
+    }
+}
