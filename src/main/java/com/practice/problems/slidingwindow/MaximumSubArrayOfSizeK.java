@@ -20,11 +20,15 @@ public class MaximumSubArrayOfSizeK {
 
         while (end < input.size()) {
             int currentElement = input.get(end);
-            sum += currentElement;
-
             int currentWindow = end - start + 1;
 
+            // CALCULATION of the question asked, to be used for further steps
+            sum += currentElement;
+
+            // Increment to reach until window
             if (currentWindow < window) end++;
+
+            // Window size reached
             else if (currentWindow == window) {
                 max = Math.max(sum, max);
                 sum -= input.get(start);
