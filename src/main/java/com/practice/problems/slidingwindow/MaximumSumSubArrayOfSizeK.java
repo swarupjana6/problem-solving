@@ -5,7 +5,7 @@ import lombok.extern.log4j.Log4j2;
 import java.util.List;
 
 @Log4j2
-public class MaximumSubArrayOfSizeK {
+public class MaximumSumSubArrayOfSizeK {
 
     public static void main(String[] args) {
         List<Integer> input = List.of(1, 2, 3, 4, 5, 6);

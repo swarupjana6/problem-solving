@@ -11,7 +11,7 @@ Problem List
 |-------------------------------------------------------------------------------|--------------------------------------------------------------------------------------|
 | <input type="checkbox" checked=checked> Maximum / Minimum Sub Array of size K | <input type="checkbox"> Largest / Smallest Sub-array of sum K                        |
 | <input type="checkbox" checked=checked> 1st -ve in every minimum size of K    | <input type="checkbox"> Largest substring of K distinct character                    | 
-| <input type="checkbox"> Count occurrence of Anagram                           | <input type="checkbox"> Length of Largest substring & number of repeating characters | 
+| <input type="checkbox" checked=checked> Count occurrence of Anagram           | <input type="checkbox"> Length of Largest substring & number of repeating characters | 
 | <input type="checkbox"> Move of all sub-array of size k                       | <input type="checkbox"> Pick toy                                                     | 
 | <input type="checkbox"> Max of Minimum of every window size                   | <input type="checkbox"> Minimum window substring                                     | 
 
