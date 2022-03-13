@@ -10,34 +10,63 @@ public class FirstNegativeIntegerInEveryWindowSize {
 
     public static void main(String[] args) {
         List<Integer> input = List.of(12, -1, -7, 8, -15, 30, 16, 28);
-        log.info(slidingWindow(input, 3));
+        int window = 3;
+
+        log.info("Input::\t {}", input);
+        log.info("Output::\t {}", slidingWindow(input, window));
     }
 
     private static List<Integer> slidingWindow(List<Integer> input, int window) {
-        List<Integer> firstNegatives = new ArrayList<>();
-        List<Integer> negatives = new ArrayList<>();
-        int start = 0;
-        int end = 0;
+        List<Integer> output = new ArrayList<>();
+        List<Integer> negativeElements = new ArrayList<>();
+        int startWindow = 0;
+        int endWindow = 0;
 
-        while (end < input.size()) {
-            int currentElement = input.get(end);
-            int currentWindow = end - start + 1;
+        while (endWindow < input.size()) {
+            int currentElement = input.get(endWindow);
+            int currentWindow = endWindow - startWindow + 1;
 
-            if (currentElement < 0) negatives.add(end);
+            /* STEP 1:: CALCULATION of the question asked, to be used for further steps */
+            if (currentElement < 0) negativeElements.add(endWindow);
 
-            if (currentWindow < window) end++;
-            else if (currentWindow == window) {
-                if (negatives.size() > 0) {
-                    firstNegatives.add(input.get(negatives.get(0)));
-                    if (start == negatives.get(0)) negatives.remove(0);
+            if (currentWindow < window) endWindow++;    /* STEP 2:: Window size not reached, increment endWindow */
+            else if (currentWindow == window) {         /* STEP 3:: Window size REACHED **/
+
+                /* STEP 4:: Get ANSWER from previous CALCULATION */
+                if (negativeElements.size() == 0) {
+                    output.add(0);  /* EDGE case **/
                 } else {
-                    firstNegatives.add(0);
+                    output.add(negativeElements.get(0));
+                    if (startWindow == negativeElements.get(0)) negativeElements.remove(0);
                 }
-                start++;
-                end++;
+
+                /* STEP 5:: Move the Window, increment startWindow and endWindow */
+                startWindow++;
+                endWindow++;
             }
         }
 
-        return firstNegatives;
+        return output;
+    }
+
+    private static List<Integer> mayur(List<Integer> input, int window) {
+        List<Integer> negativeElements = new ArrayList<>();
+        int startWindow = 0;
+        int endWindow = 0;
+
+        while (endWindow < input.size()) {
+            int currentElement = input.get(endWindow);
+            int currentWindow = endWindow - startWindow + 1;
+
+            if (currentElement < 0 || currentWindow == window) {
+                negativeElements.add(endWindow);
+                startWindow++;
+                endWindow++;
+            }
+
+            endWindow++;
+        }
+
+        return negativeElements;
     }
 }

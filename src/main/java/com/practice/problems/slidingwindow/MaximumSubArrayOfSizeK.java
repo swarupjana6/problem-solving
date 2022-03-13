@@ -12,28 +12,29 @@ public class MaximumSubArrayOfSizeK {
         log.info(slidingWindow(input, 3));
     }
 
-    private static Integer slidingWindow(List<Integer> input, int window) {
-        Integer max = 0;
-        int start = 0;
-        int end = 0;
+    private static Integer slidingWindow(List<Integer> input, int windowSize) {
+        int max = 0;
+        int windowStart = 0;
+        int windowEnd = 0;
         int sum = 0;
 
-        while (end < input.size()) {
-            int currentElement = input.get(end);
-            int currentWindow = end - start + 1;
+        while (windowEnd < input.size()) {
+            int currentElement = input.get(windowEnd);
+            int currentWindow = windowEnd - windowStart + 1;
 
-            // CALCULATION of the question asked, to be used for further steps
+            /* STEP 1:: CALCULATION of the question asked, to be used for further steps */
             sum += currentElement;
 
-            // Increment to reach until window
-            if (currentWindow < window) end++;
+            if (currentWindow < windowSize) windowEnd++;  /* STEP 2:: Window size not reached, increment endWindow */
+            else if (currentWindow == windowSize) {       /* STEP 3:: Window size REACHED */
 
-            // Window size reached
-            else if (currentWindow == window) {
+                /* STEP 4:: Get ANSWER from previous CALCULATION **/
                 max = Math.max(sum, max);
-                sum -= input.get(start);
-                start++;
-                end++;
+                sum -= input.get(windowStart);
+
+                /* STEP 5:: Move the Window, increment startWindow and endWindow */
+                windowStart++;
+                windowEnd++;
             }
         }
 
