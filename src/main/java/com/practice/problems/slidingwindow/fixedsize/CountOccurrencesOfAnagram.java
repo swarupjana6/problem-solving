@@ -1,4 +1,4 @@
-package com.practice.problems.slidingwindow;
+package com.practice.problems.slidingwindow.fixedsize;
 
 import lombok.extern.log4j.Log4j2;
 
@@ -13,7 +13,8 @@ public class CountOccurrencesOfAnagram {
     public static void main(String[] args) {
         String input = "aabaabaa";
         String pattern = "aaba";
-        log.info(slidingWindow(input.toCharArray(), pattern));
+        log.info("Input:{} , Pattern:{}", input.toCharArray(), pattern.toCharArray());
+        log.info("Output:{}", slidingWindow(input.toCharArray(), pattern));
     }
 
     private static Integer slidingWindow(char[] inputChars, String pattern) {
