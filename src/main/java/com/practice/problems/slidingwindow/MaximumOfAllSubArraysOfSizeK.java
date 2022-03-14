@@ -12,8 +12,9 @@ import java.util.Queue;
 public class MaximumOfAllSubArraysOfSizeK {
 
     public static void main(String[] args) {
-        List<Integer> input = List.of(1, 3, -1, -3, 5, 3, 6, 7);
-        log.info("Input:: {} || Output:: {}", input, slidingWindow(input, 3));
+        List<Integer> input = List.of(1, 2, 3, -1, -3, 5, 3, 6, 7);
+        log.info("Input:: {}", input);
+        log.info("Output:: {}", slidingWindow(input, 3));
     }
 
     private static List<Integer> slidingWindow(List<Integer> input, int windowSize) {
@@ -27,12 +28,12 @@ public class MaximumOfAllSubArraysOfSizeK {
             int currentWindow = windowEnd - windowStart + 1;
 
             /* STEP 1:: CALCULATION of the question asked, to be used for further steps */
-            while (maxQueue.size() > 0 && maxQueue.peek() < currentElement) maxQueue.remove();
+            while (maxQueue.size() > 0 && currentElement > maxQueue.peek()) maxQueue.remove();
             maxQueue.offer(currentElement);
 
             if (currentWindow < windowSize) windowEnd++;  /* STEP 2:: Window size not reached, increment endWindow */
             else if (currentWindow == windowSize) {       /* STEP 3:: Window size REACHED */
-                log.debug("{} {}", Arrays.copyOfRange(input.toArray(), windowStart, windowEnd + 1), maxQueue.peek());
+                log.debug("max:{}   window:{}\tMaxQueue:{}", maxQueue.peek(), Arrays.copyOfRange(input.toArray(), windowStart, windowEnd + 1), maxQueue);
 
                 /* STEP 4:: Get ANSWER from previous CALCULATION **/
                 maxs.add(maxQueue.peek());
