@@ -22,34 +22,35 @@ public class CountOccurrencesOfAnagram {
         Map<Character, Integer> charCounts = calculateCharCounts(pattern);
         int count = charCounts.size();
 
-        int start = 0;
-        int end = 0;
+        int windowStart = 0;
+        int windowEnd = 0;
         AtomicInteger currentCount = new AtomicInteger(count);
-        while (end < inputChars.length) {
-            char currentElement = inputChars[end];
-            int currentWindow = end - start + 1;
+        while (windowEnd < inputChars.length) {
+            char currentElement = inputChars[windowEnd];
+            int currentWindow = windowEnd - windowStart + 1;
 
-            // CALCULATION
+            /* STEP 1:: CALCULATION of the question asked, to be used for further steps */
             charCounts.computeIfPresent(currentElement, (k, v) -> {
                 if (v == 1) currentCount.getAndDecrement();
                 return v - 1;
             });
 
 
-            if (currentWindow < window) end++;
-            else if (currentWindow == window) {
-                log.debug("{} {}", Arrays.copyOfRange(inputChars, start, end + 1), (currentCount.get() == 0));
+            if (currentWindow < window) windowEnd++;      /* STEP 2:: Window size not reached, increment endWindow */
+            else if (currentWindow == window) {     /* STEP 3:: Window size REACHED **/
 
-                //ANSWER
+                log.debug("{} {}", Arrays.copyOfRange(inputChars, windowStart, windowEnd + 1), (currentCount.get() == 0));
+
+                /* STEP 4:: Get ANSWER from previous CALCULATION */
                 if (currentCount.get() == 0) answer++;
-
-                // OPERATION for the start element since we are moving the window from the start
-                charCounts.computeIfPresent(inputChars[start], (k, v) -> {
+                charCounts.computeIfPresent(inputChars[windowStart], (k, v) -> {
                     if (v == 0) currentCount.getAndIncrement();
                     return v + 1;
                 });
-                start++;
-                end++;
+
+                /* STEP 5:: Move the Window, increment startWindow and endWindow */
+                windowStart++;
+                windowEnd++;
             }
         }
 

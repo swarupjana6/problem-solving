@@ -3,6 +3,7 @@ package com.practice.problems.slidingwindow;
 import lombok.extern.log4j.Log4j2;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Log4j2
@@ -19,17 +20,17 @@ public class FirstNegativeIntegerInEveryWindowSize {
     private static List<Integer> slidingWindow(List<Integer> input, int window) {
         List<Integer> output = new ArrayList<>();
         List<Integer> negativeElements = new ArrayList<>();
-        int startWindow = 0;
-        int endWindow = 0;
+        int windowStart = 0;
+        int windowEnd = 0;
 
-        while (endWindow < input.size()) {
-            int currentElement = input.get(endWindow);
-            int currentWindow = endWindow - startWindow + 1;
+        while (windowEnd < input.size()) {
+            int currentElement = input.get(windowEnd);
+            int currentWindow = windowEnd - windowStart + 1;
 
             /* STEP 1:: CALCULATION of the question asked, to be used for further steps */
-            if (currentElement < 0) negativeElements.add(endWindow);
+            if (currentElement < 0) negativeElements.add(windowEnd);
 
-            if (currentWindow < window) endWindow++;    /* STEP 2:: Window size not reached, increment endWindow */
+            if (currentWindow < window) windowEnd++;    /* STEP 2:: Window size not reached, increment endWindow */
             else if (currentWindow == window) {         /* STEP 3:: Window size REACHED **/
 
                 /* STEP 4:: Get ANSWER from previous CALCULATION */
@@ -37,12 +38,13 @@ public class FirstNegativeIntegerInEveryWindowSize {
                     output.add(0);  /* EDGE case **/
                 } else {
                     output.add(negativeElements.get(0));
-                    if (startWindow == negativeElements.get(0)) negativeElements.remove(0);
+                    if (windowStart == negativeElements.get(0)) negativeElements.remove(0);
                 }
+                log.debug("window:{}\tOutputIndex:{}", Arrays.copyOfRange(input.toArray(), windowStart, windowEnd + 1), output);
 
                 /* STEP 5:: Move the Window, increment startWindow and endWindow */
-                startWindow++;
-                endWindow++;
+                windowStart++;
+                windowEnd++;
             }
         }
 

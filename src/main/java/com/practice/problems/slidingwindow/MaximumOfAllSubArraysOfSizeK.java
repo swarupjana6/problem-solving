@@ -33,6 +33,7 @@ public class MaximumOfAllSubArraysOfSizeK {
 
             if (currentWindow < windowSize) windowEnd++;  /* STEP 2:: Window size not reached, increment endWindow */
             else if (currentWindow == windowSize) {       /* STEP 3:: Window size REACHED */
+
                 log.debug("max:{}   window:{}\tMaxQueue:{}", maxQueue.peek(), Arrays.copyOfRange(input.toArray(), windowStart, windowEnd + 1), maxQueue);
 
                 /* STEP 4:: Get ANSWER from previous CALCULATION **/
