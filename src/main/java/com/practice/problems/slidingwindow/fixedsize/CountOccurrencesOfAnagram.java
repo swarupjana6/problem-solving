@@ -36,9 +36,8 @@ public class CountOccurrencesOfAnagram {
                 return v - 1;
             });
 
-
-            if (currentWindow < window) windowEnd++;      /* STEP 2:: Window size not reached, increment endWindow */
-            else if (currentWindow == window) {     /* STEP 3:: Window size REACHED **/
+            if (currentWindow < window) windowEnd++;        /* STEP 2:: Window size not reached, increment endWindow */
+            else if (currentWindow == window) {             /* STEP 3:: Window size REACHED **/
 
                 log.debug("{} {}", Arrays.copyOfRange(inputChars, windowStart, windowEnd + 1), (currentCount.get() == 0));
 

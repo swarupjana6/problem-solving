@@ -24,13 +24,16 @@ public class LargestSubArrayOfSumK {
             int currentElement = input.get(windowEnd);
             int currentWindow = windowEnd - windowStart + 1;
 
+            /* STEP 1:: CALCULATION of the question asked, to be used for further steps */
             currentSum += currentElement;
 
-            if (currentSum < sum) windowEnd++;              /* STEP 2:: Window sum not reached, increment endWindow */
-            else if (currentSum == sum) {                   /* STEP 3:: Window sum REACHED */
+            if (currentSum < sum) windowEnd++;              /* STEP 2:: Window SUM not reached, increment endWindow */
+            else if (currentSum == sum) {                   /* STEP 3:: Window SUM reached !!!!! */
+
+                /* STEP 4:: Get ANSWER from previous CALCULATION */
                 maxWindow = Math.max(currentWindow, maxWindow);
                 windowEnd++;
-            } else if (currentSum > sum) {
+            } else if (currentSum > sum) {                  /* STEP 4:: Window SUM not reached, increment windowStart && endWindow */
                 while (currentSum > sum) {
                     currentSum -= input.get(windowStart);
                     windowStart = windowStart + 1;
