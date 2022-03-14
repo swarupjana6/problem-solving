@@ -18,7 +18,7 @@ public class FirstNegativeIntegerInEveryWindowSize {
     }
 
     private static List<Integer> slidingWindow(List<Integer> input, int window) {
-        List<Integer> output = new ArrayList<>();
+        List<Integer> answer = new ArrayList<>();
         List<Integer> negativeElements = new ArrayList<>();
         int windowStart = 0;
         int windowEnd = 0;
@@ -35,12 +35,12 @@ public class FirstNegativeIntegerInEveryWindowSize {
 
                 /* STEP 4:: Get ANSWER from previous CALCULATION */
                 if (negativeElements.size() == 0) {
-                    output.add(0);  /* EDGE case **/
+                    answer.add(0);  /* EDGE case **/
                 } else {
-                    output.add(negativeElements.get(0));
+                    answer.add(negativeElements.get(0));
                     if (windowStart == negativeElements.get(0)) negativeElements.remove(0);
                 }
-                log.debug("window:{}\tOutputIndex:{}", Arrays.copyOfRange(input.toArray(), windowStart, windowEnd + 1), output);
+                log.debug("window:{}\tOutputIndex:{}", Arrays.copyOfRange(input.toArray(), windowStart, windowEnd + 1), answer);
 
                 /* STEP 5:: Move the Window, increment startWindow and endWindow */
                 windowStart++;
@@ -48,7 +48,7 @@ public class FirstNegativeIntegerInEveryWindowSize {
             }
         }
 
-        return output;
+        return answer;
     }
 
     private static List<Integer> mayur(List<Integer> input, int window) {

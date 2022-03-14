@@ -13,7 +13,7 @@ public class MaximumSumSubArrayOfSizeK {
     }
 
     private static Integer slidingWindow(List<Integer> input, int windowSize) {
-        int max = 0;
+        int answer = 0;
         int windowStart = 0;
         int windowEnd = 0;
         int sum = 0;
@@ -29,7 +29,7 @@ public class MaximumSumSubArrayOfSizeK {
             else if (currentWindow == windowSize) {       /* STEP 3:: Window size REACHED */
 
                 /* STEP 4:: Get ANSWER from previous CALCULATION **/
-                max = Math.max(sum, max);
+                answer = Math.max(sum, answer);
                 sum -= input.get(windowStart);
 
                 /* STEP 5:: Move the Window, increment startWindow and endWindow */
@@ -38,6 +38,6 @@ public class MaximumSumSubArrayOfSizeK {
             }
         }
 
-        return max;
+        return answer;
     }
 }

@@ -18,7 +18,7 @@ public class MaximumOfAllSubArraysOfSizeK {
     }
 
     private static List<Integer> slidingWindow(List<Integer> input, int windowSize) {
-        List<Integer> maxs = new ArrayList<>();
+        List<Integer> answer = new ArrayList<>();
         int windowStart = 0;
         int windowEnd = 0;
         Queue<Integer> maxQueue = new LinkedList<>();
@@ -37,7 +37,7 @@ public class MaximumOfAllSubArraysOfSizeK {
                 log.debug("max:{}   window:{}\tMaxQueue:{}", maxQueue.peek(), Arrays.copyOfRange(input.toArray(), windowStart, windowEnd + 1), maxQueue);
 
                 /* STEP 4:: Get ANSWER from previous CALCULATION **/
-                maxs.add(maxQueue.peek());
+                answer.add(maxQueue.peek());
                 if (maxQueue.peek() == input.get(windowStart)) maxQueue.remove();
 
                 /* STEP 5:: Move the Window, increment startWindow and endWindow */
@@ -46,6 +46,6 @@ public class MaximumOfAllSubArraysOfSizeK {
             }
         }
 
-        return maxs;
+        return answer;
     }
 }
