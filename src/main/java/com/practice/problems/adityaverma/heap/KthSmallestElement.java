@@ -11,11 +11,9 @@ import java.util.PriorityQueue;
  * Given an integer array nums and an integer k, return the kth largest element in the array.
  * Note that it is the kth largest element in the sorted order, not the kth distinct element.
  * <p>
- * Example 1:
  * Input: nums = [3,2,1,5,6,4], k = 2
  * Output: 5
  * <p>
- * Example 2:
  * Input: nums = [3,2,3,1,2,4,5,5,6], k = 4
  * Output: 4
  * <p>
@@ -31,18 +29,21 @@ public class KthSmallestElement {
         List<Integer> input = List.of(7, 10, 4, 3, 20, 15);
         int K = 3;
         log.info("Input: {}", input);
-        log.info("Output: {}", sort(input, K));
+        log.info("Output: {}", sortMaxHeap(input, K));
     }
 
-    private static Integer sort(List<Integer> input, int k) {
-        Comparator smallest = Comparator.reverseOrder(); // Comparator.naturalOrder()  // For Largest use natural order
-        PriorityQueue<Integer> answer = new PriorityQueue<>(smallest);
+    /**
+     * >>>>>>>>>>> MAX HEAP since smallest <<<<<<<<<<<<<
+     **/
+    private static Integer sortMaxHeap(List<Integer> input, int k) {
+        Comparator smallest = Comparator.reverseOrder(); // Comparator.naturalOrder()  // For Largest use ASCENDING
+        PriorityQueue<Integer> maxHeap = new PriorityQueue<>(smallest);
 
         for (int i = 0; i < input.size(); i++) {
-            answer.add(input.get(i));
-            if (answer.size() > k) answer.remove();
+            maxHeap.add(input.get(i));
+            if (maxHeap.size() > k) maxHeap.remove();
         }
 
-        return answer.peek();
+        return maxHeap.peek();
     }
 }

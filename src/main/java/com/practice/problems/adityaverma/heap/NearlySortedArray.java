@@ -4,40 +4,41 @@ import lombok.extern.log4j.Log4j2;
 
 import java.util.Collection;
 import java.util.Comparator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.PriorityQueue;
 
 /**
- * Given an 1D integer array A of size N you have to find and return the B largest elements of the array A.
- * NOTE: Return the largest B elements in any order you like.
- * <p>
- * Input 1: A = [11, 3, 4] B = 2
- * Output 1: [11, 4]
- * <p>
- * Input 2: A = [11, 3, 4, 6] B = 3
- * Output 2: [4, 6, 11]
+ * Given a k–sorted array that is almost sorted
+ * such that each of the n elements may be misplaced by no more than k positions from the correct sorted order.
+ * Input: arr = [1, 4, 5, 2, 3, 7, 8, 6, 10, 9] k = 2
+ * Output:[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
  **/
 
 @Log4j2
-public class KLargestElement {
+public class NearlySortedArray {
 
     public static void main(String[] args) {
-        List<Integer> input = List.of(7, 10, 4, 3, 20, 15);
+        List<Integer> input = List.of(6, 5, 3, 2, 8, 10, 9);
         int K = 3;
         log.info("Input: {}", input);
         log.info("Output: {}", sortMinHeap(input, K));
     }
 
-    /**>>>>>>>>>>> MIN HEAP since largest <<<<<<<<<<<<<**/
+    /**
+     * >>>>>>>>>>> MIN HEAP since largest <<<<<<<<<<<<<
+     **/
     private static Collection<Integer> sortMinHeap(List<Integer> input, int k) {
         Comparator largest = Comparator.naturalOrder(); // Comparator.reverseOrder() // For Smallest use DESCENDING
         PriorityQueue<Integer> minHeap = new PriorityQueue<>(largest);
+        List<Integer> answer = new LinkedList<>();
 
         for (int i = 0; i < input.size(); i++) {
             minHeap.add(input.get(i));
-            if (minHeap.size() > k) minHeap.remove();
+            if (minHeap.size() > k) answer.add(minHeap.remove());
         }
+        answer.addAll(minHeap);
 
-        return minHeap;
+        return answer;
     }
 }

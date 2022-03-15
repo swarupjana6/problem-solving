@@ -18,7 +18,7 @@ Usually heap questions are of sorting
 
 ## Representation of Heap ##
 
-Stack
+Stack / Priority Queue
 
 |      | 
 |:----:| 
@@ -38,17 +38,25 @@ Size => 4
 
 ### Min Heap ###
 
+> MIN element at the Top of the Priority Queue
+
 GIVEN: K & `Largest` <br/>
 THEN: Calculate `MIN` Heap
 
+<hr/>
+
 ### Max Heap ###
 
-Also known as Priority Queue
+> MAX element at the Top of the Priority Queue
 
 GIVEN: K & `Smallest` <br/>
 THEN: Calculate `MAX` Heap
 
 <hr/>
 
-Time Complexity is converted from
+Time Complexity Improvement
 > n (Log n)<sup>2</sup> ----> n (Log K)<sup>2</sup>
+
+<hr/>
+
+>> Unwanted elements are removed from the top of the stack
