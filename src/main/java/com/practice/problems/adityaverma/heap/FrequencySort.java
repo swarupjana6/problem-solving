@@ -2,6 +2,7 @@ package com.practice.problems.adityaverma.heap;
 
 import lombok.extern.log4j.Log4j2;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
@@ -13,13 +14,13 @@ import java.util.stream.Collectors;
 public class FrequencySort {
 
     public static void main(String[] args) {
-        List<Integer> input = List.of(1, 1, 1, 3, 2, 2, 4, 3, 3, 3, 3, 3, 3);
+        List<Integer> input = List.of(1, 1, 1, 3, 2, 2, 4, 3, 3, 3, 3);
         log.info("Input: {}", input);
         log.info("Output: {}", sortMaxHeap(input));
     }
 
     /**
-     * MAX HEAP is required since more frequent elements is required at the top
+     * MAX HEAP is required since more frequent element at the top
      **/
     private static List<Integer> sortMaxHeap(List<Integer> input) {
         Map<Integer, Integer> frequencyMap = getFrequencyMap(input);
@@ -29,7 +30,9 @@ public class FrequencySort {
 
         for (Map.Entry entry : frequencyMap.entrySet()) maxHeap.add(getPair(entry));
 
-        return maxHeap.stream().map(pair -> pair.getValue().intValue()).collect(Collectors.toList());
+        List<Integer> answer = new ArrayList<>();
+        while (maxHeap.size() > 0) answer.add(maxHeap.remove().getValue());
+        return answer;
     }
 
     private static Map<Integer, Integer> getFrequencyMap(List<Integer> input) {
