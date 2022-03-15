@@ -1,4 +1,4 @@
-package com.practice.problems.recursion;
+package com.practice.problems.adityaverma.recursion;
 
 public class TowerOfHanoi {
 

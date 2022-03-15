@@ -1,4 +1,4 @@
-package com.practice.problems.recursion;
+package com.practice.problems.adityaverma.recursion;
 
 import lombok.extern.log4j.Log4j2;
 

@@ -1,4 +1,4 @@
-package com.practice.problems.recursion;
+package com.practice.problems.adityaverma.recursion;
 
 import lombok.extern.log4j.Log4j2;
 
@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Stack;
 
 @Log4j2
-public class StackReverse {
+public class DeleteMiddleElementStack {
 
     public static void main(String[] args) {
         var input1 = new Stack<Integer>();
@@ -14,32 +14,26 @@ public class StackReverse {
         var input = input1;
 
         log.info("Before : {}", input);
-        reverse(input);
+        deleteMid(input);
         log.info("After : {}", input);
     }
 
-    public static void reverse(Stack<Integer> stack) {
-        // BASE CONDITION
-        if (stack.size() == 1) return;
-
-        // HYPOTHESIS
-        int removed = stack.pop();
-        reverse(stack);
-
-        // INDUCTION
-        insert(stack, removed);
+    public static void deleteMid(Stack<Integer> stack) {
+        if (stack.isEmpty()) return;
+        int middle = (stack.size() / 2) + 1;
+        remove(stack, middle);
     }
 
-    private static void insert(Stack<Integer> stack, Integer element) {
+    private static void remove(Stack<Integer> stack, int middle) {
         // BASE CONDITION
-        if (stack.isEmpty()) {
-            stack.push(element);
+        if (middle == 1) {
+            stack.pop();
             return;
         }
 
         // HYPOTHESIS
         int removed = stack.pop();
-        insert(stack, element);
+        remove(stack, middle - 1);
 
         // INDUCTION
         stack.push(removed);
