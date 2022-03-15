@@ -1,22 +1,30 @@
 package com.practice.java.stream.exercise;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import static org.assertj.core.api.Assertions.entry;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.IntSummaryStatistics;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+import com.practice.data.model.Order;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author swjana
@@ -93,6 +101,35 @@ public class StreamApiTest {
 		
 		log.info(String.format("exercise 4 - execution time: %1$d ms", (endTime - startTime)));
 		result.forEach(customer -> log.info(customer.toString()));
+	}
+	
+	@Test
+	@DisplayName("Print customer name with ticker and its quantity")
+	void exercise5() {
+		
+		List<Order> orders = getOrders();
+		
+		long startTime = System.currentTimeMillis();
+		Map<String, Map<String, IntSummaryStatistics>> map = orders.stream()
+				.collect(Collectors.groupingBy(Order::getCustName, Collectors.groupingBy(Order::getTicker, Collectors.summarizingInt(Order::getQuantity))));
+		for (Entry<String, Map<String, IntSummaryStatistics>> entry : map.entrySet()) {
+			
+			Map<String, IntSummaryStatistics> stock = entry.getValue();
+			stock.entrySet().forEach(entryStock -> log.info(entry.getKey() + " " + entryStock.getKey() + " " + entryStock.getValue().getSum()));
+		}
+		long endTime = System.currentTimeMillis();
+		log.info(String.format("exercise 2 - execution time: %1$d ms", (endTime - startTime)));
+	}
+	
+	private List<Order> getOrders() {
+		
+		List<Order> orders = new ArrayList<>();
+		orders.add(new Order("Swarup", "IBM", 500));
+		orders.add(new Order("Mike", "Msft", 1000));
+		orders.add(new Order("Mike", "Google", 200));
+		orders.add(new Order("Mike", "Msft", -50));
+		orders.add(new Order("Swarup", "Msft", 1000));
+		return orders;
 	}
 
 	private List<Customer> getCustomers() {
