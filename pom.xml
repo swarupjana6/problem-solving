@@ -22,7 +22,8 @@
 		<junit-jupiter.version>5.8.2</junit-jupiter.version>
 		<maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
 		<maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
-		<log4j2.version>2.13.3</log4j2.version>
+		<log4j2.version>2.17.1</log4j2.version>
+		<hawtio-version>2.14.5</hawtio-version>
 	</properties>
 
 	<dependencies>
@@ -42,6 +43,11 @@
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
 		</dependency>
+        <dependency>
+            <groupId>io.hawt</groupId>
+            <artifactId>hawtio-embedded</artifactId>
+            <version>${hawtio-version}</version>
+        </dependency>
 
 		<!-- ********************TEST DEPENDENCIES******************** -->
 		<dependency>
@@ -67,5 +73,34 @@
 				</plugin>
 			</plugins>
 		</pluginManagement>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>3.2.0</version>
+				<executions>
+					<execution>
+						<id>copy</id>
+						<phase>compile</phase>
+						<goals>
+							<goal>copy</goal>
+						</goals>
+						<configuration>
+							<artifactItems>
+								<artifactItem>
+									<groupId>io.hawt</groupId>
+									<artifactId>hawtio-war</artifactId>
+									<version>${hawtio-version}</version>
+									<type>war</type>
+									<overWrite>false</overWrite>
+									<outputDirectory>${project.build.directory}/classes</outputDirectory>
+									<destFileName>hawtio-war.war</destFileName>
+								</artifactItem>
+							</artifactItems>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
 	</build>
 </project>
