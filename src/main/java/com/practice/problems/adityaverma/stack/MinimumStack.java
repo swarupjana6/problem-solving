@@ -1,4 +1,4 @@
-package com.practice.problems.stack;
+package com.practice.problems.adityaverma.stack;
 
 import lombok.extern.log4j.Log4j2;
 

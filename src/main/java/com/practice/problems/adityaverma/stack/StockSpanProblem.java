@@ -1,10 +1,10 @@
-package com.practice.problems.stack;
+package com.practice.problems.adityaverma.stack;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
 
-import static com.practice.problems.stack.NearestSmallerOrGreater.nearestGreaterToLeft;
+import static com.practice.problems.adityaverma.stack.NearestSmallerOrGreater.nearestGreaterToLeft;
 import static java.util.stream.Collectors.toList;
 
 /**

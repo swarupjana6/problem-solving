@@ -1,10 +1,10 @@
-package com.practice.problems.stack;
+package com.practice.problems.adityaverma.stack;
 
 import lombok.extern.log4j.Log4j2;
 
 import java.util.Arrays;
 
-import static com.practice.problems.stack.MaximumAreaHistogram.histogramArea;
+import static com.practice.problems.adityaverma.stack.MaximumAreaHistogram.histogramArea;
 
 @Log4j2
 public class MaximumAreaOfRectangle {

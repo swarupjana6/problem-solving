@@ -1,4 +1,4 @@
-package com.practice.problems.stack;
+package com.practice.problems.adityaverma.stack;
 
 import lombok.extern.log4j.Log4j2;
 
@@ -7,8 +7,8 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-import static com.practice.problems.stack.RainWaterTrapping.FirstSolution.solution1;
-import static com.practice.problems.stack.RainWaterTrapping.SecondSolution.solution2;
+import static com.practice.problems.adityaverma.stack.RainWaterTrapping.FirstSolution.solution1;
+import static com.practice.problems.adityaverma.stack.RainWaterTrapping.SecondSolution.solution2;
 
 @Log4j2
 public class RainWaterTrapping {

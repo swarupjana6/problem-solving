@@ -1,4 +1,4 @@
-package com.practice.problems.stack;
+package com.practice.problems.adityaverma.stack;
 
 import lombok.extern.log4j.Log4j2;
 
@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.practice.problems.stack.NearestSmallerOrGreater.nearestSmallerToLeft;
-import static com.practice.problems.stack.NearestSmallerOrGreater.nearestSmallerToRight;
+import static com.practice.problems.adityaverma.stack.NearestSmallerOrGreater.nearestSmallerToLeft;
+import static com.practice.problems.adityaverma.stack.NearestSmallerOrGreater.nearestSmallerToRight;
 
 /**
  * <p>
