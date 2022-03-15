@@ -4,6 +4,26 @@ import lombok.extern.log4j.Log4j2;
 
 import java.util.List;
 
+/**
+ * Given an array of integers and a number k, find the maximum sum of a subarray of size k.
+ * <p>
+ * Input  : arr[] = {100, 200, 300, 400}
+ * k = 2
+ * Output : 700
+ * <p>
+ * Input  : arr[] = {1, 4, 2, 10, 23, 3, 1, 0, 20}
+ * k = 4
+ * Output : 39
+ * We get maximum sum by adding subarray {4, 2, 10, 23}
+ * of size 4.
+ * <p>
+ * Input  : arr[] = {2, 3}
+ * k = 3
+ * Output : Invalid
+ * There is no subarray of size 3 as size of whole
+ * array is 2.
+ */
+
 @Log4j2
 public class MaximumSumSubArrayOfSizeK {
 

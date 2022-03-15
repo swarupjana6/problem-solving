@@ -5,15 +5,15 @@
 
 > Window is always continuous/contagious
 
-Problem List
+Question List
 
-| Fixed Window Size                                                               | Variable Window Size                                                                                 |
-|---------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------|
-| <input type="checkbox" checked=checked> Maximum / Minimum Sub Array of size K   | <input type="checkbox" checked=checked> Largest / Smallest Sub-array of sum K                        |
-| <input type="checkbox" checked=checked> 1st NEGATIVE in every minimum size of K | <input type="checkbox" checked=checked> Largest substring of K distinct character                    | 
-| <input type="checkbox" checked=checked> Count occurrence of Anagram             | <input type="checkbox" checked=checked> Length of Largest substring & number of repeating characters | 
-| <input type="checkbox"> Move of all sub-array of size K                         | <input type="checkbox" checked=checked> Pick toy                                                     | 
-| <input type="checkbox"> Max of Minimum of every window size                     | <input type="checkbox" checked=checked> Minimum window substring                                     | 
+| Fixed Window Size                                                               | <- Difficulty | Variable Window Size                                                                                 | <- Difficulty |
+|---------------------------------------------------------------------------------|:--------------|------------------------------------------------------------------------------------------------------|:--------------|
+| <input type="checkbox" checked=checked> Maximum / Minimum Sub Array of size K   | Easy          | <input type="checkbox" checked=checked> Largest / Smallest Sub-array of sum K                        | Medium        |
+| <input type="checkbox" checked=checked> 1st NEGATIVE in every minimum size of K | Medium        | <input type="checkbox" checked=checked> Largest substring of K distinct character                    | Medium        | 
+| <input type="checkbox" checked=checked> Count occurrence of Anagram             | Medium        | <input type="checkbox" checked=checked> Length of Largest substring & number of repeating characters |               | 
+| <input type="checkbox" checked=checked> Maximum of all sub-array of size K      | Hard          | <input type="checkbox" checked=checked> Pick toy                                                     | Hard          | 
+| <input type="checkbox"> Max of Minimum of every window size                     |               | <input type="checkbox" checked=checked> Minimum window substring                                     | Hard          | 
 
 ## How to Identify Sliding Window Question?
 

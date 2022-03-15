@@ -4,6 +4,22 @@ import lombok.extern.log4j.Log4j2;
 
 import java.util.List;
 
+/**
+ * Given an array of integers nums and an integer k,
+ * return the total number of subarrays whose sum equals to k.
+ * <p>
+ * Input: nums = [1,1,1], k = 2
+ * Output: 2
+ * <p>
+ * Input: nums = [1,2,3], k = 3
+ * Output: 2
+ * <p>
+ * Constraints:
+ * 1 <= nums.length <= 2 * 104
+ * -1000 <= nums[i] <= 1000
+ * -107 <= k <= 107
+ **/
+
 @Log4j2
 public class LargestSubArrayOfSumK {
 
@@ -27,7 +43,8 @@ public class LargestSubArrayOfSumK {
             /* STEP 1:: CALCULATION of the question asked, to be used for further steps */
             currentSum += currentElement;
 
-            if (currentSum < conditionSum) windowEnd++;              /* STEP 2:: Window CONDITION not reached, increment endWindow */
+            if (currentSum < conditionSum)
+                windowEnd++;              /* STEP 2:: Window CONDITION not reached, increment endWindow */
             else if (currentSum == conditionSum) {                   /* STEP 3:: Window CONDITION reached !!!!! */
 
                 /* STEP 4:: Get ANSWER from previous CALCULATION */
