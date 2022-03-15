@@ -1,4 +1,4 @@
-package com.practice.problems.slidingwindow.fixedsize;
+package com.practice.problems.adityaverma.slidingwindow.fixedsize;
 
 import lombok.extern.log4j.Log4j2;
 
