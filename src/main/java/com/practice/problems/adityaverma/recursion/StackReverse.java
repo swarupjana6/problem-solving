@@ -5,6 +5,11 @@ import lombok.extern.log4j.Log4j2;
 import java.util.List;
 import java.util.Stack;
 
+/**
+ * Write a program to reverse a stack using recursion.
+ * You are not allowed to use loop constructs like while, for..etc
+ * **/
+
 @Log4j2
 public class StackReverse {
 

@@ -5,6 +5,17 @@ import lombok.extern.log4j.Log4j2;
 import java.util.List;
 import java.util.Stack;
 
+/**
+ * Given a stack with push(), pop(), empty() operations,
+ * delete the middle of it without using any additional data structure.
+ * <p>
+ * Input  : Stack[] = [1, 2, 3, 4, 5]
+ * Output : Stack[] = [1, 2, 4, 5]
+ * <p>
+ * Input  : Stack[] = [1, 2, 3, 4, 5, 6]
+ * Output : Stack[] = [1, 2, 4, 5, 6]
+ **/
+
 @Log4j2
 public class DeleteMiddleElementStack {
 

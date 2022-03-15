@@ -1,5 +1,13 @@
 package com.practice.problems.adityaverma.recursion;
 
+/**
+ * Input  : 10
+ * Output : 1 2 3 4 5 6 7 8 9 10
+ * <p>
+ * Input  : 5
+ * Output : 1 2 3 4 5
+ **/
+
 public class Print1ToN {
 
     public static void main(String[] args) {

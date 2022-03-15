@@ -5,6 +5,22 @@ import lombok.extern.log4j.Log4j2;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Write a function to generate all possible n pairs of balanced parentheses.
+ * <p>
+ * Input: n=1
+ * Output: {}
+ * Explanation: This the only sequence of balanced
+ * parenthesis formed using 1 pair of balanced parenthesis.
+ * <p>
+ * Input : n=2
+ * Output:
+ * {}{}
+ * {{}}
+ * Explanation: This the only two sequences of balanced
+ * parenthesis formed using 2 pair of balanced parenthesis.
+ **/
+
 @Log4j2
 public class GenerateAllBalancedParentheses {
 

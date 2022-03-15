@@ -5,6 +5,25 @@ import lombok.extern.log4j.Log4j2;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Given a string you need to print all possible strings
+ * that can be made by placing spaces (zero or one) in between them.
+ * The output should be printed in sorted increasing order of strings
+ * <p>
+ * Input:
+ * S = "ABC"
+ * Output: (A B C)(A BC)(AB C)(ABC)
+ * Explanation:
+ * ABC
+ * AB C
+ * A BC
+ * A B C
+ * These are the possible combination of "ABC".
+ * <p>
+ * Input:
+ * S = "AB"
+ * Output: (A B)(AB)
+ **/
 
 @Log4j2
 public class PermutationWithSpaces {

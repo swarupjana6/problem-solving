@@ -5,6 +5,14 @@ import lombok.extern.log4j.Log4j2;
 import java.util.List;
 import java.util.Stack;
 
+/**
+ * Given a stack, sort it using recursion.
+ * Use of any loop constructs like while, for..etc is not allowed.
+ * We can only use the following ADT functions on Stack S:
+ * <p>
+ * push, pop, isEmpty, peek
+ **/
+
 @Log4j2
 public class SortAStack {
 

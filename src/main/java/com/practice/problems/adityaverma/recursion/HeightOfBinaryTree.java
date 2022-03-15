@@ -2,6 +2,11 @@ package com.practice.problems.adityaverma.recursion;
 
 import lombok.extern.log4j.Log4j2;
 
+/**
+ * Recursively calculate height of left and right subtrees of a node
+ * and assign height to the node as max of the heights of two children plus 1
+ * **/
+
 @Log4j2
 public class HeightOfBinaryTree {
 
