@@ -38,11 +38,11 @@ public class KClosestNumbers {
     }
 
     /**
-     * >>>>>>>>>>> MAX HEAP since smallest <<<<<<<<<<<<<
-     **/
+     * MAX HEAP since closest will be at the bottom after 'K' removals
+     * **/
     private static List<Integer> sortMaxHeap(List<Integer> input, int k, int x) {
-        Comparator smallest = Comparator.reverseOrder(); // Comparator.naturalOrder()  // For Largest use ASCENDING
-        PriorityQueue<Pair> maxHeap = new PriorityQueue<>(smallest);
+        Comparator maxTop = Comparator.reverseOrder();
+        PriorityQueue<Pair> maxHeap = new PriorityQueue<>(maxTop);
 
         for (int i = 0; i < input.size(); i++) {
             maxHeap.add(getPair(input.get(i), x));
@@ -54,25 +54,5 @@ public class KClosestNumbers {
 
     private static Pair getPair(int value, int x) {
         return new Pair(Math.abs(value - x), value);
-    }
-
-    @Getter
-    @Setter
-    @AllArgsConstructor
-    static class Pair implements Comparable<Pair> {
-
-        Integer key;
-        Integer value;
-
-
-        @Override
-        public int compareTo(Pair compareWith) {
-            return this.key.compareTo(compareWith.getKey());
-        }
-
-        @Override
-        public String toString() {
-            return "Pair{" + key + ',' + value + '}';
-        }
     }
 }

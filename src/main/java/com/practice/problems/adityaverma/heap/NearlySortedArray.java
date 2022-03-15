@@ -26,11 +26,12 @@ public class NearlySortedArray {
     }
 
     /**
-     * >>>>>>>>>>> MIN HEAP since largest <<<<<<<<<<<<<
+     * MIN HEAP since sorting is required with MIN value on top to be added to return list
+     * everytime we sort K elements
      **/
     private static Collection<Integer> sortMinHeap(List<Integer> input, int k) {
-        Comparator largest = Comparator.naturalOrder(); // Comparator.reverseOrder() // For Smallest use DESCENDING
-        PriorityQueue<Integer> minHeap = new PriorityQueue<>(largest);
+        Comparator minTop = Comparator.naturalOrder();
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>(minTop);
         List<Integer> answer = new LinkedList<>();
 
         for (int i = 0; i < input.size(); i++) {

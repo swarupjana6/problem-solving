@@ -32,12 +32,10 @@ public class KthSmallestElement {
         log.info("Output: {}", sortMaxHeap(input, K));
     }
 
-    /**
-     * >>>>>>>>>>> MAX HEAP since smallest <<<<<<<<<<<<<
-     **/
+    /**>>>>>>>>>>> MAX HEAP since smallest will be at the bottom after 'K' removal<<<<<<<<<<<<<**/
     private static Integer sortMaxHeap(List<Integer> input, int k) {
-        Comparator smallest = Comparator.reverseOrder(); // Comparator.naturalOrder()  // For Largest use ASCENDING
-        PriorityQueue<Integer> maxHeap = new PriorityQueue<>(smallest);
+        Comparator maxTop = Comparator.reverseOrder();
+        PriorityQueue<Integer> maxHeap = new PriorityQueue<>(maxTop);
 
         for (int i = 0; i < input.size(); i++) {
             maxHeap.add(input.get(i));

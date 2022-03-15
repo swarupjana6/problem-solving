@@ -28,10 +28,12 @@ public class KLargestElement {
         log.info("Output: {}", sortMinHeap(input, K));
     }
 
-    /**>>>>>>>>>>> MIN HEAP since largest <<<<<<<<<<<<<**/
+    /**
+     *  MIN HEAP since largest will be at the bottom after 'K' removals
+     *  **/
     private static Collection<Integer> sortMinHeap(List<Integer> input, int k) {
-        Comparator largest = Comparator.naturalOrder(); // Comparator.reverseOrder() // For Smallest use DESCENDING
-        PriorityQueue<Integer> minHeap = new PriorityQueue<>(largest);
+        Comparator minTop = Comparator.naturalOrder();
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>(minTop);
 
         for (int i = 0; i < input.size(); i++) {
             minHeap.add(input.get(i));

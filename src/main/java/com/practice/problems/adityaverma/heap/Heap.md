@@ -32,7 +32,9 @@ Size => 4
 
 > K should be given
 
-> Smallest or Largest
+> Greatest / Largest / Top / Frequent  use `MIN Heap`
+
+> Lowest / Smallest / Closest   use `MAX Heap`
 
 ## Types of Heap ##
 
