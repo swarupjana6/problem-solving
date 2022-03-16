@@ -38,7 +38,7 @@ public class DescendingBinarySearch {
 
     private static List<Integer> getDescendingList(List<Integer> inputList) {
         List<Integer> descendingList = new ArrayList<>(inputList);
-        Collections.sort(descendingList, Comparator.reverseOrder());
+        descendingList.sort(Comparator.reverseOrder());
         return descendingList;
     }
 }
