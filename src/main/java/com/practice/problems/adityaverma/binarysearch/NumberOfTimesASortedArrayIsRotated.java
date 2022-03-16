@@ -32,22 +32,24 @@ import java.util.List;
 public class NumberOfTimesASortedArrayIsRotated {
 
     public static void main(String[] args) {
-        List<Integer> sortedList = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
-        Integer searchFor = 9;
+        List<Integer> sortedList = List.of(11, 12, 15, 18, 2, 5, 6, 8);
 
-        log.info("Input: {} | SearchFor: {}", sortedList, searchFor);
-        log.info("Output: {} ", binarySearch(sortedList, searchFor));
+        log.info("Input: {} ", sortedList);
+        log.info("Output: {} ", binarySearch(sortedList));
     }
 
-    private static Integer binarySearch(List<Integer> sortedList, Integer searchFor) {
+    private static Integer binarySearch(List<Integer> list) {
+        int size = list.size();
         int start = 0;
-        int end = sortedList.size() - 1;
+        int end = size - 1;
         while (start <= end) {
             int mid = start + (end - start) / 2;        /* LESS OPTIMIZED --> (start + end) / 2; */
-            int midElement = sortedList.get(mid);
-            if (midElement == searchFor) return mid;
-            else if (midElement < searchFor) start = mid + 1;
-            else end = mid - 1;
+            int next = (mid + 1) % size;                /* Modulo is done because to avoid out of bound calculation */
+            int prev = (mid - 1 + size) % size;         /* Modulo is done because to avoid -ve calculation */
+
+            if (list.get(mid) <= list.get(prev) && list.get(mid) <= list.get(next)) return mid; /* Minimum Element!! */
+            else if (list.get(mid) <= list.get(end)) end = mid - 1;                             /* Move after Mid */
+            else if (list.get(mid) >= list.get(start)) start = mid + 1;                         /* Move before Mid */
         }
         return -1;
     }
