@@ -15,9 +15,13 @@ public class BinarySearch {
         log.info("Output: {} ", binarySearch(sortedList, searchFor));
     }
 
-    private static Integer binarySearch(List<Integer> sortedList, Integer searchFor) {
+    public static Integer binarySearch(List<Integer> sortedList, Integer searchFor) {
         int start = 0;
         int end = sortedList.size() - 1;
+        return binarySearchElement(sortedList, searchFor, start, end);
+    }
+
+    public static int binarySearchElement(List<Integer> sortedList, Integer searchFor, int start, int end) {
         while (start <= end) {
             int mid = start + (end - start) / 2;        /* LESS OPTIMIZED --> (start + end) / 2; */
             int midElement = sortedList.get(mid);

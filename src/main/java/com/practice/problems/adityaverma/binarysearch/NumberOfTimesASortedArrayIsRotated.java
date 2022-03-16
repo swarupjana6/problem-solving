@@ -35,10 +35,10 @@ public class NumberOfTimesASortedArrayIsRotated {
         List<Integer> sortedList = List.of(11, 12, 15, 18, 2, 5, 6, 8);
 
         log.info("Input: {} ", sortedList);
-        log.info("Output: {} ", binarySearch(sortedList));
+        log.info("Output: # of rotations required is '{}' ", findMinimumElement(sortedList));
     }
 
-    private static Integer binarySearch(List<Integer> list) {
+    public static Integer findMinimumElement(List<Integer> list) {
         int size = list.size();
         int start = 0;
         int end = size - 1;
