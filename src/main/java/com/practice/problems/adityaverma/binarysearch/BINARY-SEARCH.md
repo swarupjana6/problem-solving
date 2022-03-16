@@ -7,7 +7,7 @@ Question List
 |                         Binary Search                         |    Easy    |
 |                 Order Agnostic Binary Search                  |    Easy    |
 |   First and last occurrence of an element in a sorted array   |   Medium   |
-|              Count of element in a sorted array               |            |
+|              Count of element in a sorted array               |   Medium   |
 |             Number of times the array is rotated              |            |
 |           Find the element in rotated sorted array            |            |
 |               Searching in nearly sorted array                |            |
@@ -25,6 +25,6 @@ Question List
 
 ## How to identify problem of Binary Search? ##
 
-> If the question mention about sorted array
+> If the question is about sorted array then BINARY SEARCH will be used
 
 ## Binary Search on Answer ##
