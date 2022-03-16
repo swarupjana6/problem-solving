@@ -20,6 +20,6 @@ public class Pair implements Comparable<Pair> {
 
     @Override
     public String toString() {
-        return "Pair{" + key + ',' + value + '}';
+        return "{" + key + ',' + value + '}';
     }
 }
