@@ -90,7 +90,7 @@ public class StreamApiTest {
 		long startTime = System.currentTimeMillis();
 		List<Customer> customers = getCustomers();
 		List<Customer> result = customers.stream()
-									.filter(distintByKey(customer -> customer.getName()))
+									.filter(distinctByKey(customer -> customer.getName()))
 									.collect(Collectors.toList());
 		long endTime = System.currentTimeMillis();
 		
@@ -142,7 +142,7 @@ public class StreamApiTest {
 		return list;
 	}
 
-	private <T> Predicate<T> distintByKey(Function<? super T, Object> keyExtractor) {
+	private <T> Predicate<T> distinctByKey(Function<? super T, Object> keyExtractor) {
 
 		Map<Object, Boolean> map = new ConcurrentHashMap<>();
 		return t -> map.putIfAbsent(keyExtractor.apply(t), Boolean.TRUE) == null;
