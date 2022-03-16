@@ -6,16 +6,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.function.Function;
+
+import static com.practice.problems.adityaverma.binarysearch.Constants.DECREASE_MID;
+import static com.practice.problems.adityaverma.binarysearch.Constants.INCREASE_MID;
 
 @Log4j2
 public class DescendingBinarySearch {
 
     private static final List<Integer> INPUT_LIST = List.of(20, 17, 15, 14, 13, 12, 10, 9, 8, 4);
-
-    private static final Function<Integer, Integer> DECREASE_MID = mid -> mid - 1;
-
-    private static final Function<Integer, Integer> INCREASE_MID = mid -> mid + 1;
 
     public static void main(String[] args) {
         List<Integer> sortedList = getDescendingList(INPUT_LIST);

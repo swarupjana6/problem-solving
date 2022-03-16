@@ -4,6 +4,9 @@ import lombok.extern.log4j.Log4j2;
 
 import java.util.List;
 
+import static com.practice.problems.adityaverma.binarysearch.Constants.DECREASE_MID;
+import static com.practice.problems.adityaverma.binarysearch.Constants.INCREASE_MID;
+
 /**
  * Given an array of integers nums sorted in non-decreasing order,
  * find the starting and ending position of a given target value.
@@ -32,35 +35,40 @@ public class FirstAndLastOccurrenceOfAnElement {
         log.info("Output: Last  Index of '{}' is {}", searchFor, lastOccurrence(sortedList, searchFor));
     }
 
-    private static Integer firstOccurrence(List<Integer> sortedList, Integer searchFor) {
+    static Integer firstOccurrence(List<Integer> sortedList, Integer searchFor) {
         int answer = -1;
         int start = 0;
         int end = sortedList.size() - 1;
+
         while (start <= end) {
             int mid = start + (end - start) / 2;        /* LESS OPTIMIZED --> (start + end) / 2; */
             int midElement = sortedList.get(mid);
+
             if (midElement == searchFor) {
                 answer = mid;
-                end = mid - 1;
-            } else if (midElement < searchFor) start = mid + 1;
-            else end = mid - 1;
+                end = DECREASE_MID.apply(mid);
+            } else if (midElement < searchFor) start = INCREASE_MID.apply(mid);
+            else end = DECREASE_MID.apply(mid);
         }
         return answer;
     }
 
-    private static Integer lastOccurrence(List<Integer> sortedList, Integer searchFor) {
+    static Integer lastOccurrence(List<Integer> sortedList, Integer searchFor) {
         int answer = -1;
         int start = 0;
         int end = sortedList.size() - 1;
+
         while (start <= end) {
             int mid = start + (end - start) / 2;        /* LESS OPTIMIZED --> (start + end) / 2; */
             int midElement = sortedList.get(mid);
+
             if (midElement == searchFor) {
                 answer = mid;
-                start = mid + 1;
-            } else if (midElement < searchFor) start = mid + 1;
-            else end = mid - 1;
+                start = INCREASE_MID.apply(mid);
+            } else if (midElement < searchFor) start = INCREASE_MID.apply(mid);
+            else end = DECREASE_MID.apply(mid);
         }
+
         return answer;
     }
 }

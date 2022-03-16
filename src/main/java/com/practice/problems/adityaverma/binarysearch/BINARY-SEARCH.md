@@ -8,7 +8,7 @@ Question List
 |                 Order Agnostic Binary Search                  |    Easy    |
 |   First and last occurrence of an element in a sorted array   |   Medium   |
 |              Count of element in a sorted array               |   Medium   |
-|             Number of times the array is rotated              |            |
+|             Number of times the array is rotated              |   Medium   |
 |           Find the element in rotated sorted array            |            |
 |               Searching in nearly sorted array                |            |
 |                 Floor and Ceil of an element                  |            |
