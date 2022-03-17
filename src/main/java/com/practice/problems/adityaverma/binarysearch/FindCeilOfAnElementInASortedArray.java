@@ -3,8 +3,9 @@ package com.practice.problems.adityaverma.binarysearch;
 import lombok.extern.log4j.Log4j2;
 
 import java.util.List;
+import java.util.Map;
 
-import static com.practice.problems.adityaverma.binarysearch.BinarySearch.binarySearchElement;
+import static com.practice.problems.adityaverma.binarysearch.BinarySearch.binarySearch;
 
 /**
  * Given a sorted array and a and a value x, find the ceiling of x in the array.
@@ -36,10 +37,11 @@ public class FindCeilOfAnElementInASortedArray {
         Integer ceilOf = 5;
 
         log.info("Input: {} | Search for: {}", list, ceilOf);
-        log.info("Output: {} ", findCeiling(list, ceilOf));
+        //log.info("Output: {} ", findCeiling_1(list, ceilOf));
+        log.info("Output: {} ", findCeiling_2(list, ceilOf));
     }
 
-    public static Integer findCeiling(List<Integer> list, Integer ceilOf) {
+    public static Integer findCeiling_1(List<Integer> list, Integer ceilOf) {
         int ceil = Integer.MAX_VALUE;
         int start = 0;
         int end = list.size() - 1;
@@ -55,5 +57,18 @@ public class FindCeilOfAnElementInASortedArray {
             }
         }
         return ceil;
+    }
+
+    public static Integer findCeiling_2(List<Integer> list, Integer ceilOf) {
+        Map<String, Integer> response = binarySearch(list, ceilOf, 0, list.size() - 1);
+        Integer answer = response.get("answer");
+        Integer end = response.get("end");
+
+        if (answer == -1) {
+            end = (end != list.size() - 1 ? end + 1 : end);
+            return list.get(end);
+        } else {
+            return list.get(answer);
+        }
     }
 }

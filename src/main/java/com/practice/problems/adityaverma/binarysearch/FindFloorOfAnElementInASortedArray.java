@@ -3,6 +3,9 @@ package com.practice.problems.adityaverma.binarysearch;
 import lombok.extern.log4j.Log4j2;
 
 import java.util.List;
+import java.util.Map;
+
+import static com.practice.problems.adityaverma.binarysearch.BinarySearch.binarySearch;
 
 /**
  * Given a sorted array and a and a value x, find the floor of x in the array.
@@ -30,10 +33,11 @@ public class FindFloorOfAnElementInASortedArray {
         Integer floorOf = 5;
 
         log.info("Input: {} | Search for: {}", list, floorOf);
-        log.info("Output: {} ", findFloor(list, floorOf));
+        log.info("Output: {} ", findFloor_1(list, floorOf));
+        log.info("Output: {} ", findFloor_2(list, floorOf));
     }
 
-    public static Integer findFloor(List<Integer> list, Integer floorOf) {
+    public static Integer findFloor_1(List<Integer> list, Integer floorOf) {
         int floor = Integer.MAX_VALUE;
         int start = 0;
         int end = list.size() - 1;
@@ -49,5 +53,18 @@ public class FindFloorOfAnElementInASortedArray {
             }
         }
         return floor;
+    }
+
+    public static Integer findFloor_2(List<Integer> list, Integer floorOf) {
+        Map<String, Integer> response = binarySearch(list, floorOf, 0, list.size() - 1);
+        Integer answer = response.get("answer");
+        Integer start = response.get("start");
+
+        if (answer == -1) {
+            start = (start != 0 ? start - 1 : start);
+            return list.get(start);
+        } else {
+            return list.get(answer);
+        }
     }
 }

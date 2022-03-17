@@ -3,9 +3,11 @@ package com.practice.problems.adityaverma.binarysearch;
 import lombok.extern.log4j.Log4j2;
 
 import java.util.List;
+import java.util.Map;
 
-import static com.practice.problems.adityaverma.binarysearch.FindCeilOfAnElementInASortedArray.findCeiling;
-import static com.practice.problems.adityaverma.binarysearch.FindFloorOfAnElementInASortedArray.findFloor;
+import static com.practice.problems.adityaverma.binarysearch.BinarySearch.binarySearch;
+import static com.practice.problems.adityaverma.binarysearch.FindCeilOfAnElementInASortedArray.findCeiling_1;
+import static com.practice.problems.adityaverma.binarysearch.FindFloorOfAnElementInASortedArray.findFloor_1;
 
 /**
  * Given an unsorted array, find the minimum difference between any pair in given array.
@@ -31,34 +33,30 @@ public class MinimumDifferenceElementInSortedArray {
         Integer element = 12;
 
         log.info("Input: {} | Search for: {}", list, element);
-        log.info("Output: {} ", minimumDifference_1(list, element));
+        //log.info("Output: {} ", minimumDifference_1(list, element));
+        log.info("Output: {} ", minimumDifference_2(list, element));
     }
 
     private static Integer minimumDifference_1(List<Integer> list, Integer element) {
-        int floor = findFloor(list, element);
-        int ceiling = findCeiling(list, element);
+        int floor = findFloor_1(list, element);
+        int ceiling = findCeiling_1(list, element);
 
         return Math.min(floor, ceiling);
     }
 
     private static Integer minimumDifference_2(List<Integer> list, Integer element) {
-        int start = 0;
-        int end = list.size() - 1;
-        while (start <= end) {
-            int mid = start + (end - start) / 2;        /* LESS OPTIMIZED --> (start + end) / 2; */
+        Map<String, Integer> response = binarySearch(list, element, 0, list.size() - 1);
 
-            if (list.get(mid) == element) return list.get(mid);
-            else if (list.get(mid) < element) {
-                start = mid + 1;
-            } else if (list.get(mid) > element) {
-                end = mid - 1;
-            }
+        Integer answer = response.get("answer");
+        Integer start = response.get("start");
+        Integer end = response.get("end");
+
+        if (answer == -1) {
+            int startMin = Math.abs(list.get(start) - element);
+            int endMin = Math.abs(list.get(end) - element);
+            return startMin < endMin ? list.get(start) : list.get(end);
+        } else {
+            return list.get(answer);
         }
-
-        int startMin = Math.abs(list.get(start) - element);
-        int endMin = Math.abs(list.get(end) - element);
-
-
-        return startMin < endMin ? list.get(start) : list.get(end);
     }
 }
