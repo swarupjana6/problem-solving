@@ -9,12 +9,12 @@ Question List
 |   First and last occurrence of an element in a sorted array   |   Medium   |
 |              Count of element in a sorted array               |   Medium   |
 |             Number of times the array is rotated              |   Medium   |
-|           Find the element in rotated sorted array            |            |
-|               Searching in nearly sorted array                |            |
-|                 Floor and Ceil of an element                  |            |
-|                          Next Letter                          |            |
+|           Find the element in rotated sorted array            |   Medium   |
+|               Searching in nearly sorted array                |   Medium   |
+|                 Floor and Ceil of an element                  |    Easy    |
+|                          Next Letter                          |    Easy    |
 |           Index of the last one in the sorted array           |            |
-| Find the position of the element in the infinite sorted array |            |
+| Find the position of the element in the infinite sorted array |   Medium   |
 |        Minimum Difference element in the sorted array         |            |                                      |      ||                                         |      ||                                         |      |
 |                 Bitonic array maximum element                 |            |
 |                  Search in the Bitonic array                  |            |

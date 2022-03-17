@@ -35,10 +35,14 @@ public class FirstAndLastOccurrenceOfAnElement {
     }
 
     static Integer firstOccurrence(List<Integer> list, Integer search) {
-        int answer = -1;
         int start = 0;
         int end = list.size() - 1;
 
+        return firstOccurrence(list, search, start, end);
+    }
+
+    public static int firstOccurrence(List<Integer> list, Integer search, int start, int end) {
+        int answer = -1;
         while (start <= end) {
             int mid = start + (end - start) / 2;        /* LESS OPTIMIZED --> (start + end) / 2; */
 
@@ -52,10 +56,14 @@ public class FirstAndLastOccurrenceOfAnElement {
     }
 
     static Integer lastOccurrence(List<Integer> list, Integer search) {
-        int answer = -1;
         int start = 0;
         int end = list.size() - 1;
 
+        return lastOccurrence(list, search, start, end);
+    }
+
+    private static int lastOccurrence(List<Integer> list, Integer search, int start, int end) {
+        int answer = -1;
         while (start <= end) {
             int mid = start + (end - start) / 2;        /* LESS OPTIMIZED --> (start + end) / 2; */
 
