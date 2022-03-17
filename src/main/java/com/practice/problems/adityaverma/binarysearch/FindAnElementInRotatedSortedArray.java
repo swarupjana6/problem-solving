@@ -29,20 +29,20 @@ import static com.practice.problems.adityaverma.binarysearch.NumberOfTimesASorte
 public class FindAnElementInRotatedSortedArray {
 
     public static void main(String[] args) {
-        List<Integer> sortedList = List.of(11, 12, 15, 18, 2, 5, 6, 8);
-        int k = 15;
+        List<Integer> list = List.of(11, 12, 15, 18, 2, 5, 6, 8);
+        int search = 15;
 
-        log.info("Input: {} ", sortedList);
-        log.info("Output: '{}' is located at {} ", k, findElement(sortedList, k));
+        log.info("Input: {} | Search for: {} ", list, search);
+        log.info("Output: '{}' is located at {} ", search, findElement(list, search));
     }
 
-    private static Integer findElement(List<Integer> list, int k) {
+    private static Integer findElement(List<Integer> list, int search) {
         int minimumIndex = findMinimumElement(list);
-        int firstHalf = binarySearchElement(list, k, 0, minimumIndex);
-        int secondHalf = binarySearchElement(list, k, minimumIndex + 1, list.size() - 1);
+        int firstHalf = binarySearchElement(list, search, 0, minimumIndex);
+        int secondHalf = binarySearchElement(list, search, minimumIndex + 1, list.size() - 1);
 
-        if(firstHalf == -1) return secondHalf;
-        if(secondHalf == -1) return firstHalf;
+        if (firstHalf == -1) return secondHalf;
+        if (secondHalf == -1) return firstHalf;
         return -1;
     }
 }

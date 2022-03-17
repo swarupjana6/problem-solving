@@ -4,8 +4,7 @@ import lombok.extern.log4j.Log4j2;
 
 import java.util.List;
 
-import static com.practice.problems.adityaverma.binarysearch.Constants.DECREASE_MID;
-import static com.practice.problems.adityaverma.binarysearch.Constants.INCREASE_MID;
+import static com.practice.problems.adityaverma.binarysearch.Constants.*;
 
 /**
  * Given an array of integers nums sorted in non-decreasing order,
@@ -27,45 +26,43 @@ import static com.practice.problems.adityaverma.binarysearch.Constants.INCREASE_
 public class FirstAndLastOccurrenceOfAnElement {
 
     public static void main(String[] args) {
-        List<Integer> sortedList = List.of(2, 4, 10, 10, 10, 18, 20);
-        Integer searchFor = 10;
+        List<Integer> list = List.of(2, 4, 10, 10, 10, 18, 20);
+        Integer search = 10;
 
-        log.info("Input: {} | SearchFor: {}", sortedList, searchFor);
-        log.info("Output: First Index of '{}' is {}", searchFor, firstOccurrence(sortedList, searchFor));
-        log.info("Output: Last  Index of '{}' is {}", searchFor, lastOccurrence(sortedList, searchFor));
+        log.info("Input: {} | Search for: {}", list, search);
+        log.info("Output: First Index of '{}' is {}", search, firstOccurrence(list, search));
+        log.info("Output: Last  Index of '{}' is {}", search, lastOccurrence(list, search));
     }
 
-    static Integer firstOccurrence(List<Integer> sortedList, Integer searchFor) {
+    static Integer firstOccurrence(List<Integer> list, Integer search) {
         int answer = -1;
         int start = 0;
-        int end = sortedList.size() - 1;
+        int end = list.size() - 1;
 
         while (start <= end) {
             int mid = start + (end - start) / 2;        /* LESS OPTIMIZED --> (start + end) / 2; */
-            int midElement = sortedList.get(mid);
 
-            if (midElement == searchFor) {
+            if (list.get(mid) == search) {
                 answer = mid;
                 end = DECREASE_MID.apply(mid);
-            } else if (midElement < searchFor) start = INCREASE_MID.apply(mid);
+            } else if (list.get(mid) < search) start = INCREASE_MID.apply(mid);
             else end = DECREASE_MID.apply(mid);
         }
         return answer;
     }
 
-    static Integer lastOccurrence(List<Integer> sortedList, Integer searchFor) {
+    static Integer lastOccurrence(List<Integer> list, Integer search) {
         int answer = -1;
         int start = 0;
-        int end = sortedList.size() - 1;
+        int end = list.size() - 1;
 
         while (start <= end) {
             int mid = start + (end - start) / 2;        /* LESS OPTIMIZED --> (start + end) / 2; */
-            int midElement = sortedList.get(mid);
 
-            if (midElement == searchFor) {
+            if (MIDDLE_EQUAL_TO_ELEMENT.test(list.get(mid), search)) {
                 answer = mid;
                 start = INCREASE_MID.apply(mid);
-            } else if (midElement < searchFor) start = INCREASE_MID.apply(mid);
+            } else if (MIDDLE_LESS_THAN_ELEMENT.test(list.get(mid), search)) start = INCREASE_MID.apply(mid);
             else end = DECREASE_MID.apply(mid);
         }
 

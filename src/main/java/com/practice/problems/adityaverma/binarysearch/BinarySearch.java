@@ -8,25 +8,25 @@ import java.util.List;
 public class BinarySearch {
 
     public static void main(String[] args) {
-        List<Integer> sortedList = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
-        Integer searchFor = 9;
+        List<Integer> list = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        Integer search = 9;
 
-        log.info("Input: {} | SearchFor: {}", sortedList, searchFor);
-        log.info("Output: {} ", binarySearch(sortedList, searchFor));
+        log.info("Input: {} | Search for: {}", list, search);
+        log.info("Output: {} ", binarySearch(list, search));
     }
 
-    public static Integer binarySearch(List<Integer> sortedList, Integer searchFor) {
+    public static Integer binarySearch(List<Integer> list, Integer search) {
         int start = 0;
-        int end = sortedList.size() - 1;
-        return binarySearchElement(sortedList, searchFor, start, end);
+        int end = list.size() - 1;
+        return binarySearchElement(list, search, start, end);
     }
 
-    public static int binarySearchElement(List<Integer> sortedList, Integer searchFor, int start, int end) {
+    public static int binarySearchElement(List<Integer> list, Integer search, int start, int end) {
         while (start <= end) {
             int mid = start + (end - start) / 2;        /* LESS OPTIMIZED --> (start + end) / 2; */
-            int midElement = sortedList.get(mid);
-            if (midElement == searchFor) return mid;
-            else if (midElement < searchFor) start = mid + 1;
+
+            if (list.get(mid) == search) return mid;
+            else if (list.get(mid) < search) start = mid + 1;
             else end = mid - 1;
         }
         return -1;

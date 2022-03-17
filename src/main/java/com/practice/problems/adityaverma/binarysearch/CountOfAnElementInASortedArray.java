@@ -24,16 +24,16 @@ import static com.practice.problems.adityaverma.binarysearch.FirstAndLastOccurre
 public class CountOfAnElementInASortedArray {
 
     public static void main(String[] args) {
-        List<Integer> sortedList = List.of(2, 4, 10, 10, 10, 18, 20);
-        Integer searchFor = 10;
+        List<Integer> list = List.of(2, 4, 10, 10, 10, 18, 20);
+        Integer search = 10;
 
-        log.info("Input: {} | SearchFor: {}", sortedList, searchFor);
-        log.info("Output: Count of '{}' is {}", searchFor, countOfAnElement(sortedList, searchFor));
+        log.info("Input: {} | Count of element: {}", list, search);
+        log.info("Output: Count of '{}' is {}", search, countOfAnElement(list, search));
     }
 
-    private static Integer countOfAnElement(List<Integer> sortedList, Integer searchFor) {
-        int first = firstOccurrence(sortedList, searchFor);
-        int last = lastOccurrence(sortedList, searchFor);
+    private static Integer countOfAnElement(List<Integer> list, Integer search) {
+        int first = firstOccurrence(list, search);
+        int last = lastOccurrence(list, search);
         int count = last - first;
         return count > 0 ? count + 1 : 0;
     }

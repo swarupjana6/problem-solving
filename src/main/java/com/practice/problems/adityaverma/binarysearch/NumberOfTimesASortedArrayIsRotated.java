@@ -4,6 +4,8 @@ import lombok.extern.log4j.Log4j2;
 
 import java.util.List;
 
+import static com.practice.problems.adityaverma.binarysearch.Constants.*;
+
 /**
  * Suppose an array of length n sorted in ascending order is rotated between 1 and n times.
  * For example, the array nums = [0,1,2,4,5,6,7] might become:
@@ -32,10 +34,10 @@ import java.util.List;
 public class NumberOfTimesASortedArrayIsRotated {
 
     public static void main(String[] args) {
-        List<Integer> sortedList = List.of(11, 12, 15, 18, 2, 5, 6, 8);
+        List<Integer> list = List.of(11, 12, 15, 18, 2, 5, 6, 8);
 
-        log.info("Input: {} ", sortedList);
-        log.info("Output: # of rotations required is '{}' ", findMinimumElement(sortedList));
+        log.info("Input: {} ", list);
+        log.info("Output: # of rotations required is '{}' ", findMinimumElement(list));
     }
 
     public static Integer findMinimumElement(List<Integer> list) {
@@ -44,12 +46,10 @@ public class NumberOfTimesASortedArrayIsRotated {
         int end = size - 1;
         while (start <= end) {
             int mid = start + (end - start) / 2;        /* LESS OPTIMIZED --> (start + end) / 2; */
-            int next = (mid + 1) % size;                /* Modulo is done because to avoid out of bound calculation */
-            int prev = (mid - 1 + size) % size;         /* Modulo is done because to avoid -ve calculation */
 
-            if (list.get(mid) <= list.get(prev) && list.get(mid) <= list.get(next)) return mid; /* Minimum Element!! */
-            else if (list.get(mid) <= list.get(end)) end = mid - 1;                             /* Move after Mid */
-            else if (list.get(mid) >= list.get(start)) start = mid + 1;                         /* Move before Mid */
+            if (MID_LESS_THAN_PREV_NEXT.test(list, mid)) return mid; /* Minimum Element!! */
+            else if (MID_LESS_THAN_EQUAL_END.test(list, mid, end)) end = mid - 1;                             /* Move after Mid */
+            else if (MID_GREATER_THAN_EQUAL_START.test(list, mid, start)) start = mid + 1;                         /* Move before Mid */
         }
         return -1;
     }

@@ -25,28 +25,28 @@ public class SearchingInNearlySortedArray {
 
     public static void main(String[] args) {
         List<Integer> list = List.of(5, 10, 30, 20, 40);
-        Integer searchFor = 20;
+        Integer search = 20;
 
-        log.info("Input: {} | SearchFor: {}", list, searchFor);
-        log.info("Output: {} ", binarySearch(list, searchFor));
+        log.info("Input: {} | search: {}", list, search);
+        log.info("Output: {} ", binarySearch(list, search));
     }
 
-    public static Integer binarySearch(List<Integer> list, Integer searchFor) {
+    public static Integer binarySearch(List<Integer> list, Integer search) {
         int start = 0;
         int end = list.size() - 1;
-        return binarySearchElement(list, searchFor, start, end);
+        return binarySearchElement(list, search, start, end);
     }
 
-    public static int binarySearchElement(List<Integer> list, Integer searchFor, int start, int end) {
+    public static int binarySearchElement(List<Integer> list, Integer search, int start, int end) {
         int size = list.size();
 
         while (start <= end) {
             int mid = start + (end - start) / 2;        /* LESS OPTIMIZED --> (start + end) / 2; */
 
-            if (list.get(mid) == searchFor) return mid;
-            else if (mid != 0 && list.get(mid - 1) == searchFor) return mid - 1;
-            else if (mid != size - 1 && list.get(mid + 1) == searchFor) return mid + 1;
-            else if (list.get(mid) < searchFor) start = mid + 2;
+            if (list.get(mid) == search) return mid;
+            else if (mid != 0 && list.get(mid - 1) == search) return mid - 1;
+            else if (mid != size - 1 && list.get(mid + 1) == search) return mid + 1;
+            else if (list.get(mid) < search) start = mid + 2;
             else end = mid - 2;
         }
         return -1;
