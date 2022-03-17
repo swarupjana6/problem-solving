@@ -35,7 +35,6 @@ public class FindFloorOfAnElementInASortedArray {
 
     public static Integer binarySearch(List<Integer> list, Integer floorOf) {
         int floor = Integer.MAX_VALUE;
-        int diff = Integer.MAX_VALUE;
         int start = 0;
         int end = list.size() - 1;
         while (start <= end) {
@@ -43,22 +42,12 @@ public class FindFloorOfAnElementInASortedArray {
 
             if (list.get(mid) == floorOf) return list.get(mid);
             else if (list.get(mid) < floorOf) {
-                int currentDiff = Math.abs(floorOf - list.get(mid));
-                if (currentDiff < diff) {
-                    floor = list.get(mid);
-                    diff = currentDiff;
-                }
-
+                floor = list.get(mid);
                 start = mid + 1;
             } else if (list.get(mid) > floorOf) {
                 end = mid - 1;
             }
         }
         return floor;
-    }
-
-    public static int binarySearchElement(List<Integer> list, Integer search, int start, int end) {
-
-        return -1;
     }
 }

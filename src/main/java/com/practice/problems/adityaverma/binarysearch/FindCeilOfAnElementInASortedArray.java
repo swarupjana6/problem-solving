@@ -39,7 +39,6 @@ public class FindCeilOfAnElementInASortedArray {
 
     public static Integer binarySearch(List<Integer> list, Integer ceilOf) {
         int ceil = Integer.MAX_VALUE;
-        int diff = Integer.MAX_VALUE;
         int start = 0;
         int end = list.size() - 1;
         while (start <= end) {
@@ -49,20 +48,10 @@ public class FindCeilOfAnElementInASortedArray {
             else if (list.get(mid) < ceilOf) {
                 start = mid + 1;
             } else if (list.get(mid) > ceilOf) {
-                int currentDiff = Math.abs(ceilOf - list.get(mid));
-                if (currentDiff < diff) {
-                    ceil = list.get(mid);
-                    diff = currentDiff;
-                }
-
+                ceil = list.get(mid);
                 end = mid - 1;
             }
         }
         return ceil;
-    }
-
-    public static int binarySearchElement(List<Integer> list, Integer search, int start, int end) {
-
-        return -1;
     }
 }
