@@ -30,10 +30,10 @@ public class FindFloorOfAnElementInASortedArray {
         Integer floorOf = 5;
 
         log.info("Input: {} | Search for: {}", list, floorOf);
-        log.info("Output: {} ", binarySearch(list, floorOf));
+        log.info("Output: {} ", findFloor(list, floorOf));
     }
 
-    public static Integer binarySearch(List<Integer> list, Integer floorOf) {
+    public static Integer findFloor(List<Integer> list, Integer floorOf) {
         int floor = Integer.MAX_VALUE;
         int start = 0;
         int end = list.size() - 1;

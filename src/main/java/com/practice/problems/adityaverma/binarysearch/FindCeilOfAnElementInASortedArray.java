@@ -34,10 +34,10 @@ public class FindCeilOfAnElementInASortedArray {
         Integer ceilOf = 5;
 
         log.info("Input: {} | Search for: {}", list, ceilOf);
-        log.info("Output: {} ", binarySearch(list, ceilOf));
+        log.info("Output: {} ", findCeil(list, ceilOf));
     }
 
-    public static Integer binarySearch(List<Integer> list, Integer ceilOf) {
+    public static Integer findCeil(List<Integer> list, Integer ceilOf) {
         int ceil = Integer.MAX_VALUE;
         int start = 0;
         int end = list.size() - 1;
