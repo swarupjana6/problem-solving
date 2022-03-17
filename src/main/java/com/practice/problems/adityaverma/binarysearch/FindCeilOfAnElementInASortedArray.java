@@ -4,6 +4,8 @@ import lombok.extern.log4j.Log4j2;
 
 import java.util.List;
 
+import static com.practice.problems.adityaverma.binarysearch.BinarySearch.binarySearchElement;
+
 /**
  * Given a sorted array and a and a value x, find the ceiling of x in the array.
  * The ceiling of x is the smallest element in the array greater than or equal to x.
@@ -34,17 +36,17 @@ public class FindCeilOfAnElementInASortedArray {
         Integer ceilOf = 5;
 
         log.info("Input: {} | Search for: {}", list, ceilOf);
-        log.info("Output: {} ", findCeil(list, ceilOf));
+        log.info("Output: {} ", findCeiling(list, ceilOf));
     }
 
-    public static Integer findCeil(List<Integer> list, Integer ceilOf) {
+    public static Integer findCeiling(List<Integer> list, Integer ceilOf) {
         int ceil = Integer.MAX_VALUE;
         int start = 0;
         int end = list.size() - 1;
         while (start <= end) {
             int mid = start + (end - start) / 2;        /* LESS OPTIMIZED --> (start + end) / 2; */
 
-            if (list.get(mid) == ceilOf) return list.get(mid + 1);
+            if (list.get(mid) == ceilOf) return list.get(mid);
             else if (list.get(mid) < ceilOf) {
                 start = mid + 1;
             } else if (list.get(mid) > ceilOf) {
