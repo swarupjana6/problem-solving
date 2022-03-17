@@ -12,7 +12,7 @@ public class BinarySearch {
         Integer search = 9;
 
         log.info("Input: {} | Search for: {}", list, search);
-        log.info("Output: {} ", binarySearch(list, search));
+        log.info("Output: Index of '{}' is {} ", search, binarySearch(list, search));
     }
 
     public static Integer binarySearch(List<Integer> list, Integer search) {
@@ -21,7 +21,7 @@ public class BinarySearch {
         return binarySearchElement(list, search, start, end);
     }
 
-    public static int binarySearchElement(List<Integer> list, Integer search, int start, int end) {
+    public static int binarySearchElement(List<Integer> list, Integer search, Integer start, Integer end) {
         while (start <= end) {
             int mid = start + (end - start) / 2;        /* LESS OPTIMIZED --> (start + end) / 2; */
 
