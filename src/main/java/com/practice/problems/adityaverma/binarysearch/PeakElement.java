@@ -40,12 +40,21 @@ public class PeakElement {
     }
 
     public static int binarySearchElement(List<Integer> list, int start, int end) {
+        int size = list.size();
         while (start <= end) {
             int mid = start + (end - start) / 2;        /* LESS OPTIMIZED --> (start + end) / 2; */
 
-            if (MID_GREATER_THAN_PREV_NEXT.test(list, mid)) return mid;
-            else if (MID_LESS_THAN_PREV.test(list, mid)) end = mid - 1;
-            else if (MID_LESS_THAN_NEXT.test(list, mid)) start = mid + 1;
+            if (mid > 0 && mid < size - 1) {
+                if (MID_GREATER_THAN_PREV_NEXT.test(list, mid)) return mid;
+                else if (MID_LESS_THAN_PREV.test(list, mid)) end = mid - 1;
+                else if (MID_LESS_THAN_NEXT.test(list, mid)) start = mid + 1;
+            } else if (mid == 0) {
+                if (list.get(0) > list.get(1)) return 0;
+                else return 1;
+            } else if (mid == size - 1) {
+                if (list.get(size - 1) > list.get(size - 2)) return size - 1;
+                else return size - 2;
+            }
         }
         return -1;
     }
