@@ -33,10 +33,4 @@ public class DescendingBinarySearch {
         }
         return -1;
     }
-
-    private static List<Integer> getDescendingList(List<Integer> inputList) {
-        List<Integer> descendingList = new ArrayList<>(inputList);
-        descendingList.sort(Comparator.reverseOrder());
-        return descendingList;
-    }
 }

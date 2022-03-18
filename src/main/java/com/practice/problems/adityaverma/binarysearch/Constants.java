@@ -43,7 +43,7 @@ public interface Constants {
 
     BiPredicate<List<Integer>, Integer> MID_GREATER_THAN_PREV_NEXT = MID_LESS_THAN_PREV.negate().and(MID_LESS_THAN_NEXT.negate());
 
-    default List<Integer> getDescendingList(List<Integer> inputList) {
+    static List<Integer> getDescendingList(List<Integer> inputList) {
         List<Integer> descendingList = new ArrayList<>(inputList);
         descendingList.sort(Comparator.reverseOrder());
         return descendingList;

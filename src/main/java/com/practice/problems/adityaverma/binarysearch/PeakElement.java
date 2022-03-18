@@ -29,17 +29,17 @@ public class PeakElement {
         List<Integer> list = List.of(5, 10, 20, 15);
 
         log.info("Input: {} ", list);
-        log.info("Output: Root element is {} ", binarySearch(list));
+        log.info("Output: Root element is {} ", peakElement(list));
     }
 
-    public static Integer binarySearch(List<Integer> list) {
+    public static Integer peakElement(List<Integer> list) {
         int start = 0;
         int end = list.size() - 1;
-        int result = binarySearchElement(list, start, end);
+        int result = peakElement(list, start, end);
         return result != -1 ? list.get(result) : result;
     }
 
-    public static int binarySearchElement(List<Integer> list, int start, int end) {
+    public static int peakElement(List<Integer> list, int start, int end) {
         int size = list.size();
         while (start <= end) {
             int mid = start + (end - start) / 2;        /* LESS OPTIMIZED --> (start + end) / 2; */
