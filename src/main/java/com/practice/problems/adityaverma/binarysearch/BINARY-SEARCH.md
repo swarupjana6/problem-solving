@@ -1,6 +1,6 @@
 # BINARY SEARCH #
 
-Question List
+## Question List ##
 
 |                           Questions                           | Difficulty |
 |:-------------------------------------------------------------:|:----------:|
