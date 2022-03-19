@@ -45,4 +45,9 @@ Total : Approx 80
 
 > Optimal things will be asked
 
-Generic Problem List
+## How to approach problem? ##
+
+> Write recursive code first
+
+> Then Memoize it
+
