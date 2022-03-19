@@ -17,7 +17,7 @@ import java.util.Arrays;
  **/
 
 @Log4j2
-public class MemoizedKnapsack01 {
+public class Knapsack01Memoized {
 
     private static int[][] memoizedData;
 
@@ -26,16 +26,16 @@ public class MemoizedKnapsack01 {
         int[] values = {1, 4, 5, 7};
         int sackWt = 7;
         init(weights.length, sackWt);
-        log.info("Input:: \nWeights:\t{} \nValues:\t\t{} \nKnapsack Wt:\t{}", weights, values, sackWt, weights.length);
-        log.info("Output::\nFilled Weight:\t{}", knapsack(weights, values, sackWt, weights.length));
+        log.info("Input:: Weights: {}\t# Values: {}\t# Knapsack Wt: {}", weights, values, sackWt, weights.length);
+        log.info("Output:: Filled Weight: {}", knapsack(weights, values, sackWt, weights.length));
         System.out.println(Arrays.deepToString(memoizedData));
     }
 
     private static void init(int n, int knapsackWt) {
         memoizedData = new int[n + 1][knapsackWt + 1];
-        for (int i = 1; i <= n; i++) {
+        for (int i = 0; i <= n; i++) {
             int wt = knapsackWt;
-            while (wt >= 1) memoizedData[i][wt--] = -1;
+            while (wt >= 0) memoizedData[i][wt--] = -1;
         }
         System.out.println(Arrays.deepToString(memoizedData));
     }
@@ -45,20 +45,22 @@ public class MemoizedKnapsack01 {
         if (n == 0 || sackWt == 0)
             return 0;
 
-        // MEMOIZED RETURN
-        if (memoizedData[n][sackWt] != -1) {
-            return memoizedData[n][sackWt];
-        }
-
         // CHOICE DIAGRAM CODE
-        if (weight[n - 1] <= sackWt) {
-            int including = value[n - 1] + knapsack(weight, value, sackWt - weight[n - 1], n - 1);
-            int withoutIncluding = knapsack(weight, value, sackWt, n - 1);
-            memoizedData[n][sackWt] = Math.max(including, withoutIncluding);
-            return memoizedData[n][sackWt];
+        // Memoization of memoizedData[n][sackWt] will be done while doing this calculation to be used in future steps
+        int current = n - 1;
+        int currentValue = value[current];
+        int currentWeight = weight[current];
+
+        int exclude = knapsack(weight, value, sackWt, current);
+        if (currentWeight <= sackWt) {  // IF >>>>> current weight is LESS THAN knapsack weight it is INCLUDED
+            int newSackWt = sackWt - currentWeight;
+            int include = currentValue + knapsack(weight, value, newSackWt, current);
+
+            memoizedData[n][sackWt] = Math.max(include, exclude);
+        } else { // ELSE >>>>> current weight is MORE THAN knapsack weight it EXCLUDED
+            memoizedData[n][sackWt] = exclude;
         }
 
-        memoizedData[n][sackWt] = knapsack(weight, value, sackWt, n - 1);
         return memoizedData[n][sackWt];
     }
 }

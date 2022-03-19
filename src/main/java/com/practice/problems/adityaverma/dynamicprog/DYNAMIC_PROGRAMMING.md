@@ -51,3 +51,7 @@ Total : Approx 80
 
 > Then Memoize it
 
+
+## Comparing the Memoization vs Bottom Up Approach
+
+
