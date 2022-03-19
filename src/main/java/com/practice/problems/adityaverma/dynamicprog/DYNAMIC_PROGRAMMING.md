@@ -1,5 +1,7 @@
 # Dynamic Programming - DP #
 
+> `DP` ====> `Recursion` + `Storage`
+
 * DP's parent is Recursion
 * Dynamic Programming is also known as Enhanced Recursion
 
