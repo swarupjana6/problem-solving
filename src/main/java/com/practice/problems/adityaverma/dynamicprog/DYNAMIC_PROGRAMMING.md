@@ -25,9 +25,9 @@ Total : Approx 80
 ### 0 - 1 Knapsack ###
 | Questions                            | Difficulty<br/>Level |
 |:-------------------------------------|:---------------------|
-| Subset Sum                           |                      |
-| Equal Sum Partition                  |                      |
-| Count of Subset Sum                  |                      |
+| Subset Sum                           | Medium               |
+| Equal Sum Partition                  | Medium               |
+| Count of Subset Sum                  | Medium               |
 | Minimum Subset Sum Diff              |                      |
 | Target Sum                           |                      |
 | Number of Subset Sum with given Diff |                      |
