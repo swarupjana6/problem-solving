@@ -2,6 +2,8 @@ package com.practice.problems.adityaverma.dynamicprog.knapsack;
 
 import lombok.extern.log4j.Log4j2;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 /**
  * Given weights and values of n items,
  * put these items in a knapsack of capacity W to get the maximum total value in the knapsack.
@@ -18,30 +20,40 @@ import lombok.extern.log4j.Log4j2;
 public class Knapsack01Recursive {
 
     public static void main(String[] args) {
-        int[] weights = {1, 3, 4, 5};
-        int[] values = {1, 4, 5, 7};
-        int sackWt = 7;
-        log.info("Input:: Weights: {}\t# Values: {}\t# Knapsack Wt: {}", weights, values, sackWt, weights.length);
-        log.info("Output:: Filled Weight: {}", knapsack(weights, values, sackWt, weights.length));
+        int[] weights = {1, 2, 3, 5};
+        int[] values = {1, 6, 10, 16};
+        int capacity = 7;
+        log.info("Input:: Weights: {}\t# Values: {}\t# Knapsack Wt: {}", weights, values, capacity);
+        int total = solveKnapsack(weights, values, capacity);
+        log.info("Output:: Total knapsack: {}", total);
+        assertTrue(total == 22);
+
+        capacity = 6;
+        log.info("Input:: Weights: {}\t# Values: {}\t# Knapsack Wt: {}", weights, values, capacity);
+        total = solveKnapsack(weights, values, capacity);
+        log.info("Output:: Total knapsack: {}", total);
+        assertTrue(total == 17);
     }
 
-    public static int knapsack(int[] weight, int[] value, int sackWt, int n) {
-        // BASE CONDITION
-        if (n == 0 || sackWt == 0)
+    public static int solveKnapsack(int[] weights, int[] values, int capacity) {
+        return knapsackRecursive(weights, values, capacity, weights.length - 1);
+    }
+
+    public static int knapsackRecursive(int[] weights, int[] values, int capacity, int currentIndex) {
+        if (currentIndex == -1 || capacity == 0) {    // IF >> currentIndex out of bound OR knapsack capacity ZERO
             return 0;
+        }
 
-        // CHOICE DIAGRAM CODE
-        // Either we have to include weight or not
-        int currentValue = value[n - 1];
-        int currentWeight = weight[n - 1];
+        int currentValue = values[currentIndex];
+        int currentWeight = weights[currentIndex];
 
-        int exclude = knapsack(weight, value, sackWt, n - 1);
-        if (currentWeight <= sackWt) { // IF >>>>> current weight is LESS THAN knapsack weight it is INCLUDED
-            int newSackWt = sackWt - currentWeight;
-            int include = currentValue + knapsack(weight, value, newSackWt, n - 1);
-            return Math.max(include, exclude);
-        } else { // ELSE >>>>> current weight is MORE THAN knapsack weight it EXCLUDED
+        if (currentWeight > capacity) {     // IF >> current weight goes beyond knapsack capacity it EXCLUDED
+            int exclude = knapsackRecursive(weights, values, capacity, currentIndex - 1);
             return exclude;
+        } else {                            // ELSE >> current weight is within knapsack capacity it is INCLUDED
+            int include = currentValue + knapsackRecursive(weights, values, capacity - currentWeight, currentIndex - 1);
+            int exclude = knapsackRecursive(weights, values, capacity, currentIndex - 1);
+            return Math.max(exclude, include);
         }
     }
 }

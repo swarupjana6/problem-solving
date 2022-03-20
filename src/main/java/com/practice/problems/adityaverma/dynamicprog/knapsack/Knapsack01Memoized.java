@@ -4,6 +4,8 @@ import lombok.extern.log4j.Log4j2;
 
 import java.util.Arrays;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 /**
  * Given weights and values of n items,
  * put these items in a knapsack of capacity W to get the maximum total value in the knapsack.
@@ -22,45 +24,53 @@ public class Knapsack01Memoized {
     private static int[][] memoizedData;
 
     public static void main(String[] args) {
-        int[] weights = {1, 3, 4, 5};
-        int[] values = {1, 4, 5, 7};
-        int sackWt = 7;
-        init(weights.length, sackWt);
-        log.info("Input:: Weights: {}\t# Values: {}\t# Knapsack Wt: {}", weights, values, sackWt, weights.length);
-        log.info("Output:: Filled Weight: {}", knapsack(weights, values, sackWt, weights.length));
-        System.out.println(Arrays.deepToString(memoizedData));
+        int[] weights = {1, 2, 3, 5};
+        int[] values = {1, 6, 10, 16};
+        int capacity = 7;
+        init(weights.length, capacity);
+        log.info("Input:: Weights: {}\t# Values: {}\t# Knapsack Wt: {}", weights, values, capacity);
+        int total = solveKnapsack(weights, values, capacity);
+        log.info("Output:: Total knapsack: {}", total);
+        assertTrue(total == 22);
+
+        capacity = 6;
+        init(weights.length, capacity);
+        log.info("Input:: Weights: {}\t# Values: {}\t# Knapsack Wt: {}", weights, values, capacity);
+        total = solveKnapsack(weights, values, capacity);
+        log.info("Output:: Total knapsack: {}", total);
+        assertTrue(total == 17);
     }
 
-    private static void init(int n, int knapsackWt) {
-        memoizedData = new int[n + 1][knapsackWt + 1];
-        for (int i = 0; i <= n; i++) {
-            int wt = knapsackWt;
-            while (wt >= 0) memoizedData[i][wt--] = -1;
+    public static int solveKnapsack(int[] weights, int[] values, int capacity) {
+        return knapsackRecursiveMemoized(weights, values, capacity, weights.length - 1);
+    }
+
+    private static void init(int index, int capacity) {
+        memoizedData = new int[index + 1][capacity + 1];
+        for (int i = 0; i <= index; i++) {
+            int tempCapacity = capacity;
+            while (tempCapacity >= 0) memoizedData[i][tempCapacity--] = -1;
         }
         System.out.println(Arrays.deepToString(memoizedData));
     }
 
-    public static int knapsack(int[] weight, int[] value, int sackWt, int n) {
-        // BASE CONDITION
-        if (n == 0 || sackWt == 0)
+    private static int knapsackRecursiveMemoized(int[] weights, int[] values, int capacity, int currentIndex) {
+        if (currentIndex == -1 || capacity == 0) {    // IF >> currentIndex out of bound OR knapsack capacity ZERO
             return 0;
-
-        // CHOICE DIAGRAM CODE
-        // Memoization of memoizedData[n][sackWt] will be done while doing this calculation to be used in future steps
-        int current = n - 1;
-        int currentValue = value[current];
-        int currentWeight = weight[current];
-
-        int exclude = knapsack(weight, value, sackWt, current);
-        if (currentWeight <= sackWt) {  // IF >>>>> current weight is LESS THAN knapsack weight it is INCLUDED
-            int newSackWt = sackWt - currentWeight;
-            int include = currentValue + knapsack(weight, value, newSackWt, current);
-
-            memoizedData[n][sackWt] = Math.max(include, exclude);
-        } else { // ELSE >>>>> current weight is MORE THAN knapsack weight it EXCLUDED
-            memoizedData[n][sackWt] = exclude;
         }
 
-        return memoizedData[n][sackWt];
+        int currentValue = values[currentIndex];
+        int currentWeight = weights[currentIndex];
+
+        if (currentWeight > capacity) {     // IF >> current weight goes beyond knapsack capacity it EXCLUDED
+            int exclude = knapsackRecursiveMemoized(weights, values, capacity, currentIndex - 1);
+            memoizedData[currentIndex][capacity] = exclude;
+        } else {                            // ELSE >> current weight is within knapsack capacity it is INCLUDED
+            int include = currentValue + knapsackRecursiveMemoized(weights, values, capacity - currentWeight, currentIndex - 1);
+            int exclude = knapsackRecursiveMemoized(weights, values, capacity, currentIndex - 1);
+            memoizedData[currentIndex][capacity] = Math.max(exclude, include);
+        }
+
+        return memoizedData[currentIndex][capacity];
     }
 }

@@ -2,54 +2,51 @@ package com.practice.problems.adityaverma.dynamicprog.knapsack;
 
 import lombok.extern.log4j.Log4j2;
 
-import java.util.Arrays;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Log4j2
 public class Knapsack01TopDown {
 
-    private static int[][] memoizedData;
+    private static int[][] cachedResult;
 
     public static void main(String[] args) {
-        int[] weights = {1, 3, 4, 5};
-        int[] values = {1, 4, 5, 7};
-        int sackWt = 7;
-        init(weights.length, sackWt);
-        log.info("Input:: Weights: {}\t# Values: {}\t# Knapsack Wt: {}", weights, values, sackWt, weights.length);
-        log.info("Output:: Filled Weight: {}", knapsackIterative(weights, values, sackWt, weights.length));
-        log.info("After memoization {}", Arrays.deepToString(memoizedData));
+        int[] weights = {1, 2, 3, 5};
+        int[] values = {1, 6, 10, 16};
+        int capacity = 7;
+        cachedResult = new int[weights.length + 1][capacity + 1];
+        log.info("Input:: Weights: {}\t# Values: {}\t# Knapsack Wt: {}", weights, values, capacity);
+        int total = solveKnapsack(weights, values, capacity);
+        log.info("Output:: Total knapsack: {}", total);
+        assertTrue(total == 22);
+
+        capacity = 6;
+        log.info("Input:: Weights: {}\t# Values: {}\t# Knapsack Wt: {}", weights, values, capacity);
+        total = solveKnapsack(weights, values, capacity);
+        log.info("Output:: Total knapsack: {}", total);
+        assertTrue(total == 17);
     }
 
-    private static void init(int n, int sackWt) {
-        memoizedData = new int[n + 1][sackWt + 1];
-        for (int i = 1; i <= n; i++) {
-            int wt = sackWt;
-            while (wt >= 1) memoizedData[i][wt--] = -1;
-        }
-        log.info("Before memoization {}", Arrays.deepToString(memoizedData));
+    public static int solveKnapsack(int[] weights, int[] values, int capacity) {
+        return knapsackIterativeMemoized(weights, values, capacity, weights.length);
     }
 
-    public static int knapsackIterative(int[] weight, int[] value, int sackWt, int n) {
-        for (int i = 0; i <= n; i++) {
-            for (int j = 0; j <= sackWt; j++) {
+    private static int knapsackIterativeMemoized(int[] weights, int[] values, int capacity, int currentIndex) {
+        for (int i = 0; i <= currentIndex; i++) {
+            for (int j = 0; j <= capacity; j++) {
                 if (i == 0 || j == 0) {
-                    memoizedData[i][j] = 0;
+                    cachedResult[i][j] = 0;
                     continue;
                 }
 
-                int current = i - 1;
-                int currentValue = value[current];
-                int currentWeight = weight[current];
-
-                int exclude = memoizedData[current][j];
-                if (currentWeight <= j) {  // IF >>>>> current weight is LESS THAN knapsack weight it is INCLUDED
-                    int include = currentValue + memoizedData[current][j - currentWeight];
-                    memoizedData[i][j] = Math.max(include, exclude);
-                } else {  // ELSE >>>>> current weight is MORE THAN knapsack weight it EXCLUDED
-                    memoizedData[i][j] = exclude;
-                }
+                int currentValue = values[i - 1];
+                int currentWeight = weights[i - 1];
+                if (currentWeight > j)
+                    cachedResult[i][j] = cachedResult[i - 1][j];
+                else
+                    cachedResult[i][j] = Math.max(cachedResult[i - 1][j], currentValue + cachedResult[i - 1][j - currentWeight]);
             }
         }
 
-        return memoizedData[n][sackWt];
+        return cachedResult[currentIndex][capacity];
     }
 }
