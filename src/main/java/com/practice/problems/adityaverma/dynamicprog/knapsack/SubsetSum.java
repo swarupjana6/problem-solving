@@ -41,8 +41,8 @@ public class SubsetSum {
         assertFalse(isPresent);
     }
 
-    public static boolean solveKnapsack(int[] numbers, int capacity) {
-        return knapsack(numbers, capacity, numbers.length);
+    public static boolean solveKnapsack(int[] numbers, int sum) {
+        return knapsack(numbers, sum, numbers.length);
     }
 
     private static boolean knapsack(int[] numbers, int sum, int index) {
