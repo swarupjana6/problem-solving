@@ -39,21 +39,24 @@ public class Knapsack01Recursive {
         return knapsackRecursive(weights, values, capacity, weights.length - 1);
     }
 
-    public static int knapsackRecursive(int[] weights, int[] values, int capacity, int currentIndex) {
-        if (currentIndex == -1 || capacity == 0) {    // IF >> currentIndex out of bound OR knapsack capacity ZERO
+    public static int knapsackRecursive(int[] weights, int[] values, int capacity, int index) {
+        if (index == -1 || capacity == 0) {    // IF >> index out of bound OR knapsack capacity ZERO
             return 0;
         }
 
-        int currentValue = values[currentIndex];
-        int currentWeight = weights[currentIndex];
+        // Current Value and Weight
+        int prevIndex = index - 1;
+        int indexValue = values[index];
+        int indexWeight = weights[index];
 
-        if (currentWeight > capacity) {     // IF >> current weight goes beyond knapsack capacity it EXCLUDED
-            int exclude = knapsackRecursive(weights, values, capacity, currentIndex - 1);
-            return exclude;
-        } else {                            // ELSE >> current weight is within knapsack capacity it is INCLUDED
-            int include = currentValue + knapsackRecursive(weights, values, capacity - currentWeight, currentIndex - 1);
-            int exclude = knapsackRecursive(weights, values, capacity, currentIndex - 1);
-            return Math.max(exclude, include);
+        // IF >> current weight goes beyond knapsack capacity it EXCLUDED
+        int prevResult = knapsackRecursive(weights, values, capacity, prevIndex);
+        if (indexWeight > capacity) {
+            return prevResult;
+        } else {
+            // ELSE >> current weight is within knapsack capacity it is INCLUDED
+            int include = indexValue + knapsackRecursive(weights, values, capacity - indexWeight, index - 1);
+            return Math.max(prevResult, include);
         }
     }
 }

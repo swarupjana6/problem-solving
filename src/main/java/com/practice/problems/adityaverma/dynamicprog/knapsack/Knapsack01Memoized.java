@@ -21,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @Log4j2
 public class Knapsack01Memoized {
 
-    private static int[][] memoizedData;
+    private static int[][] cachedResult;
 
     public static void main(String[] args) {
         int[] weights = {1, 2, 3, 5};
@@ -42,35 +42,40 @@ public class Knapsack01Memoized {
     }
 
     public static int solveKnapsack(int[] weights, int[] values, int capacity) {
-        return knapsackRecursiveMemoized(weights, values, capacity, weights.length - 1);
+        return knapsack(weights, values, capacity, weights.length - 1);
     }
 
     private static void init(int index, int capacity) {
-        memoizedData = new int[index + 1][capacity + 1];
+        cachedResult = new int[index + 1][capacity + 1];
         for (int i = 0; i <= index; i++) {
             int tempCapacity = capacity;
-            while (tempCapacity >= 0) memoizedData[i][tempCapacity--] = -1;
+            while (tempCapacity >= 0) cachedResult[i][tempCapacity--] = -1;
         }
-        System.out.println(Arrays.deepToString(memoizedData));
+        System.out.println(Arrays.deepToString(cachedResult));
     }
 
-    private static int knapsackRecursiveMemoized(int[] weights, int[] values, int capacity, int currentIndex) {
-        if (currentIndex == -1 || capacity == 0) {    // IF >> currentIndex out of bound OR knapsack capacity ZERO
-            return 0;
+    private static int knapsack(int[] weights, int[] values, int capacity, int index) {
+        // IF >> index out of bound OR knapsack capacity ZERO
+        if (index == -1 || capacity == 0) return 0;
+
+        // IF >> Result is cached then return
+        if (cachedResult[index][capacity] != -1) return cachedResult[index][capacity];
+
+        // Current Value and Weight
+        int prevIndex = index - 1;
+        int indexValue = values[index];
+        int indexWeight = weights[index];
+
+        // IF >> current weight goes beyond knapsack capacity it EXCLUDED
+        int prevResult = knapsack(weights, values, capacity, prevIndex);
+        if (indexWeight > capacity) {
+            cachedResult[index][capacity] = prevResult;
+        } else {
+            // ELSE >> current weight is within knapsack capacity it is INCLUDED
+            int include = indexValue + knapsack(weights, values, capacity - indexWeight, prevIndex);
+            cachedResult[index][capacity] = Math.max(prevResult, include);
         }
 
-        int currentValue = values[currentIndex];
-        int currentWeight = weights[currentIndex];
-
-        if (currentWeight > capacity) {     // IF >> current weight goes beyond knapsack capacity it EXCLUDED
-            int exclude = knapsackRecursiveMemoized(weights, values, capacity, currentIndex - 1);
-            memoizedData[currentIndex][capacity] = exclude;
-        } else {                            // ELSE >> current weight is within knapsack capacity it is INCLUDED
-            int include = currentValue + knapsackRecursiveMemoized(weights, values, capacity - currentWeight, currentIndex - 1);
-            int exclude = knapsackRecursiveMemoized(weights, values, capacity, currentIndex - 1);
-            memoizedData[currentIndex][capacity] = Math.max(exclude, include);
-        }
-
-        return memoizedData[currentIndex][capacity];
+        return cachedResult[index][capacity];
     }
 }

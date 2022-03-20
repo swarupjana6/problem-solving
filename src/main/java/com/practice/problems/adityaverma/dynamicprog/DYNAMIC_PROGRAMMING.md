@@ -52,6 +52,11 @@ Total : Approx 80
 > Then Memoize it
 
 
-## Comparing the Memoization vs Bottom Up Approach
+## Comparing the Recursion, Recursion + Memoization && Iterative + Memoization Approach
 
+> `Recursive` 
+
+> `Recursive` + `Table`
+
+> `Table`
 
