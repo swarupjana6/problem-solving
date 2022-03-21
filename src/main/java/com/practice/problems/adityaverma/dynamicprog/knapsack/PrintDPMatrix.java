@@ -1,6 +1,7 @@
 package com.practice.problems.adityaverma.dynamicprog.knapsack;
 
 public class PrintDPMatrix {
+
     public static void printMatrix(int[] numbers, int index, boolean[][] results, int expectSum) {
         System.out.print("#" + "\t|\t");
         System.out.print("0" + "\t\t");

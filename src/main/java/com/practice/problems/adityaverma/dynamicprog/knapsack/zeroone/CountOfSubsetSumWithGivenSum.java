@@ -41,13 +41,15 @@ public class CountOfSubsetSumWithGivenSum {
         return results[numbers.length][sum];
     }
 
-    private static int[][] knapsack(int[] numbers, int sum, int index) {
-        int[][] results = new int[index + 1][sum + 1];
+    private static int[][] knapsack(int[] numbers, int sum, int size) {
+        int[][] results = new int[size + 1][sum + 1];
 
         for (int x = 0; x <= sum; x++) results[0][x] = 0;
-        for (int x = 0; x <= index; x++) results[x][0] = 1;
+        for (int x = 0; x <= size; x++) results[x][0] = 1;
 
-        for (int i = 1; i <= index; i++) {
+        printMatrix(numbers, size, results, sum);
+
+        for (int i = 1; i <= size; i++) {
             for (int j = 1; j <= sum; j++) {
                 int indexSum = numbers[i - 1];
 
@@ -59,7 +61,7 @@ public class CountOfSubsetSumWithGivenSum {
             }
         }
 
-        printMatrix(numbers, index, results, sum);
+        printMatrix(numbers, size, results, sum);
 
         return results;
     }
