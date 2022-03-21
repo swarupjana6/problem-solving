@@ -1,4 +1,4 @@
-package com.practice.problems.adityaverma.dynamicprog.knapsack;
+package com.practice.problems.adityaverma.dynamicprog.knapsack.zeroone;
 
 import lombok.extern.log4j.Log4j2;
 

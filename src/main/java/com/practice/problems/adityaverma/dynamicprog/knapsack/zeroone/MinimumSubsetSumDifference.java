@@ -1,10 +1,10 @@
-package com.practice.problems.adityaverma.dynamicprog.knapsack;
+package com.practice.problems.adityaverma.dynamicprog.knapsack.zeroone;
 
 import lombok.extern.log4j.Log4j2;
 
 import java.util.Arrays;
 
-import static com.practice.problems.adityaverma.dynamicprog.knapsack.SubsetSum.getKnapsackResults;
+import static com.practice.problems.adityaverma.dynamicprog.knapsack.zeroone.SubsetSum.getKnapsackResults;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**

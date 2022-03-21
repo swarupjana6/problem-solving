@@ -23,21 +23,30 @@
 Total : Approx 80
 
 ### Types of Knapsack Problems ###
-> Fractional Knapsack (Greedy)
+* *Fractional Knapsack (Greedy)*
 
-> 0/1 Knapsack
+* *0/1 Knapsack*
 
-> Unbounded Knapsack
+* *Unbounded Knapsack*
 
 #### 0 - 1 Knapsack ####
-| Questions                            | Difficulty<br/>Level |
-|:-------------------------------------|:---------------------|
-| Subset Sum                           | Medium               |
-| Equal Sum Partition                  | Medium               |
-| Count of Subset Sum                  | Medium               |
-| Minimum Subset Sum Diff              | Hard                 |
-| Target Sum                           |                      |
-| Number of Subset Sum with given Diff |                      |
+| Questions                            | Difficulty Level |
+|:-------------------------------------|:-----------------|
+| Subset Sum                           | Medium           |
+| Equal Sum Partition                  | Medium           |
+| Count of Subset Sum                  | Medium           |
+| Minimum Subset Sum Diff              | Hard             |
+| Target Sum                           | Medium           |
+| Number of Subset Sum with given Diff | Medium           |
+
+#### Unbounded Knapsack ####
+| Questions                            | Difficulty Level |
+|:-------------------------------------|:-----------------|
+| Rod Cutting                          | Medium           |
+| Coin Change - I                      | Medium           |
+| Coin Change - II                     | Medium           |
+| Maximum Ribbon Cut                   | Hard             |
+
 
 ## How to Identify Dynamic Programming Question? ##
 

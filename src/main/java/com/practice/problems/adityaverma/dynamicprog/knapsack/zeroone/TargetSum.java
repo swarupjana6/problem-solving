@@ -1,8 +1,8 @@
-package com.practice.problems.adityaverma.dynamicprog.knapsack;
+package com.practice.problems.adityaverma.dynamicprog.knapsack.zeroone;
 
 import lombok.extern.log4j.Log4j2;
 
-import static com.practice.problems.adityaverma.dynamicprog.knapsack.CountNumberOfSubsetsWithADifference.solveKnapsack;
+import static com.practice.problems.adityaverma.dynamicprog.knapsack.zeroone.CountNumberOfSubsetsWithADifference.solveKnapsack;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
