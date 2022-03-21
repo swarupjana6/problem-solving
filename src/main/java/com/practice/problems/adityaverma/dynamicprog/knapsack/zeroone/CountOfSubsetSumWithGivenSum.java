@@ -47,8 +47,6 @@ public class CountOfSubsetSumWithGivenSum {
         for (int x = 0; x <= sum; x++) results[0][x] = 0;
         for (int x = 0; x <= size; x++) results[x][0] = 1;
 
-        printMatrix(numbers, size, results, sum);
-
         for (int i = 1; i <= size; i++) {
             for (int j = 1; j <= sum; j++) {
                 int indexSum = numbers[i - 1];

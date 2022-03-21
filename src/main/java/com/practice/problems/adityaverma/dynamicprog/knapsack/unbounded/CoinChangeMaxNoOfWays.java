@@ -22,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  **/
 
 @Log4j2
-public class CoinChangeOneMaxNoOfWays {
+public class CoinChangeMaxNoOfWays {
 
     public static void main(String[] args) {
         print(new int[]{1, 2, 3}, 5, count -> assertTrue(5 == count));
@@ -46,10 +46,9 @@ public class CoinChangeOneMaxNoOfWays {
     private static int[][] knapsack(int[] coins, int amount, int index) {
         var results = new int[index + 1][amount + 1];
 
+        // Fill with: Number of ways get target amount
         for (int x = 0; x <= amount; x++) results[0][x] = 0;
         for (int x = 0; x <= index; x++) results[x][0] = 1;
-
-        printMatrix(coins, index, results, amount);
 
         for (int i = 1; i <= index; i++) {
             for (int j = 1; j <= amount; j++) {
@@ -63,6 +62,8 @@ public class CoinChangeOneMaxNoOfWays {
                 }
             }
         }
+
+        printMatrix(coins, index, results, amount);
 
         return results;
     }
