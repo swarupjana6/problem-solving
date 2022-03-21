@@ -42,10 +42,17 @@ public class SubsetSum {
     }
 
     public static boolean solveKnapsack(int[] numbers, int sum) {
-        return knapsack(numbers, sum, numbers.length);
+        int index = numbers.length;
+        boolean[][] cachedResult = knapsackResults(numbers, sum);
+        return cachedResult[index][sum];
     }
 
-    private static boolean knapsack(int[] numbers, int sum, int index) {
+    public static boolean[][] knapsackResults(int[] numbers, int sum) {
+        int index = numbers.length;
+        return knapsack(numbers, index, sum);
+    }
+
+    public static boolean[][] knapsack(int[] numbers, int index, int sum) {
         boolean[][] cachedResult = new boolean[numbers.length + 1][sum + 1];
 
         for (int i = 0; i <= index; i++) {
@@ -70,6 +77,6 @@ public class SubsetSum {
             }
         }
 
-        return cachedResult[index][sum];
+        return cachedResult;
     }
 }

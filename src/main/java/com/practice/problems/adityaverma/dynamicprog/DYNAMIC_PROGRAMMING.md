@@ -22,22 +22,22 @@
 
 Total : Approx 80
 
-### 0 - 1 Knapsack ###
-| Questions                            | Difficulty<br/>Level |
-|:-------------------------------------|:---------------------|
-| Subset Sum                           | Medium               |
-| Equal Sum Partition                  | Medium               |
-| Count of Subset Sum                  | Medium               |
-| Minimum Subset Sum Diff              |                      |
-| Target Sum                           |                      |
-| Number of Subset Sum with given Diff |                      |
-
-#### Types of Knapsack Problems ####
+### Types of Knapsack Problems ###
 > Fractional Knapsack (Greedy)
 
 > 0/1 Knapsack
 
 > Unbounded Knapsack
+
+#### 0 - 1 Knapsack ####
+| Questions                            | Difficulty<br/>Level |
+|:-------------------------------------|:---------------------|
+| Subset Sum                           | Medium               |
+| Equal Sum Partition                  | Medium               |
+| Count of Subset Sum                  | Medium               |
+| Minimum Subset Sum Diff              | Hard                 |
+| Target Sum                           |                      |
+| Number of Subset Sum with given Diff |                      |
 
 ## How to Identify Dynamic Programming Question? ##
 
@@ -50,7 +50,6 @@ Total : Approx 80
 > Write recursive code first
 
 > Then Memoize it
-
 
 ## Comparing the Recursion, Recursion + Memoization && Iterative + Memoization Approach
 
