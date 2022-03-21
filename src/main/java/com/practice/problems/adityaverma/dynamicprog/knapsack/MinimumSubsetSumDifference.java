@@ -4,8 +4,8 @@ import lombok.extern.log4j.Log4j2;
 
 import java.util.Arrays;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static com.practice.problems.adityaverma.dynamicprog.knapsack.SubsetSum.getKnapsackResults;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Given a set of integers, the task is to divide it into two sets
@@ -28,15 +28,24 @@ public class MinimumSubsetSumDifference {
         int[] numbers;
         int minimum;
 
-        numbers = new int[]{1, 5, 11, 5};
+        numbers = new int[]{1, 6, 11, 5};
         log.info("Input:: Numbers: {}\t", numbers);
         minimum = solveKnapsack(numbers);
         log.info("Output:: Minimum possible subset sum difference: {}", minimum);
-        assertTrue(true);
+        assertEquals(minimum, 1);
     }
 
     public static int solveKnapsack(int[] numbers) {
-        int sum = Arrays.stream(numbers).sum();
-        return sum % 2 == 0 ? 0 : 1;
+        int range = Arrays.stream(numbers).sum();
+        boolean[][] subsetSums = getKnapsackResults(numbers, range);
+
+        int numsSize = numbers.length;
+        int minimumSubsetSum = Integer.MAX_VALUE;
+        int halfSubsetSumLength = subsetSums[numsSize].length / 2;
+        for (int i = 0; i < halfSubsetSumLength; i++) {
+            if (subsetSums[numsSize][i]) minimumSubsetSum = Math.min(range - 2 * i, minimumSubsetSum);
+        }
+
+        return minimumSubsetSum;
     }
 }

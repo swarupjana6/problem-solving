@@ -2,6 +2,7 @@ package com.practice.problems.adityaverma.dynamicprog.knapsack;
 
 import lombok.extern.log4j.Log4j2;
 
+import static com.practice.problems.adityaverma.dynamicprog.knapsack.PrintDPMatrix.printMatrix;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -30,7 +31,7 @@ public class SubsetSum {
         sum = 11;
         log.info("Input:: Numbers: {}\t# Sum: {}", numbers, sum);
         isPresent = solveKnapsack(numbers, sum);
-        log.info("Output:: Is subset possible: {}", isPresent);
+        log.info("Output:: Is subset possible: {}\n", isPresent);
         assertTrue(isPresent);
 
         numbers = new int[]{2, 3, 7, 8, 10};
@@ -43,40 +44,34 @@ public class SubsetSum {
 
     public static boolean solveKnapsack(int[] numbers, int sum) {
         int index = numbers.length;
-        boolean[][] cachedResult = knapsackResults(numbers, sum);
+        boolean[][] cachedResult = getKnapsackResults(numbers, sum);
         return cachedResult[index][sum];
     }
 
-    public static boolean[][] knapsackResults(int[] numbers, int sum) {
+    public static boolean[][] getKnapsackResults(int[] numbers, int sum) {
         int index = numbers.length;
         return knapsack(numbers, index, sum);
     }
 
-    public static boolean[][] knapsack(int[] numbers, int index, int sum) {
-        boolean[][] cachedResult = new boolean[numbers.length + 1][sum + 1];
+    public static boolean[][] knapsack(int[] numbers, int index, int expectSum) {
+        boolean[][] results = new boolean[numbers.length + 1][expectSum + 1];
 
-        for (int i = 0; i <= index; i++) {
-            for (int j = 0; j <= sum; j++) {
-                if (j == 0) {
-                    cachedResult[i][j] = true;
-                    continue;
-                }
+        for (int x = 0; x <= expectSum; x++) results[0][x] = false;
+        for (int x = 0; x <= index; x++) results[x][0] = true;
 
-                if (i == 0 && j != 0) {
-                    cachedResult[i][j] = false;
-                    continue;
-                }
-
+        for (int i = 1; i <= index; i++) {
+            for (int j = 1; j <= expectSum; j++) {
                 int indexSum = numbers[i - 1];
 
                 if (indexSum > j) {
-                    cachedResult[i][j] = cachedResult[i - 1][j];
+                    results[i][j] = results[i - 1][j];
                 } else {
-                    cachedResult[i][j] = cachedResult[i - 1][j] || cachedResult[i - 1][j - indexSum];
+                    results[i][j] = results[i - 1][j] || results[i - 1][j - indexSum];
                 }
             }
         }
 
-        return cachedResult;
+        printMatrix(numbers, index, results, expectSum);
+        return results;
     }
 }
