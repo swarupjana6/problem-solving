@@ -28,24 +28,24 @@ public class Knapsack01TopDown {
     }
 
     private static int knapsack(int[] weights, int[] values, int capacity, int index) {
-        int[][] cachedResult = new int[weights.length + 1][capacity + 1];
+        int[][] result = new int[index + 1][capacity + 1];
 
         for (int i = 0; i <= index; i++) {
             for (int j = 0; j <= capacity; j++) {
                 if (i == 0 || j == 0) {
-                    cachedResult[i][j] = 0;
+                    result[i][j] = 0;
                     continue;
                 }
 
-                int indexValue = values[i - 1];
-                int indexWeight = weights[i - 1];
-                if (indexWeight > j)
-                    cachedResult[i][j] = cachedResult[i - 1][j];
+                int currValue = values[i - 1];
+                int currWeight = weights[i - 1];
+                if (currWeight > j)
+                    result[i][j] = result[i - 1][j];
                 else
-                    cachedResult[i][j] = Math.max(cachedResult[i - 1][j], indexValue + cachedResult[i - 1][j - indexWeight]);
+                    result[i][j] = Math.max(result[i - 1][j], currValue + result[i - 1][j - currWeight]);
             }
         }
 
-        return cachedResult[index][capacity];
+        return result[index][capacity];
     }
 }

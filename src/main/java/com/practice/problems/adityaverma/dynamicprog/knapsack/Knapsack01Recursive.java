@@ -36,26 +36,26 @@ public class Knapsack01Recursive {
     }
 
     public static int solveKnapsack(int[] weights, int[] values, int capacity) {
-        return knapsackRecursive(weights, values, capacity, weights.length - 1);
+        return knapsack(weights, values, capacity, weights.length - 1);
     }
 
-    public static int knapsackRecursive(int[] weights, int[] values, int capacity, int index) {
+    public static int knapsack(int[] weights, int[] values, int capacity, int index) {
         if (index == -1 || capacity == 0) {    // IF >> index out of bound OR knapsack capacity ZERO
             return 0;
         }
 
         // Current Value and Weight
         int prevIndex = index - 1;
-        int indexValue = values[index];
-        int indexWeight = weights[index];
+        int currValue = values[index];
+        int currWeight = weights[index];
 
         // IF >> current weight goes beyond knapsack capacity it EXCLUDED
-        int prevResult = knapsackRecursive(weights, values, capacity, prevIndex);
-        if (indexWeight > capacity) {
+        int prevResult = knapsack(weights, values, capacity, prevIndex);
+        if (currWeight > capacity) {
             return prevResult;
         } else {
             // ELSE >> current weight is within knapsack capacity it is INCLUDED
-            int include = indexValue + knapsackRecursive(weights, values, capacity - indexWeight, index - 1);
+            int include = currValue + knapsack(weights, values, capacity - currWeight, index - 1);
             return Math.max(prevResult, include);
         }
     }

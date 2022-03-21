@@ -61,12 +61,12 @@ public class SubsetSum {
 
         for (int i = 1; i <= index; i++) {
             for (int j = 1; j <= expectSum; j++) {
-                int indexSum = numbers[i - 1];
+                int currNumber = numbers[i - 1];
 
-                if (indexSum > j) {
+                if (currNumber > j) {
                     results[i][j] = results[i - 1][j];
                 } else {
-                    results[i][j] = results[i - 1][j] || results[i - 1][j - indexSum];
+                    results[i][j] = results[i - 1][j] || results[i - 1][j - currNumber];
                 }
             }
         }

@@ -37,6 +37,10 @@ public class MinimumSubsetSumDifference {
 
     public static int solveKnapsack(int[] numbers) {
         int range = Arrays.stream(numbers).sum();
+        return knapsack(numbers, range);
+    }
+
+    private static int knapsack(int[] numbers, int range) {
         boolean[][] subsetSums = getKnapsackResults(numbers, range);
 
         int numsSize = numbers.length;
