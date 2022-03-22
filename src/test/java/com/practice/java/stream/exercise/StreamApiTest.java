@@ -1,8 +1,5 @@
 package com.practice.java.stream.exercise;
 
-import static org.assertj.core.api.Assertions.entry;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.IntSummaryStatistics;
@@ -17,8 +14,6 @@ import java.util.stream.Stream;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import com.practice.data.model.Order;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -95,7 +90,7 @@ public class StreamApiTest {
 		long startTime = System.currentTimeMillis();
 		List<Customer> customers = getCustomers();
 		List<Customer> result = customers.stream()
-									.filter(distintByKey(customer -> customer.getName()))
+									.filter(distinctByKey(customer -> customer.getName()))
 									.collect(Collectors.toList());
 		long endTime = System.currentTimeMillis();
 		
@@ -147,7 +142,7 @@ public class StreamApiTest {
 		return list;
 	}
 
-	private <T> Predicate<T> distintByKey(Function<? super T, Object> keyExtractor) {
+	private <T> Predicate<T> distinctByKey(Function<? super T, Object> keyExtractor) {
 
 		Map<Object, Boolean> map = new ConcurrentHashMap<>();
 		return t -> map.putIfAbsent(keyExtractor.apply(t), Boolean.TRUE) == null;
@@ -162,4 +157,15 @@ class Customer {
 	private Long id;
 	private String name;
 	private Integer tier;
+}
+
+@Builder
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+class Order {
+
+	private String custName;
+	private String ticker;
+	private int quantity;
 }
