@@ -72,7 +72,7 @@ Total : Approx 80
 | Questions                                                         | Difficulty Level |
 |:------------------------------------------------------------------|:-----------------|
 | Longest Common Substring (LCS)                                    | Medium           |
-| Print LCS                                                         |                  |
+| Print LCS                                                         | Medium           |
 | Shortest Common Substring (SCS)                                   |                  |
 | Print SCS                                                         |                  |
 | Minimum number of Insertions and Deletions                        |                  |

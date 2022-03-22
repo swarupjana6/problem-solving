@@ -50,8 +50,6 @@ public class LargestCommonSubsequenceTopDown {
 
     private static void init(String first, String second) {
         results = new int[first.length() + 1][second.length() + 1];
-        for (int i = 0; i <= first.length(); i++)
-            for (int j = 0; j <= second.length(); j++) results[i][j] = -1;
         printMatrix(first.toCharArray(), second.toCharArray(), results);
     }
 
@@ -71,16 +69,16 @@ public class LargestCommonSubsequenceTopDown {
     public static int knapsack(String first, String second, int firstIndices, int secondIndices) {
         if (firstIndices == 0 || secondIndices == 0) return 0;
 
-        for (int i = 0; i <= firstIndices; i++) results[i][0] = 0;
-        for (int j = 0; j <= secondIndices; j++) results[0][j] = 0;
+        for (int Y = 0; Y <= firstIndices; Y++) results[Y][0] = 0;
+        for (int X = 0; X <= secondIndices; X++) results[0][X] = 0;
 
-        for (int i = 1; i <= firstIndices; i++) {
-            for (int j = 1; j <= secondIndices; j++) {
+        for (int Y = 1; Y <= firstIndices; Y++) {
+            for (int X = 1; X <= secondIndices; X++) {
 
-                if (first.toCharArray()[i - 1] == second.toCharArray()[j - 1]) {
-                    results[i][j] = 1 + results[i - 1][j - 1];
+                if (first.toCharArray()[Y - 1] == second.toCharArray()[X - 1]) {
+                    results[Y][X] = 1 + results[Y - 1][X - 1];
                 } else {
-                    results[i][j] = Math.max(results[i - 1][j], results[i][j - 1]);
+                    results[Y][X] = Math.max(results[Y - 1][X], results[Y][X - 1]);
                 }
             }
         }
