@@ -45,7 +45,7 @@ public class ShortestCommonSuperSequence {
     private static void print(String first, String second, Consumer<Integer> expected) {
         log.info("Input:: Input1: {}\t | Input2: {}", first, second);
         int count = solveKnapsack(first, second);
-        log.info("Output:: Largest Common Subsequence is `{}`", count);
+        log.info("Output:: Count of shortest common super sequence is `{}`", count);
         expected.accept(count);
     }
 
