@@ -2,8 +2,11 @@ package com.practice.problems.adityaverma.dynamicprog.knapsack.zeroone;
 
 import lombok.extern.log4j.Log4j2;
 
+import java.util.function.Consumer;
+
 import static com.practice.problems.adityaverma.dynamicprog.knapsack.zeroone.CountNumberOfSubsetsWithADifference.solveKnapsack;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * You are given an integer array nums and an integer target.
@@ -37,13 +40,16 @@ public class TargetSum {
     public static void main(String[] args) {
         int[] numbers;
         int difference;
-        int minimum;
 
         numbers = new int[]{1, 1, 2, 3};
         difference = 1;
+        print(numbers, difference, minimum -> assertTrue(3 == minimum));
+    }
+
+    private static void print(int[] numbers, int difference, Consumer<Integer> expected) {
         log.info("Input:: Numbers: {}\t | Difference: {}", numbers, difference);
-        minimum = solveKnapsack(numbers, difference);
+        int minimum = solveKnapsack(numbers, difference);
         log.info("Output:: Count of subset with difference {} is `{}`", difference, minimum);
-        assertEquals(minimum, 3);
+        expected.accept(minimum);
     }
 }

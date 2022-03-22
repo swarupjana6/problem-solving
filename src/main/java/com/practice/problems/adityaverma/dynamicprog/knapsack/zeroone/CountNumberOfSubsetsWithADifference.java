@@ -3,8 +3,9 @@ package com.practice.problems.adityaverma.dynamicprog.knapsack.zeroone;
 import lombok.extern.log4j.Log4j2;
 
 import java.util.Arrays;
+import java.util.function.Consumer;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Given an array arr[] of length N and an integer X,
@@ -25,14 +26,21 @@ public class CountNumberOfSubsetsWithADifference {
     public static void main(String[] args) {
         int[] numbers;
         int difference;
-        int minimum;
 
         numbers = new int[]{1, 1, 2, 3};
         difference = 1;
+        print(numbers, difference, minimum -> assertTrue(3 == minimum));
+
+        numbers = new int[]{1, 1, 1, 1};
+        difference = 1;
+        print(numbers, difference, minimum -> assertTrue(4 == minimum));
+    }
+
+    private static void print(int[] numbers, int difference, Consumer<Integer> expected) {
         log.info("Input:: Numbers: {}\t | Difference: {}", numbers, difference);
-        minimum = solveKnapsack(numbers, difference);
+        int minimum = solveKnapsack(numbers, difference);
         log.info("Output:: Count of subset with difference {} is `{}`", difference, minimum);
-        assertEquals(minimum, 3);
+        expected.accept(minimum);
     }
 
     public static int solveKnapsack(int[] numbers, int difference) {
@@ -47,6 +55,7 @@ public class CountNumberOfSubsetsWithADifference {
          ---------------------------------
         */
         int sum = (difference + Arrays.stream(numbers).sum()) / 2;
+        log.debug("SUM :: {}", sum);
         int count = CountOfSubsetSumWithGivenSum.solveKnapsack(numbers, sum);
         return count;
     }

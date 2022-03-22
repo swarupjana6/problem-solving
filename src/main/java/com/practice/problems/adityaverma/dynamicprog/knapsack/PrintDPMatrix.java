@@ -44,6 +44,20 @@ public class PrintDPMatrix {
         }
     }
 
+    public static void printMatrix(char[] first, char[] second, int[][] results) {
+        System.out.print("#" + "\t|\t");
+        System.out.print("0" + "\t\t");
+        for (int i = 1; i <= second.length; i++) System.out.print(second[i - 1] + "\t\t");
+        System.out.println();
+        for (int i = 1; i <= second.length; i++) System.out.print(" - - - - ");
+        System.out.println();
+        for (int i = 0; i <= first.length; i++) {
+            System.out.print((i != 0 ? first[i - 1] + "\t|\t" : "(0)#" + "|\t"));
+            for (int j = 0; j <= second.length; j++) System.out.print(printChar(results[i][j]) + "\t\t");
+            System.out.println();
+        }
+    }
+
     public static String printChar(Object value) {
         if (value instanceof Boolean val) return val ? "1\t" : "-\t";
         else return value.toString();
