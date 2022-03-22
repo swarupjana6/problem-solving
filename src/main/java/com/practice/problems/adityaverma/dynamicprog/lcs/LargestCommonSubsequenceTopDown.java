@@ -37,8 +37,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @Log4j2
 public class LargestCommonSubsequenceTopDown {
 
-    private static int[][] results;
-
     public static void main(String[] args) {
         String first;
         String second;
@@ -46,28 +44,29 @@ public class LargestCommonSubsequenceTopDown {
         first = "abcdgh";
         second = "abedfhr";
         print(first, second, maximum -> assertTrue(4 == maximum));
-    }
 
-    private static void init(String first, String second) {
-        results = new int[first.length() + 1][second.length() + 1];
-        printMatrix(first.toCharArray(), second.toCharArray(), results);
+        first = "acbcf";
+        second = "abcdaf";
+        print(first, second, maximum -> assertTrue(4 == maximum));
     }
 
     private static void print(String first, String second, Consumer<Integer> expected) {
-        init(first, second);
         log.info("Input:: Input1: {}\t | Input2: {}", first, second);
         int count = solveKnapsack(first, second);
         log.info("Output:: Largest Common Subsequence is `{}`", count);
-        printMatrix(first.toCharArray(), second.toCharArray(), results);
         expected.accept(count);
     }
 
     public static int solveKnapsack(String first, String second) {
-        return knapsack(first, second, first.length(), second.length());
+        int[][] results = knapsack(first, second, first.length(), second.length());
+        return results[first.length()][second.length()];
     }
 
-    public static int knapsack(String first, String second, int firstIndices, int secondIndices) {
-        if (firstIndices == 0 || secondIndices == 0) return 0;
+    public static int[][] knapsack(String first, String second, int firstIndices, int secondIndices) {
+        int[][] results = new int[firstIndices + 1][secondIndices + 1];
+        if (firstIndices == 0 || secondIndices == 0) return results;
+
+        //printMatrix(first.toCharArray(), second.toCharArray(), results);
 
         for (int Y = 0; Y <= firstIndices; Y++) results[Y][0] = 0;
         for (int X = 0; X <= secondIndices; X++) results[0][X] = 0;
@@ -83,6 +82,8 @@ public class LargestCommonSubsequenceTopDown {
             }
         }
 
-        return results[firstIndices][secondIndices];
+        printMatrix(first.toCharArray(), second.toCharArray(), results);
+
+        return results;
     }
 }

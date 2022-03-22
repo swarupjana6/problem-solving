@@ -38,8 +38,8 @@ public class PrintDPMatrix {
     }
 
     public static void printMatrix(char[] first, char[] second, int[][] results) {
-        System.out.print("#" + "\t|\t");
-        IntStream.rangeClosed(0, second.length).forEach(X -> System.out.print(X != second.length ? X + "\t\t" : X + "\t\t\n"));
+        System.out.print("Y\\X" + "\t|\t" + "0\t\t");
+        IntStream.rangeClosed(1, second.length).forEach(X -> System.out.print(X != second.length ? second[(X - 1)] + "\t\t" : second[X - 1] + "\t\t\n"));
         IntStream.rangeClosed(0, second.length).forEach(X -> System.out.print(X != second.length ? "======\t" : "======\t======\n"));
         for (int Y = 0; Y <= first.length; Y++) {
             System.out.print((Y != 0 ? first[Y - 1] + "\t|\t" : "(0)#" + "|\t"));
