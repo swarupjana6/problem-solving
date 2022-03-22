@@ -5,6 +5,18 @@
 * DP's parent is Recursion
 * Dynamic Programming is also known as Enhanced Recursion
 
+## How to Identify Dynamic Programming Question? ##
+
+> If recursion calls two function then DP can be applied
+
+> Optimal things will be asked
+
+## How to approach problem? ##
+
+> Write recursive code first
+
+> Then Memoize it
+
 ## Question List ##
 
 | Questions                   | Variations |
@@ -22,12 +34,20 @@
 
 Total : Approx 80
 
-### Types of Knapsack Problems ###
+### Knapsack ###
+
+#### Types of Knapsack Problems ####
 * *Fractional Knapsack (Greedy)*
 
 * *0/1 Knapsack*
 
 * *Unbounded Knapsack*
+
+### Approach to solve knapsack ###
+
+* `Recursive`
+* `Recursive` + `Memoization`
+* `Iterative` + `Memoization`
 
 #### 0 - 1 Knapsack ####
 | Questions                            | Difficulty Level |
@@ -47,24 +67,21 @@ Total : Approx 80
 | Coin Change - II                     | Medium           |
 | Maximum Ribbon Cut                   | Hard             |
 
+### Longest Common Subsequence ### 
 
-## How to Identify Dynamic Programming Question? ##
-
-> If recursion calls two function then DP can be applied 
-
-> Optimal things will be asked
-
-## How to approach problem? ##
-
-> Write recursive code first
-
-> Then Memoize it
-
-## Comparing the Recursion, Recursion + Memoization && Iterative + Memoization Approach
-
-> `Recursive` 
-
-> `Recursive` + `Table`
-
-> `Table`
-
+| Questions                                                         | Difficulty Level |
+|:------------------------------------------------------------------|:-----------------|
+| Longest Common Substring (LCS)                                    | Medium           |
+| Print LCS                                                         |                  |
+| Shortest Common Substring (SCS)                                   |                  |
+| Print SCS                                                         |                  |
+| Minimum number of Insertions and Deletions                        |                  |
+| Longest repeating Subsequence                                     |                  |
+| Length of longest sequence of A which is substring in B           |                  |
+| Subsequence Pattern matching                                      |                  |
+| Count how many times A appear as a subsequence in B               |                  |
+| Long Palindromic Subsequence                                      |                  |
+| Long Palindromic Substring                                        |                  |
+| Count of Palindromic Substring                                    |                  |
+| Minimum number of Deletion(s) in a string to make it Palindromic  |                  |
+| Minimum number of Insertion(s) in a string to make it Palindromic |                  |
