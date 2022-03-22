@@ -73,7 +73,7 @@ Total : Approx 80
 |:------------------------------------------------------------------|:-----------------|
 | Longest Common Substring (LCS)                                    | Medium           |
 | Print LCS                                                         | Medium           |
-| Shortest Common Substring (SCS)                                   |                  |
+| Shortest Common Super sequence (SCS)                              | Medium           |
 | Print SCS                                                         |                  |
 | Minimum number of Insertions and Deletions                        |                  |
 | Longest repeating Subsequence                                     |                  |
