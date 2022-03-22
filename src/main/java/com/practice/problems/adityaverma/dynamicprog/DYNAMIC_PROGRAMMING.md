@@ -69,19 +69,21 @@ Total : Approx 80
 
 ### Longest Common Subsequence ### 
 
-| Questions                                                         | Difficulty Level |
-|:------------------------------------------------------------------|:-----------------|
-| Longest Common Substring (LCS)                                    | Medium           |
-| Print LCS                                                         | Medium           |
-| Shortest Common Super sequence (SCS)                              | Medium           |
-| Print SCS                                                         |                  |
-| Minimum number of Insertions and Deletions                        |                  |
-| Longest repeating Subsequence                                     |                  |
-| Length of longest sequence of A which is substring in B           |                  |
-| Subsequence Pattern matching                                      |                  |
-| Count how many times A appear as a subsequence in B               |                  |
-| Long Palindromic Subsequence                                      |                  |
-| Long Palindromic Substring                                        |                  |
-| Count of Palindromic Substring                                    |                  |
-| Minimum number of Deletion(s) in a string to make it Palindromic  |                  |
-| Minimum number of Insertion(s) in a string to make it Palindromic |                  |
+| Questions                                                         | Difficulty Level | Parent |
+|:------------------------------------------------------------------|:-----------------|:-------|
+| Longest Common Substring (LCS)                                    | Medium           | Parent |
+| Print LCS                                                         | Medium           | LCS    |
+| Shortest Common Super sequence (SCS)                              | Medium           | LCS    |
+| Print SCS                                                         |                  | LCS    |
+| Minimum number of Insertions and Deletions                        | Medium           | LCS    |
+| Longest repeating Subsequence                                     |                  |        |
+| Length of longest sequence of A which is substring in B           |                  |        |
+| Subsequence Pattern matching                                      |                  |        |
+| Count how many times A appear as a subsequence in B               |                  |        |
+| Longest Palindromic Subsequence                                   |                  |        |
+| Longest Palindromic Substring                                     |                  |        |
+| Count of Palindromic Substring                                    |                  |        |
+| Minimum number of Deletion(s) in a string to make it Palindromic  |                  |        |
+| Minimum number of Insertion(s) in a string to make it Palindromic |                  |        |
+
+#### Longest Palindromic Subsequence ####

@@ -4,7 +4,7 @@ import lombok.extern.log4j.Log4j2;
 
 import java.util.function.Consumer;
 
-import static com.practice.problems.adityaverma.dynamicprog.lcs.LargestCommonSubsequenceTopDown.knapsack;
+import static com.practice.problems.adityaverma.dynamicprog.lcs.LargestCommonSubsequenceTopDown.lcs;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
@@ -44,13 +44,13 @@ public class PrintLargestCommonSubsequence {
 
     private static void print(String first, String second, Consumer<String> expected) {
         log.info("Input:: Input1: {}\t | Input2: {}", first, second);
-        String subsequences = solveKnapsack(first, second);
+        String subsequences = solveLCS(first, second);
         log.info("Output:: Largest Common Subsequence is `{}`", subsequences);
         expected.accept(subsequences);
     }
 
-    public static String solveKnapsack(String first, String second) {
-        int[][] results = knapsack(first, second, first.length(), second.length());
+    public static String solveLCS(String first, String second) {
+        int[][] results = lcs(first, second, first.length(), second.length());
         return getLargestCommonSubsequenceString(results, first.toCharArray(), second.toCharArray());
     }
 

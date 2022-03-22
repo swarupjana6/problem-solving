@@ -4,7 +4,7 @@ import lombok.extern.log4j.Log4j2;
 
 import java.util.function.Consumer;
 
-import static com.practice.problems.adityaverma.dynamicprog.lcs.LargestCommonSubsequenceTopDown.knapsack;
+import static com.practice.problems.adityaverma.dynamicprog.lcs.LargestCommonSubsequenceTopDown.lcs;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
@@ -44,13 +44,13 @@ public class ShortestCommonSuperSequence {
 
     private static void print(String first, String second, Consumer<Integer> expected) {
         log.info("Input:: Input1: {}\t | Input2: {}", first, second);
-        int count = solveKnapsack(first, second);
+        int count = solveLCS(first, second);
         log.info("Output:: Count of shortest common super sequence is `{}`", count);
         expected.accept(count);
     }
 
-    public static int solveKnapsack(String first, String second) {
-        int[][] results = knapsack(first, second, first.length(), second.length());
+    public static int solveLCS(String first, String second) {
+        int[][] results = lcs(first, second, first.length(), second.length());
         int longestCommonSubsequenceCount = results[first.length()][second.length()];
         return first.length() + second.length() - longestCommonSubsequenceCount;
     }

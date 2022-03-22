@@ -52,17 +52,17 @@ public class LargestCommonSubsequenceTopDown {
 
     private static void print(String first, String second, Consumer<Integer> expected) {
         log.info("Input:: Input1: {}\t | Input2: {}", first, second);
-        int count = solveKnapsack(first, second);
+        int count = solveLCS(first, second);
         log.info("Output:: Largest Common Subsequence is `{}`", count);
         expected.accept(count);
     }
 
-    public static int solveKnapsack(String first, String second) {
-        int[][] results = knapsack(first, second, first.length(), second.length());
+    public static int solveLCS(String first, String second) {
+        int[][] results = lcs(first, second, first.length(), second.length());
         return results[first.length()][second.length()];
     }
 
-    public static int[][] knapsack(String first, String second, int firstIndices, int secondIndices) {
+    public static int[][] lcs(String first, String second, int firstIndices, int secondIndices) {
         int[][] results = new int[firstIndices + 1][secondIndices + 1];
         if (firstIndices == 0 || secondIndices == 0) return results;
 

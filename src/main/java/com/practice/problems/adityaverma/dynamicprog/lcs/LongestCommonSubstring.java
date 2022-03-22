@@ -45,17 +45,17 @@ public class LongestCommonSubstring {
     private static void print(String first, String second, Consumer<Integer> expected) {
         init(first, second);
         log.info("Input:: Input1: {}\t | Input2: {}", first, second);
-        int count = solveKnapsack(first, second);
+        int count = solveLCS(first, second);
         log.info("Output:: Largest Common Substring is `{}`", count);
         printMatrix(first.toCharArray(), second.toCharArray(), results);
         expected.accept(count);
     }
 
-    public static int solveKnapsack(String first, String second) {
-        return knapsack(first, second, first.length(), second.length());
+    public static int solveLCS(String first, String second) {
+        return lcs(first, second, first.length(), second.length());
     }
 
-    public static int knapsack(String first, String second, int firstIndices, int secondIndices) {
+    public static int lcs(String first, String second, int firstIndices, int secondIndices) {
         if (firstIndices == 0 || secondIndices == 0) return 0;
         int max = 0;
 

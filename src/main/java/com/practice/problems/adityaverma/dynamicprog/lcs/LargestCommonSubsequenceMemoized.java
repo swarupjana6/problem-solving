@@ -58,17 +58,17 @@ public class LargestCommonSubsequenceMemoized {
     private static void print(String first, String second, Consumer<Integer> expected) {
         init(first, second);
         log.info("Input:: Input1: {}\t | Input2: {}", first, second);
-        int count = solveKnapsack(first, second);
+        int count = solveLCS(first, second);
         log.info("Output:: Largest Common Subsequence is `{}`", count);
         printMatrix(first.toCharArray(), second.toCharArray(), results);
         expected.accept(count);
     }
 
-    public static int solveKnapsack(String first, String second) {
-        return knapsack(first, second, first.length(), second.length());
+    public static int solveLCS(String first, String second) {
+        return lcs(first, second, first.length(), second.length());
     }
 
-    public static int knapsack(String first, String second, int firstIndices, int secondIndices) {
+    public static int lcs(String first, String second, int firstIndices, int secondIndices) {
         // BASE CONDITION
         if (firstIndices == 0 || secondIndices == 0) return 0;
 
@@ -77,10 +77,10 @@ public class LargestCommonSubsequenceMemoized {
 
         // CHOICE DIAGRAM
         if (first.toCharArray()[firstIndices - 1] == second.toCharArray()[secondIndices - 1]) {
-            return results[firstIndices][secondIndices] = 1 + knapsack(first, second, firstIndices - 1, secondIndices - 1);
+            return results[firstIndices][secondIndices] = 1 + lcs(first, second, firstIndices - 1, secondIndices - 1);
         } else {
-            int smallerFirst = knapsack(first, second, firstIndices - 1, secondIndices);
-            int smallerSecond = knapsack(first, second, firstIndices, secondIndices - 1);
+            int smallerFirst = lcs(first, second, firstIndices - 1, secondIndices);
+            int smallerSecond = lcs(first, second, firstIndices, secondIndices - 1);
             return results[firstIndices][secondIndices] = Math.max(smallerFirst, smallerSecond);
         }
     }
