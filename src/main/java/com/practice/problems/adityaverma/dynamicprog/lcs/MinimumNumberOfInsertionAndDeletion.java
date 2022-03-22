@@ -52,6 +52,10 @@ public class MinimumNumberOfInsertionAndDeletion {
         second = "eap";
         print(first, second, maximum -> assertTrue(1 == maximum));
 
+        first = "heap";
+        second = "pea";
+        print(first, second, maximum -> assertTrue(3 == maximum));
+
         first = "leetcode";
         second = "etco";
         print(first, second, maximum -> assertTrue(4 == maximum));
@@ -67,6 +71,6 @@ public class MinimumNumberOfInsertionAndDeletion {
     public static int solveKnapsack(String first, String second) {
         int[][] results = knapsack(first, second, first.length(), second.length());
         int longestCommonSubsequenceCount = results[first.length()][second.length()];
-        return first.length() + second.length() - longestCommonSubsequenceCount * 2;
+        return first.length() - longestCommonSubsequenceCount + second.length() - longestCommonSubsequenceCount;
     }
 }
