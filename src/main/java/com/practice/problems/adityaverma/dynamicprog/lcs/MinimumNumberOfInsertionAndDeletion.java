@@ -62,7 +62,7 @@ public class MinimumNumberOfInsertionAndDeletion {
     }
 
     private static void print(String first, String second, Consumer<Integer> expected) {
-        log.info("Input:: Input1: {}\t | Input2: {}", first, second);
+        log.info("Input:: First: {}\t | Second: {}", first, second);
         int count = solveLCS(first, second);
         log.info("Output:: Minimum number of insertions/deletion is `{}`", count);
         expected.accept(count);
