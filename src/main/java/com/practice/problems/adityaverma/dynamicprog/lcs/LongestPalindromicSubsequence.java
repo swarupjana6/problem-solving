@@ -4,6 +4,7 @@ import lombok.extern.log4j.Log4j2;
 
 import java.util.function.Consumer;
 
+import static com.practice.problems.adityaverma.dynamicprog.lcs.PrintLargestCommonSubsequence.getLCS;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
@@ -38,13 +39,13 @@ public class LongestPalindromicSubsequence {
 
     private static void print(String first, Consumer<String> expected) {
         log.info("Input:: Input1: {}\t | Input2: {}", first);
-        String palindrome = solveLCS(first);
+        String palindrome = lcsLongestPalindromicSubsequence(first);
         log.info("Output:: Longest palindromic Subsequence is `{}`", palindrome);
         expected.accept(palindrome);
     }
 
-    public static String solveLCS(String first) {
-        String second = new StringBuilder(first).reverse().toString();
-        return PrintLargestCommonSubsequence.solveLCS(first, second);
+    public static String lcsLongestPalindromicSubsequence(String input) {
+        String reverse = new StringBuilder(input).reverse().toString();
+        return getLCS(input, reverse);
     }
 }

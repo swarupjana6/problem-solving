@@ -44,21 +44,25 @@ public class PrintLargestCommonSubsequence {
         first = "abcde";
         second = "ac";
         print(first, second, maximum -> assertEquals("ac", maximum));
+
+        first = "abc";
+        second = new StringBuilder(first).reverse().toString();
+        print(first, second, maximum -> assertEquals("c", maximum));
     }
 
     private static void print(String first, String second, Consumer<String> expected) {
         log.info("Input:: Input1: {}\t | Input2: {}", first, second);
-        String subsequences = solveLCS(first, second);
+        String subsequences = getLCS(first, second);
         log.info("Output:: Largest Common Subsequence is `{}`", subsequences);
         expected.accept(subsequences);
     }
 
-    public static String solveLCS(String first, String second) {
+    public static String getLCS(String first, String second) {
         int[][] results = lcs(first, second, first.length(), second.length());
-        return getLargestCommonSubsequenceString(results, first.toCharArray(), second.toCharArray());
+        return getLCSString(results, first.toCharArray(), second.toCharArray());
     }
 
-    public static String getLargestCommonSubsequenceString(int[][] results, char[] first, char[] second) {
+    public static String getLCSString(int[][] results, char[] first, char[] second) {
         StringBuffer result = new StringBuffer();
         int X = results.length - 1;
         int Y = results[0].length - 1;

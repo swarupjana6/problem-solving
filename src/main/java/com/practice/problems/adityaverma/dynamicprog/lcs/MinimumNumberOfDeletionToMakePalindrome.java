@@ -4,6 +4,7 @@ import lombok.extern.log4j.Log4j2;
 
 import java.util.function.Consumer;
 
+import static com.practice.problems.adityaverma.dynamicprog.lcs.LongestPalindromicSubsequence.lcsLongestPalindromicSubsequence;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
@@ -42,13 +43,13 @@ public class MinimumNumberOfDeletionToMakePalindrome {
 
     private static void print(String input, Consumer<Integer> expected) {
         log.info("Input:: Input: {}\t", input);
-        int noOfDeletion = solveLCS(input);
+        int noOfDeletion = lcsMinNoOfDeletionsToMakePalindrome(input);
         log.info("Output:: Number of deletions to make palindrome is `{}`", noOfDeletion);
         expected.accept(noOfDeletion);
     }
 
-    public static int solveLCS(String input) {
-        String palindrome = LongestPalindromicSubsequence.solveLCS(input);
+    public static int lcsMinNoOfDeletionsToMakePalindrome(String input) {
+        String palindrome = lcsLongestPalindromicSubsequence(input);
         return input.length() - palindrome.length();
     }
 }
