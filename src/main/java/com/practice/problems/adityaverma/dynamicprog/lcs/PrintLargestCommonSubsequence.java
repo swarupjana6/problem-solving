@@ -40,6 +40,10 @@ public class PrintLargestCommonSubsequence {
         first = "acbcf";
         second = "abcdaf";
         print(first, second, maximum -> assertEquals("abcf", maximum));
+
+        first = "abcde";
+        second = "ac";
+        print(first, second, maximum -> assertEquals("ac", maximum));
     }
 
     private static void print(String first, String second, Consumer<String> expected) {
@@ -54,7 +58,7 @@ public class PrintLargestCommonSubsequence {
         return getLargestCommonSubsequenceString(results, first.toCharArray(), second.toCharArray());
     }
 
-    private static String getLargestCommonSubsequenceString(int[][] results, char[] first, char[] second) {
+    public static String getLargestCommonSubsequenceString(int[][] results, char[] first, char[] second) {
         StringBuffer result = new StringBuffer();
         int X = results.length - 1;
         int Y = results[0].length - 1;
@@ -65,11 +69,8 @@ public class PrintLargestCommonSubsequence {
                 X--;
                 Y--;
             } else {
-                if (results[X - 1][Y] > results[X][Y - 1]) {
-                    X--;
-                } else {
-                    Y--;
-                }
+                if (results[X - 1][Y] > results[X][Y - 1]) X--;
+                else Y--;
             }
         }
 

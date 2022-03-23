@@ -74,9 +74,9 @@ Total : Approx 80
 | Longest Common Substring (LCS)                                    | Medium           | Parent |
 | Print LCS                                                         | Medium           | LCS    |
 | Shortest Common Super sequence (SCS)                              | Medium           | LCS    |
-| Print SCS                                                         |                  | LCS    |
+| Print SCS                                                         | Hard             | LCS    |
 | Minimum number of Insertions and Deletions                        | Medium           | LCS    |
-| Longest repeating Subsequence                                     |                  |        |
+| Longest repeating Subsequence                                     | Medium           |        |
 | Length of longest sequence of A which is substring in B           |                  |        |
 | Subsequence Pattern matching                                      |                  |        |
 | Count how many times A appear as a subsequence in B               |                  |        |
