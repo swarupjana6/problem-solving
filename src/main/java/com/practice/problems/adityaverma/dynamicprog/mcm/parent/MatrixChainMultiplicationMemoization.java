@@ -32,6 +32,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @Log4j2
 public class MatrixChainMultiplicationMemoization {
 
+    static int[][] cached;
+
     public static void main(String[] args) {
         print(List.of(10, 20, 30), minimumCost -> assertEquals(6000, minimumCost));
         print(List.of(40, 20, 30, 10, 30), minimumCost -> assertEquals(26000, minimumCost));
@@ -39,6 +41,10 @@ public class MatrixChainMultiplicationMemoization {
 
     private static void print(List<Integer> input, Consumer<Integer> expected) {
         log.info("Input:: {}\t ", input);
+
+        cached = new int[Ints.toArray(input).length + 1][Ints.toArray(input).length + 1];
+        for (int y = 0; y < cached.length; y++) for (int x = 0; x < cached.length; x++) cached[y][x] = -1;
+
         int minimumCost = matrixChainMultiplication(Ints.toArray(input), 1, input.size() - 1);
         log.info("Output:: Minimum cost is `{}`", minimumCost);
         expected.accept(minimumCost);
@@ -48,14 +54,17 @@ public class MatrixChainMultiplicationMemoization {
         if (low >= high) return 0;
         int minimum = Integer.MAX_VALUE;
 
+        if (cached[low][high] != -1) return cached[low][high];
+
         for (int k = low; k <= high - 1; k++) {
             int lowToK = matrixChainMultiplication(arr, low, k);
+            cached[low][k] = lowToK;
             int kPlusOneToHigh = matrixChainMultiplication(arr, k + 1, high);
+            cached[k + 1][high] = kPlusOneToHigh;
             int temp = arr[low - 1] * arr[k] * arr[high];
 
             int tempAnswer = lowToK + kPlusOneToHigh + temp;
-
-            Math.min(minimum, tempAnswer);
+            minimum = Math.min(minimum, tempAnswer);
         }
 
         return minimum;

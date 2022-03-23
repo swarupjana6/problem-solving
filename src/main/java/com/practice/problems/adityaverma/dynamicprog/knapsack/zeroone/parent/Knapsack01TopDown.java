@@ -4,7 +4,7 @@ import lombok.extern.log4j.Log4j2;
 
 import java.util.function.Consumer;
 
-import static com.practice.problems.adityaverma.dynamicprog.knapsack.PrintDPMatrix.printMatrix;
+import static com.practice.problems.adityaverma.dynamicprog.PrintDPMatrix.printMatrix;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Log4j2

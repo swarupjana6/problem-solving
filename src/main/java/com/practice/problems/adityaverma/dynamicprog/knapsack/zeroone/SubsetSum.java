@@ -2,7 +2,7 @@ package com.practice.problems.adityaverma.dynamicprog.knapsack.zeroone;
 
 import lombok.extern.log4j.Log4j2;
 
-import static com.practice.problems.adityaverma.dynamicprog.knapsack.PrintDPMatrix.printMatrix;
+import static com.practice.problems.adityaverma.dynamicprog.PrintDPMatrix.printMatrix;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 

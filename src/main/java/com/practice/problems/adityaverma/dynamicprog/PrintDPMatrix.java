@@ -1,4 +1,4 @@
-package com.practice.problems.adityaverma.dynamicprog.knapsack;
+package com.practice.problems.adityaverma.dynamicprog;
 
 import java.util.stream.IntStream;
 
