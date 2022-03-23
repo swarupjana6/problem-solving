@@ -30,7 +30,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  **/
 
 @Log4j2
-public class MatrixChainMultiplicationRecursive {
+public class MatrixChainMultiplicationMemoization {
 
     public static void main(String[] args) {
         print(List.of(10, 20, 30), minimumCost -> assertEquals(6000, minimumCost));
@@ -50,15 +50,15 @@ public class MatrixChainMultiplicationRecursive {
 
         for (int k = low; k <= high - 1; k++) {
             int lowToK = matrixChainMultiplication(arr, low, k);
-            int kPlusOneToHigh = matrixChainMultiplication(arr, k + 1, high);
-            //log.debug("arr[{}] * arr[{}] * arr[{}] ==> {} * {} * {}", low - 1, k, high, arr[low - 1], arr[k], arr[high]);
-            int temp = arr[low - 1] * arr[k] * arr[high];
+            int kPlusToHigh = matrixChainMultiplication(arr, k + 1, high);
+            int answer = arr[low - 1] * arr[k] * arr[high];
 
-            int tempAnswer = lowToK + kPlusOneToHigh + temp;
-            //log.debug("lowToK + kPlusOneToHigh + temp => {} + {} + {} = {}", lowToK, kPlusOneToHigh, temp, tempAnswer);
-            minimum = Math.min(minimum, tempAnswer);
+            int tempAnswer = lowToK + kPlusToHigh + answer;
+
+            Math.min(minimum, tempAnswer);
         }
 
         return minimum;
     }
+
 }
