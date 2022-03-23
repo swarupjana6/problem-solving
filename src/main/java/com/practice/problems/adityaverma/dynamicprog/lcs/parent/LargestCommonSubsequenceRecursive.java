@@ -1,10 +1,9 @@
-package com.practice.problems.adityaverma.dynamicprog.lcs;
+package com.practice.problems.adityaverma.dynamicprog.lcs.parent;
 
 import lombok.extern.log4j.Log4j2;
 
 import java.util.function.Consumer;
 
-import static com.practice.problems.adityaverma.dynamicprog.knapsack.PrintDPMatrix.printMatrix;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
@@ -35,9 +34,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  **/
 
 @Log4j2
-public class LargestCommonSubsequenceMemoized {
-
-    private static int[][] results;
+public class LargestCommonSubsequenceRecursive {
 
     public static void main(String[] args) {
         String first;
@@ -48,40 +45,28 @@ public class LargestCommonSubsequenceMemoized {
         print(first, second, maximum -> assertTrue(4 == maximum));
     }
 
-    private static void init(String first, String second) {
-        results = new int[first.length() + 1][second.length() + 1];
-        for (int i = 0; i <= first.length(); i++)
-            for (int j = 0; j <= second.length(); j++) results[i][j] = -1;
-        printMatrix(first.toCharArray(), second.toCharArray(), results);
-    }
-
     private static void print(String first, String second, Consumer<Integer> expected) {
-        init(first, second);
         log.info("Input:: Input1: {}\t | Input2: {}", first, second);
         int count = solveLCS(first, second);
         log.info("Output:: Largest Common Subsequence is `{}`", count);
-        printMatrix(first.toCharArray(), second.toCharArray(), results);
         expected.accept(count);
     }
 
-    public static int solveLCS(String first, String second) {
+    private static int solveLCS(String first, String second) {
         return lcs(first, second, first.length(), second.length());
     }
 
-    public static int lcs(String first, String second, int firstIndices, int secondIndices) {
+    private static int lcs(String first, String second, int firstIndices, int secondIndices) {
         // BASE CONDITION
         if (firstIndices == 0 || secondIndices == 0) return 0;
 
-        // MEMOIZED RETURN
-        if (results[firstIndices][secondIndices] != -1) return results[firstIndices][secondIndices];
-
         // CHOICE DIAGRAM
         if (first.toCharArray()[firstIndices - 1] == second.toCharArray()[secondIndices - 1]) {
-            return results[firstIndices][secondIndices] = 1 + lcs(first, second, firstIndices - 1, secondIndices - 1);
+            return 1 + lcs(first, second, firstIndices - 1, secondIndices - 1);
         } else {
             int smallerFirst = lcs(first, second, firstIndices - 1, secondIndices);
             int smallerSecond = lcs(first, second, firstIndices, secondIndices - 1);
-            return results[firstIndices][secondIndices] = Math.max(smallerFirst, smallerSecond);
+            return Math.max(smallerFirst, smallerSecond);
         }
     }
 }

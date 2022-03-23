@@ -83,7 +83,7 @@ Total : Approx 80
 | Longest Palindromic Subsequence                                   |                  |        |
 | Longest Palindromic Substring                                     |                  |        |
 | Count of Palindromic Substring                                    |                  |        |
-| Minimum number of Deletion(s) in a string to make it Palindromic  |                  |        |
-| Minimum number of Insertion(s) in a string to make it Palindromic |                  |        |
+| Minimum number of Deletion(s) in a string to make it Palindromic  | Medium           |        |
+| Minimum number of Insertion(s) in a string to make it Palindromic | Hard             |        |
 
 #### Longest Palindromic Subsequence ####

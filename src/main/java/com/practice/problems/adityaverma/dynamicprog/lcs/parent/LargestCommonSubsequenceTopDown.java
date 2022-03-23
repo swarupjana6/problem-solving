@@ -1,9 +1,10 @@
-package com.practice.problems.adityaverma.dynamicprog.lcs;
+package com.practice.problems.adityaverma.dynamicprog.lcs.parent;
 
 import lombok.extern.log4j.Log4j2;
 
 import java.util.function.Consumer;
 
+import static com.practice.problems.adityaverma.dynamicprog.knapsack.PrintDPMatrix.printMatrix;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
@@ -34,7 +35,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  **/
 
 @Log4j2
-public class LargestCommonSubsequenceRecursive {
+public class LargestCommonSubsequenceTopDown {
 
     public static void main(String[] args) {
         String first;
@@ -42,6 +43,10 @@ public class LargestCommonSubsequenceRecursive {
 
         first = "abcdgh";
         second = "abedfhr";
+        print(first, second, maximum -> assertTrue(4 == maximum));
+
+        first = "acbcf";
+        second = "abcdaf";
         print(first, second, maximum -> assertTrue(4 == maximum));
     }
 
@@ -52,21 +57,33 @@ public class LargestCommonSubsequenceRecursive {
         expected.accept(count);
     }
 
-    private static int solveLCS(String first, String second) {
-        return lcs(first, second, first.length(), second.length());
+    public static int solveLCS(String first, String second) {
+        int[][] results = lcs(first, second, first.length(), second.length());
+        return results[first.length()][second.length()];
     }
 
-    private static int lcs(String first, String second, int firstIndices, int secondIndices) {
-        // BASE CONDITION
-        if (firstIndices == 0 || secondIndices == 0) return 0;
+    public static int[][] lcs(String first, String second, int firstIndices, int secondIndices) {
+        int[][] results = new int[firstIndices + 1][secondIndices + 1];
+        if (firstIndices == 0 || secondIndices == 0) return results;
 
-        // CHOICE DIAGRAM
-        if (first.toCharArray()[firstIndices - 1] == second.toCharArray()[secondIndices - 1]) {
-            return 1 + lcs(first, second, firstIndices - 1, secondIndices - 1);
-        } else {
-            int smallerFirst = lcs(first, second, firstIndices - 1, secondIndices);
-            int smallerSecond = lcs(first, second, firstIndices, secondIndices - 1);
-            return Math.max(smallerFirst, smallerSecond);
+        //printMatrix(first.toCharArray(), second.toCharArray(), results);
+
+        for (int Y = 0; Y <= firstIndices; Y++) results[Y][0] = 0;
+        for (int X = 0; X <= secondIndices; X++) results[0][X] = 0;
+
+        for (int Y = 1; Y <= firstIndices; Y++) {
+            for (int X = 1; X <= secondIndices; X++) {
+
+                if (first.toCharArray()[Y - 1] == second.toCharArray()[X - 1]) {
+                    results[Y][X] = 1 + results[Y - 1][X - 1];
+                } else {
+                    results[Y][X] = Math.max(results[Y - 1][X], results[Y][X - 1]);
+                }
+            }
         }
+
+        printMatrix(first.toCharArray(), second.toCharArray(), results);
+
+        return results;
     }
 }

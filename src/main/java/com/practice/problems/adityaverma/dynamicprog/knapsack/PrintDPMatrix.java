@@ -46,6 +46,7 @@ public class PrintDPMatrix {
             for (int X = 0; X <= second.length; X++) System.out.print(printChar(results[Y][X]) + "\t\t");
             System.out.println();
         }
+        System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
     }
 
     public static String printChar(Object value) {

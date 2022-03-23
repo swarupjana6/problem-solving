@@ -26,8 +26,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @Log4j2
 public class LongestCommonSubstring {
 
-    private static int[][] results;
-
     public static void main(String[] args) {
         String first;
         String second;
@@ -37,42 +35,37 @@ public class LongestCommonSubstring {
         print(first, second, maximum -> assertTrue(2 == maximum));
     }
 
-    private static void init(String first, String second) {
-        results = new int[first.length() + 1][second.length() + 1];
-        printMatrix(first.toCharArray(), second.toCharArray(), results);
-    }
-
     private static void print(String first, String second, Consumer<Integer> expected) {
-        init(first, second);
         log.info("Input:: Input1: {}\t | Input2: {}", first, second);
-        int count = solveLCS(first, second);
+        int count = longestCommonSubstring(first, second);
         log.info("Output:: Largest Common Substring is `{}`", count);
-        printMatrix(first.toCharArray(), second.toCharArray(), results);
         expected.accept(count);
     }
 
-    public static int solveLCS(String first, String second) {
-        return lcs(first, second, first.length(), second.length());
-    }
-
-    public static int lcs(String first, String second, int firstIndices, int secondIndices) {
-        if (firstIndices == 0 || secondIndices == 0) return 0;
+    public static int longestCommonSubstring(String first, String second) {
         int max = 0;
+        int firstIndices = first.length();
+        int secondIndices = second.length();
+        int[][] results = new int[firstIndices + 1][secondIndices + 1];
+        if (firstIndices == 0 || secondIndices == 0) return max;
 
-        for (int X = 0; X <= firstIndices; X++) results[X][0] = 0;
-        for (int Y = 0; Y <= secondIndices; Y++) results[0][Y] = 0;
 
-        for (int X = 1; X <= firstIndices; X++) {
-            for (int Y = 1; Y <= secondIndices; Y++) {
+        for (int Y = 0; Y <= firstIndices; Y++) results[Y][0] = 0;
+        for (int X = 0; X <= secondIndices; X++) results[0][X] = 0;
 
-                if (first.toCharArray()[X - 1] == second.toCharArray()[Y - 1]) {
-                    results[X][Y] = 1 + results[X - 1][Y - 1];
+        for (int Y = 1; Y <= firstIndices; Y++) {
+            for (int X = 1; X <= secondIndices; X++) {
+
+                if (first.toCharArray()[Y - 1] == second.toCharArray()[X - 1]) {
+                    results[Y][X] = 1 + results[Y - 1][X - 1];
                     max = Math.max(results[X][Y], max);
                 } else {
-                    results[X][Y] = 0;
+                    results[Y][X] = 0;
                 }
             }
         }
+
+        printMatrix(first.toCharArray(), second.toCharArray(), results);
 
         return max;
     }

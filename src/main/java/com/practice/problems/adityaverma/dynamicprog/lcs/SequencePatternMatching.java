@@ -4,7 +4,7 @@ import lombok.extern.log4j.Log4j2;
 
 import java.util.function.Consumer;
 
-import static com.practice.problems.adityaverma.dynamicprog.lcs.LargestCommonSubsequenceTopDown.lcs;
+import static com.practice.problems.adityaverma.dynamicprog.lcs.parent.LargestCommonSubsequenceTopDown.lcs;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
