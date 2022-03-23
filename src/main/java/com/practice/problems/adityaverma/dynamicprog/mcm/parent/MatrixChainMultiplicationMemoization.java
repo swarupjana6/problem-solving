@@ -6,6 +6,7 @@ import lombok.extern.log4j.Log4j2;
 import java.util.List;
 import java.util.function.Consumer;
 
+import static com.practice.problems.adityaverma.dynamicprog.PrintDPMatrix.printMatrix;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
@@ -36,7 +37,7 @@ public class MatrixChainMultiplicationMemoization {
 
     public static void main(String[] args) {
         print(List.of(10, 20, 30), minimumCost -> assertEquals(6000, minimumCost));
-        print(List.of(40, 20, 30, 10, 30), minimumCost -> assertEquals(26000, minimumCost));
+        //print(List.of(40, 20, 30, 10, 30), minimumCost -> assertEquals(26000, minimumCost));
     }
 
     private static void print(List<Integer> input, Consumer<Integer> expected) {
@@ -44,8 +45,9 @@ public class MatrixChainMultiplicationMemoization {
 
         cached = new int[Ints.toArray(input).length + 1][Ints.toArray(input).length + 1];
         for (int y = 0; y < cached.length; y++) for (int x = 0; x < cached.length; x++) cached[y][x] = -1;
-
         int minimumCost = matrixChainMultiplication(Ints.toArray(input), 1, input.size() - 1);
+        printMatrix(Ints.toArray(input), Ints.toArray(input), cached);
+
         log.info("Output:: Minimum cost is `{}`", minimumCost);
         expected.accept(minimumCost);
     }
@@ -58,16 +60,13 @@ public class MatrixChainMultiplicationMemoization {
 
         for (int k = low; k <= high - 1; k++) {
             int lowToK = matrixChainMultiplication(arr, low, k);
-            cached[low][k] = lowToK;
             int kPlusOneToHigh = matrixChainMultiplication(arr, k + 1, high);
-            cached[k + 1][high] = kPlusOneToHigh;
             int temp = arr[low - 1] * arr[k] * arr[high];
 
             int tempAnswer = lowToK + kPlusOneToHigh + temp;
             minimum = Math.min(minimum, tempAnswer);
         }
 
-        return minimum;
+        return cached[low][high] = minimum;
     }
-
 }

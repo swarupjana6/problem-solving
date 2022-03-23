@@ -49,11 +49,11 @@ public class SubsetSum {
     }
 
     public static boolean[][] getKnapsackResults(int[] numbers, int sum) {
-        int index = numbers.length;
-        return knapsack(numbers, index, sum);
+        return knapsack(numbers, sum);
     }
 
-    public static boolean[][] knapsack(int[] numbers, int index, int expectSum) {
+    public static boolean[][] knapsack(int[] numbers, int expectSum) {
+        int index = numbers.length;
         boolean[][] results = new boolean[numbers.length + 1][expectSum + 1];
 
         for (int x = 0; x <= expectSum; x++) results[0][x] = false;
@@ -71,7 +71,7 @@ public class SubsetSum {
             }
         }
 
-        printMatrix(numbers, index, results, expectSum);
+        printMatrix(numbers, results, expectSum);
         return results;
     }
 }
