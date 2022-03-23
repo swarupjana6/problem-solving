@@ -24,6 +24,7 @@
 		<maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
 		<log4j2.version>2.17.1</log4j2.version>
 		<hawtio-version>2.14.5</hawtio-version>
+		<guava.version>31.1-jre</guava.version>
 	</properties>
 
 	<dependencies>
@@ -48,6 +49,12 @@
             <artifactId>hawtio-embedded</artifactId>
             <version>${hawtio-version}</version>
         </dependency>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>${guava.version}</version>
+		</dependency>
+
 
 		<!-- ********************TEST DEPENDENCIES******************** -->
 		<dependency>

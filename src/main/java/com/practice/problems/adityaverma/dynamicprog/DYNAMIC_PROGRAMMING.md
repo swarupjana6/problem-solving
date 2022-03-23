@@ -34,20 +34,24 @@
 
 Total : Approx 80
 
-### Knapsack ###
-
-#### Types of Knapsack Problems ####
-* *Fractional Knapsack (Greedy)*
-
-* *0/1 Knapsack*
-
-* *Unbounded Knapsack*
-
 ### Approach to solve knapsack ###
 
 * `Recursive`
 * `Recursive` + `Memoization`
 * `Iterative` + `Memoization`
+
+### Knapsack ###
+
+<details>
+    <summary>Types of Knapsack Problems</summary>
+* *Fractional Knapsack (Greedy)*
+
+* *0/1 Knapsack*
+
+* *Unbounded Knapsack*
+</details>
+
+<hr/>
 
 #### 0 - 1 Knapsack ####
 | Questions                            | Difficulty Level |
@@ -67,14 +71,16 @@ Total : Approx 80
 | Coin Change - II                     | Medium           |
 | Maximum Ribbon Cut                   | Hard             |
 
+<hr/>
+
 ### Longest Common Subsequence ### 
 
 | Questions                                                         | Difficulty Level | Parent |
 |:------------------------------------------------------------------|:-----------------|:-------|
 | Longest Common Substring (LCS)                                    | Medium           | Parent |
-| Print LCS                                                         | Medium           | LCS    |
+| Print L C S                                                       | Medium           | LCS    |
 | Shortest Common Super sequence (SCS)                              | Medium           | LCS    |
-| Print SCS                                                         | Hard             | LCS    |
+| Print S C S                                                       | Hard             | LCS    |
 | Minimum number of Insertions and Deletions                        | Medium           | LCS    |
 | Longest repeating Subsequence                                     | Medium           |        |
 | Length of longest sequence of A which is substring in B           |                  |        |
@@ -86,4 +92,34 @@ Total : Approx 80
 | Minimum number of Deletion(s) in a string to make it Palindromic  | Medium           |        |
 | Minimum number of Insertion(s) in a string to make it Palindromic | Hard             |        |
 
-#### Longest Palindromic Subsequence ####
+<hr/>
+
+### Matrix Chain Multiplication (MCM) ###
+| Questions                                            | Difficulty Level |
+|:-----------------------------------------------------|:-----------------|
+| M C M                                                | Hard             |
+| Printing M C M                                       |                  |
+| Evaluate Expression to True/Boolean Parenthesization |                  |
+| Minimum Maximum value of an expression               |                  |
+| Palindrome partitioning                              |                  |
+| Scrambled String                                     |                  |
+| Egg Dropping Problem                                 |                  |
+
+`Generic Code` >>
+```
+int solve(int[] arr, int i, int j) {
+    if (i > j) return 0;
+    int answer;
+
+
+    for (int k = i; k <= j; k++) {
+        int tempAnswer = solve(arr, i, k) + solve(arr, k + 1, j);
+        answer = function(tempAnswer);
+    }
+
+    return answer;
+}
+```
+
+<hr/>
+
