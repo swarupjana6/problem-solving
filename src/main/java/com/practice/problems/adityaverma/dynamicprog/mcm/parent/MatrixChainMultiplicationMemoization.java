@@ -50,10 +50,10 @@ public class MatrixChainMultiplicationMemoization {
 
         for (int k = low; k <= high - 1; k++) {
             int lowToK = matrixChainMultiplication(arr, low, k);
-            int kPlusToHigh = matrixChainMultiplication(arr, k + 1, high);
-            int answer = arr[low - 1] * arr[k] * arr[high];
+            int kPlusOneToHigh = matrixChainMultiplication(arr, k + 1, high);
+            int temp = arr[low - 1] * arr[k] * arr[high];
 
-            int tempAnswer = lowToK + kPlusToHigh + answer;
+            int tempAnswer = lowToK + kPlusOneToHigh + temp;
 
             Math.min(minimum, tempAnswer);
         }
