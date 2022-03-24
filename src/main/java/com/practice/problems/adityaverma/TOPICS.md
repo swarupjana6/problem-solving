@@ -8,7 +8,7 @@ note: `&#x2705;` for checked
 
 >  Recursion
 
->  Heap
+> &#x2705; Heap
 
 >  Binary Search
 
