@@ -4,6 +4,7 @@ import lombok.extern.log4j.Log4j2;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Consumer;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -44,7 +45,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @Log4j2
 public class EvaluateExpressionToTrueParenthesizationMemoized {
 
-    static Map<String, Integer> cached = new HashMap<>();
+    static Map<String, Integer> cached = new ConcurrentHashMap<>();
 
     public static void main(String[] args) {
         print("T|F&T^F", expressionValue -> assertTrue(expressionValue == 1));
@@ -70,14 +71,15 @@ public class EvaluateExpressionToTrueParenthesizationMemoized {
 
         int minPartitions = 0;
         // Operand Operator Operand Operator....Example: True & True ^ True | False
-        for (int operator = low + 1; operator < high; operator = operator + 2) {
+        for (int opr = low + 1; opr < high; opr = opr + 2) {
             // Expression Left.....example: True & True
-            int lowTrue = solveLowToHigh(arr, low, operator - 1, true);
-            int lowFalse = solveLowToHigh(arr, low, operator - 1, false);
+            int operator = opr;
+            int lowTrue = cached.computeIfAbsent(low + " " + (operator - 1) + " " + true, (cKey) -> solveLowToHigh(arr, low, operator - 1, true));
+            int lowFalse = cached.computeIfAbsent(low + " " + (operator - 1) + " " + false, (cKey) -> solveLowToHigh(arr, low, operator - 1, false));
 
             // Expression Right....example: True | False
-            int highTrue = solveLowToHigh(arr, operator + 1, high, true);
-            int highFalse = solveLowToHigh(arr, operator + 1, high, false);
+            int highTrue = cached.computeIfAbsent((operator + 1) + " " + high + " " + true, (cKey) -> solveLowToHigh(arr, operator + 1, high, true));
+            int highFalse = cached.computeIfAbsent((operator + 1) + " " + high + " " + false, (cKey) -> solveLowToHigh(arr, operator + 1, high, false));
 
             switch (arr[operator]) {
                 case '&' -> minPartitions += isTrue ? (lowTrue * highTrue) : ((lowFalse * highTrue) + (lowTrue * highFalse) + (lowFalse * highFalse));
