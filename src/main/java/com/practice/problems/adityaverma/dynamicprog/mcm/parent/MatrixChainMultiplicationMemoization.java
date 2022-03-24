@@ -37,7 +37,7 @@ public class MatrixChainMultiplicationMemoization {
 
     public static void main(String[] args) {
         print(List.of(10, 20, 30), minimumCost -> assertEquals(6000, minimumCost));
-        //print(List.of(40, 20, 30, 10, 30), minimumCost -> assertEquals(26000, minimumCost));
+        print(List.of(40, 20, 30, 10, 30), minimumCost -> assertEquals(26000, minimumCost));
     }
 
     private static void print(List<Integer> input, Consumer<Integer> expected) {
@@ -54,17 +54,16 @@ public class MatrixChainMultiplicationMemoization {
 
     public static int matrixChainMultiplication(int[] arr, int low, int high) {
         if (low >= high) return 0;
-        int minimum = Integer.MAX_VALUE;
-
         if (cached[low][high] != -1) return cached[low][high];
 
-        for (int k = low; k <= high - 1; k++) {
-            int lowToK = matrixChainMultiplication(arr, low, k);
-            int kPlusOneToHigh = matrixChainMultiplication(arr, k + 1, high);
-            int temp = arr[low - 1] * arr[k] * arr[high];
+        int minimum = Integer.MAX_VALUE;
+        for (int partition = low; partition <= high - 1; partition++) {
+            int lowToPartitionVal = matrixChainMultiplication(arr, low, partition);
+            int partitionPlusOneToHighVal = matrixChainMultiplication(arr, partition + 1, high);
+            int partitionVal = arr[low - 1] * arr[partition] * arr[high];
 
-            int tempAnswer = lowToK + kPlusOneToHigh + temp;
-            minimum = Math.min(minimum, tempAnswer);
+            int answer = lowToPartitionVal + partitionPlusOneToHighVal + partitionVal;
+            minimum = Math.min(minimum, answer);
         }
 
         return cached[low][high] = minimum;
