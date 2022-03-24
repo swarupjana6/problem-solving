@@ -50,17 +50,17 @@ public class PalindromePartitioning {
 
         if (isPalindrome(arr, low, high)) return 0;
 
-        int minimum = Integer.MAX_VALUE;
+        int minPartitions = Integer.MAX_VALUE;
         for (int partition = low; partition < high; partition++) {
             int leftPartitions = getMinimumPartitions(arr, low, partition);
             int rightPartitions = getMinimumPartitions(arr, partition + 1, high);
             int currentPartition = 1;
 
             int totalPartitions = leftPartitions + currentPartition + rightPartitions;
-            minimum = Math.min(minimum, totalPartitions);
+            minPartitions = Math.min(minPartitions, totalPartitions);
         }
 
-        return minimum;
+        return minPartitions;
     }
 
     private static boolean isPalindrome(char[] arr, int low, int high) {

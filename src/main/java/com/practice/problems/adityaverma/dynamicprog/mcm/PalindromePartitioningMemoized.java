@@ -56,21 +56,17 @@ public class PalindromePartitioningMemoized {
 
         if (cached[low][high] != -1) return cached[low][high];
 
-        int minimum = Integer.MAX_VALUE;
+        int minPartitions = Integer.MAX_VALUE;
         for (int partition = low; partition < high; partition++) {
-            int leftPartitions = getMinimumPartitions(arr, low, partition);
-            cached[low][partition] = leftPartitions;
-
-            int rightPartitions = getMinimumPartitions(arr, partition + 1, high);
-            cached[partition + 1][high] = rightPartitions;
-
+            cached[low][partition] = getMinimumPartitions(arr, low, partition);
+            cached[partition + 1][high] = getMinimumPartitions(arr, partition + 1, high);
             int currentPartition = 1;
 
-            int totalPartitions = leftPartitions + currentPartition + rightPartitions;
-            minimum = Math.min(minimum, totalPartitions);
+            int totalPartitions = cached[low][partition] + currentPartition + cached[partition + 1][high];
+            minPartitions = Math.min(minPartitions, totalPartitions);
         }
 
-        return cached[low][high] = minimum;
+        return cached[low][high] = minPartitions;
     }
 
     private static boolean isPalindrome(char[] arr, int low, int high) {

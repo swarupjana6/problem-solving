@@ -46,19 +46,19 @@ public class MatrixChainMultiplicationRecursive {
 
     public static int matrixChainMultiplication(int[] arr, int low, int high) {
         if (low >= high) return 0;
-        int minimum = Integer.MAX_VALUE;
+        int minPartitions = Integer.MAX_VALUE;
 
         for (int k = low; k <= high - 1; k++) {
             int leftPartitions = matrixChainMultiplication(arr, low, k);
             int rightPartitions = matrixChainMultiplication(arr, k + 1, high);
             //log.debug("arr[{}] * arr[{}] * arr[{}] ==> {} * {} * {}", low - 1, k, high, arr[low - 1], arr[k], arr[high]);
-            int temp = arr[low - 1] * arr[k] * arr[high];
+            int partitionValue = arr[low - 1] * arr[k] * arr[high];
 
-            int tempAnswer = leftPartitions + temp + rightPartitions;
-            //log.debug("leftPartitions + rightPartitions + temp => {} + {} + {} = {}", leftPartitions, rightPartitions, temp, tempAnswer);
-            minimum = Math.min(minimum, tempAnswer);
+            int totalPartitions = leftPartitions + partitionValue + rightPartitions;
+            //log.debug("leftPartitions + rightPartitions + partitionValue => {} + {} + {} = {}", leftPartitions, rightPartitions, partitionValue, totalPartitions);
+            minPartitions = Math.min(minPartitions, totalPartitions);
         }
 
-        return minimum;
+        return minPartitions;
     }
 }
