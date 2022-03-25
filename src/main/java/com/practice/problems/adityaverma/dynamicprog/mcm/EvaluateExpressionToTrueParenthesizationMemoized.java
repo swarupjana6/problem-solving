@@ -4,8 +4,9 @@ import lombok.extern.log4j.Log4j2;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Consumer;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -45,10 +46,12 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @Log4j2
 public class EvaluateExpressionToTrueParenthesizationMemoized {
 
-    static Map<String, Integer> cached = new ConcurrentHashMap<>();
+    static Map<String, Integer> cached = new HashMap<>();
 
     public static void main(String[] args) {
-        print("T|F&T^F", expressionValue -> assertTrue(expressionValue == 1));
+        print("T^F&T", expressionValue -> assertTrue(expressionValue == 2));
+        print("T|T&F^T", expressionValue -> assertTrue(expressionValue == 4));
+        print("T|F&T^F", expressionValue -> assertTrue(expressionValue == 10));
     }
 
     private static void print(String inputStr, Consumer<Integer> expected) {
@@ -66,20 +69,19 @@ public class EvaluateExpressionToTrueParenthesizationMemoized {
             else return 'F' == arr[low] ? 1 : 0;
         }
 
-        String key = low + " " + high + " " + isTrue;
+        String key = low + "-" + high + "-" + isTrue;
         if (cached.containsKey(key)) return cached.get(key);
 
         int minPartitions = 0;
         // Operand Operator Operand Operator....Example: True & True ^ True | False
-        for (int opr = low + 1; opr < high; opr = opr + 2) {
+        for (int operator = low + 1; operator < high; operator = operator + 2) {
             // Expression Left.....example: True & True
-            int operator = opr;
-            int lowTrue = cached.computeIfAbsent(low + " " + (operator - 1) + " " + true, (cKey) -> solveLowToHigh(arr, low, operator - 1, true));
-            int lowFalse = cached.computeIfAbsent(low + " " + (operator - 1) + " " + false, (cKey) -> solveLowToHigh(arr, low, operator - 1, false));
+            int lowTrue = solveLowToHigh(arr, low, operator - 1, true);
+            int lowFalse = solveLowToHigh(arr, low, operator - 1, false);
 
             // Expression Right....example: True | False
-            int highTrue = cached.computeIfAbsent((operator + 1) + " " + high + " " + true, (cKey) -> solveLowToHigh(arr, operator + 1, high, true));
-            int highFalse = cached.computeIfAbsent((operator + 1) + " " + high + " " + false, (cKey) -> solveLowToHigh(arr, operator + 1, high, false));
+            int highTrue = solveLowToHigh(arr, operator + 1, high, true);
+            int highFalse = solveLowToHigh(arr, operator + 1, high, false);
 
             switch (arr[operator]) {
                 case '&' -> minPartitions += isTrue ? (lowTrue * highTrue) : ((lowFalse * highTrue) + (lowTrue * highFalse) + (lowFalse * highFalse));
@@ -88,7 +90,10 @@ public class EvaluateExpressionToTrueParenthesizationMemoized {
             }
         }
 
+        String expression = IntStream.rangeClosed(low, high).mapToObj(i -> String.valueOf(arr[i])).collect(Collectors.joining(""));
+        log.debug(" low {} - high {} || minPartitions {} || exp {} ", low, high, minPartitions, expression);
 
-        return minPartitions;
+        cached.put(key, minPartitions);
+        return cached.get(key);
     }
 }

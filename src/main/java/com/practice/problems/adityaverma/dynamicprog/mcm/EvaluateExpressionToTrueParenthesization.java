@@ -3,6 +3,8 @@ package com.practice.problems.adityaverma.dynamicprog.mcm;
 import lombok.extern.log4j.Log4j2;
 
 import java.util.function.Consumer;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -43,7 +45,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class EvaluateExpressionToTrueParenthesization {
 
     public static void main(String[] args) {
-        print("T|F&T^F", expressionValue -> assertTrue(expressionValue == 1));
+        print("T^F&T", expressionValue -> assertTrue(expressionValue == 2));
+        print("T|T&F^T", expressionValue -> assertTrue(expressionValue == 4));
+        print("T|F&T^F", expressionValue -> assertTrue(expressionValue == 10));
     }
 
     private static void print(String inputStr, Consumer<Integer> expected) {
@@ -79,6 +83,8 @@ public class EvaluateExpressionToTrueParenthesization {
             }
         }
 
+        String expression = IntStream.rangeClosed(low, high).mapToObj(i -> String.valueOf(arr[i])).collect(Collectors.joining(""));
+        log.debug(" low {} - high {} || minPartitions {} || exp {} ", low, high, minPartitions, expression);
         return minPartitions;
     }
 }
