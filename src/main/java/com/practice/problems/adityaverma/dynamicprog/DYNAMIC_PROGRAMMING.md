@@ -102,8 +102,8 @@ Total : Approx 80
 | Evaluate Expression to True/Boolean Parenthesization |                  |
 | Minimum Maximum value of an expression               |                  |
 | Palindrome partitioning                              |                  |
-| Scrambled String                                     |                  |
-| Egg Dropping Problem                                 |                  |
+| Scrambled String                                     | Hard             |
+| Egg Dropping Problem                                 | Hard             |
 
 `Generic Code` >>
 ```
@@ -123,3 +123,30 @@ int solve(int[] arr, int i, int j) {
 
 <hr/>
 
+### DP on Trees ###
+| Questions                             | Difficulty Level |
+|:--------------------------------------|:-----------------|
+| Diameter of a Binary Tree             | Hard             |
+| Maximum Path Sum from any node to any |                  |
+| Maximum Path Sum from leaf to leafs   |                  |
+| Diameter of N-ary Tree                |                  |
+
+`Generic Code` >>
+```
+int solve(Node root, int result) {
+    /* BASE condition */
+    if(root == null) 
+        return 0;
+    
+    /* HYPOTHESIS */
+    int left = solve(root.left, result);
+    int right = solve(root.right, result);
+    
+    /* INDUCTION */
+     int temp = 1 + Math.max(left , right);
+    int answer = Math.max(temp, relation);
+    
+    int result = Math.max(result, answer);
+    return temp;
+}
+```
