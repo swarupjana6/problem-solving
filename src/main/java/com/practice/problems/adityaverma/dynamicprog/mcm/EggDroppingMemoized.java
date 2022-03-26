@@ -2,8 +2,8 @@ package com.practice.problems.adityaverma.dynamicprog.mcm;
 
 import lombok.extern.log4j.Log4j2;
 
-import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Consumer;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -49,7 +49,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @Log4j2
 public class EggDroppingMemoized {
 
-    static Map<String, Integer> cached = new HashMap<>();
+    static Map<String, Integer> cached = new ConcurrentHashMap<>();
 
     public static void main(String[] args) {
         print(6, 3, expressionValue -> assertTrue(expressionValue == 2));
@@ -73,7 +73,13 @@ public class EggDroppingMemoized {
 
         int minimum = Integer.MAX_VALUE;
         for (int partition = 1; partition < floors; partition++) {
-            int attempts = 1 + Math.max(solve(eggs - 1, partition - 1), solve(eggs, floors - partition));
+            String lowKey = (eggs - 1) + "-" + (partition - 1);
+            int low = cached.containsKey(lowKey) ? cached.get(lowKey) : solve(eggs - 1, partition - 1);
+
+            String highKey = eggs + "-" + (floors - partition);
+            int high = cached.containsKey(highKey) ? cached.get(highKey) : solve(eggs, floors - partition);
+
+            int attempts = 1 + Math.max(low, high);
             minimum = Math.min(minimum, attempts);
         }
 
