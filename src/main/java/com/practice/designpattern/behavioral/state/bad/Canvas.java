@@ -5,26 +5,23 @@ import lombok.Setter;
 
 public class Canvas {
 
-    @Getter @Setter
+    @Getter
+    @Setter
     private ToolType currentTool;
 
     public void mouseDown() {
-        if(currentTool == ToolType.SELECTION) {
-            System.out.println("Selection Icon");
-        } else if(currentTool == ToolType.ERASER) {
-            System.out.println("Eraser Icon");
-        } else if(currentTool == ToolType.BRUSH) {
-            System.out.println("Brush Icon");
+        switch (currentTool) {
+            case SELECTION -> System.out.println("Selection Icon");
+            case ERASER -> System.out.println("Eraser Icon");
+            case BRUSH -> System.out.println("Brush Icon");
         }
     }
 
     public void mouseUp() {
-        if(currentTool == ToolType.SELECTION) {
-            System.out.println("Selection Icon");
-        } else if(currentTool == ToolType.ERASER) {
-            System.out.println("Eraser Icon");
-        } else if(currentTool == ToolType.BRUSH) {
-            System.out.println("Brush Icon");
+        switch (currentTool) {
+            case SELECTION -> System.out.println("Draw dashed rectangle");
+            case ERASER -> System.out.println("Erase something");
+            case BRUSH -> System.out.println("Draw a line");
         }
     }
 }

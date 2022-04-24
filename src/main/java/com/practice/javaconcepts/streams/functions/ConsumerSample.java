@@ -38,34 +38,3 @@ public class ConsumerSample {
         whenNamesPresentUseBothConsumer();
     }
 }
-
-
-class RandomEntity {
-
-    String attr;
-
-    RandomEntity(String attr) {
-        this.attr = attr;
-    }
-
-    public String getAttr() {
-        return attr;
-    }
-
-    public void setAttr(String attr) {
-        this.attr = attr;
-    }
-
-    @Override
-    public String toString() {
-        return attr;
-    }
-
-    public static void main(String[] args) {
-        /******/
-        List<RandomEntity> newClassList = Arrays.asList(new RandomEntity("abc"), new RandomEntity("pqr"), new RandomEntity("xyz"));
-        Consumer<List<RandomEntity>> upperNewClass = list -> list.forEach(element -> element.setAttr(element.getAttr().toUpperCase()));
-        Consumer<List<RandomEntity>> printNewClass = list -> list.stream().forEach(System.out::println);
-        upperNewClass.andThen(printNewClass).accept(newClassList);
-    }
-}

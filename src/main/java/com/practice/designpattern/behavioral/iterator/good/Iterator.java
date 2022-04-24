@@ -1,4 +1,4 @@
-package com.practice.designpattern.behavioral.iterator;
+package com.practice.designpattern.behavioral.iterator.good;
 
 public interface Iterator<T> {
 

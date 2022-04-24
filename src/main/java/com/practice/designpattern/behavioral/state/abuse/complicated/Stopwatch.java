@@ -1,4 +1,4 @@
-package com.practice.designpattern.behavioral.state.abuse;
+package com.practice.designpattern.behavioral.state.abuse.complicated;
 
 import lombok.Getter;
 import lombok.Setter;

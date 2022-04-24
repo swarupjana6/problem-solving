@@ -1,5 +1,8 @@
 package com.practice.designpattern.behavioral.memento;
 
+import com.practice.designpattern.behavioral.memento.good.Editor;
+import com.practice.designpattern.behavioral.memento.good.History;
+
 public class Main {
 
     public static void main(String[] args) {

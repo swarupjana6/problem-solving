@@ -1,6 +1,9 @@
 package com.practice.designpattern.behavioral.state;
 
 import com.practice.designpattern.behavioral.state.bad.ToolType;
+import com.practice.designpattern.behavioral.state.good.tools.Brush;
+import com.practice.designpattern.behavioral.state.good.tools.Eraser;
+import com.practice.designpattern.behavioral.state.good.tools.Selection;
 
 public class Main {
 
@@ -10,7 +13,7 @@ public class Main {
     }
 
     private static void goodWay() {
-        var canvas = new Canvas();
+        var canvas = new com.practice.designpattern.behavioral.state.good.Canvas();
 
         canvas.setCurrentTool(new Selection());
         canvas.mouseDown();

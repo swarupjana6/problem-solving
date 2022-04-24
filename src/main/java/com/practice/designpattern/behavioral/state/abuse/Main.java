@@ -12,7 +12,7 @@ public class Main {
         stopwatch.click();
 
         System.out.println("DO NOT DO THIS >>>>> Stopwatch Abused!!!!!!!");
-        var stopwatchAbused = new Stopwatch();
+        var stopwatchAbused = new com.practice.designpattern.behavioral.state.abuse.complicated.Stopwatch();
         stopwatchAbused.click();
         stopwatchAbused.click();
         stopwatchAbused.click();

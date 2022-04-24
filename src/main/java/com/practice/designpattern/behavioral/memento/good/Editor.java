@@ -1,4 +1,4 @@
-package com.practice.designpattern.behavioral.memento;
+package com.practice.designpattern.behavioral.memento.good;
 
 import lombok.Getter;
 import lombok.Setter;
