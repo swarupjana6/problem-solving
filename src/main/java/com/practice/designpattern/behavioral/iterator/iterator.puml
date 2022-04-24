@@ -1,0 +1,29 @@
+@startuml
+!define DARKGREEN
+!include https://raw.githubusercontent.com/Drakemor/RedDress-PlantUML/master/style.puml
+
+class BrowseHistory {
+    -List urls;
+    push(url);
+    pop();
+}
+note left: Clients of the BrowserHistory class that wants to iterate over URL,\n will not know about the data-structure of urls
+
+class Iterator {
+    next();
+    current();
+    hasNext();
+}
+
+class ListIterator {
+}
+
+class ArrayIterator {
+}
+note bottom: If we modify the urls from List to Array
+
+Iterator <-left-   BrowseHistory
+Iterator <|--  ListIterator
+Iterator <|--  ArrayIterator
+
+@enduml

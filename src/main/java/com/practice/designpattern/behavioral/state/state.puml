@@ -1,0 +1,47 @@
+@startuml
+!define DARKGREEN
+!include https://raw.githubusercontent.com/Drakemor/RedDress-PlantUML/master/style.puml
+
+class Canvas {
+    -Tool currentTool;
+    mouseUp();
+    mouseDown();
+}
+note right: Context
+
+class Tool {
+    mouseUp();
+    mouseDown();
+}
+note left: State (Follows OPEN CLOSE Principle, \n to introduce a new tool we just have to extend)
+
+class Selection {
+    mouseUp();
+    mouseDown();
+}
+note bottom: Concrete State A
+
+class Brush {
+    mouseUp();
+    mouseDown();
+}
+note bottom: Concrete State B
+
+class Eraser {
+    mouseUp();
+    mouseDown();
+}
+note bottom: Concrete State C
+
+enum ToolType {
+    SELECTION,
+    BRUSH,
+    ERASER
+}
+
+Tool <|--  Selection
+Tool <|--  Brush
+Tool <|--  Eraser
+Tool <.right. Canvas
+
+@enduml
