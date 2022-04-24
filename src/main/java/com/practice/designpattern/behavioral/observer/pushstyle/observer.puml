@@ -1,0 +1,26 @@
+@startuml
+!define DARKGREEN
+!include https://raw.githubusercontent.com/Drakemor/RedDress-PlantUML/master/style.puml
+
+interface Observer {
+    update();
+}
+
+class Chart implements Observer {
+}
+class SpreadSheet implements Observer {
+}
+
+class Subject {
+    -List<Observer>;
+     addObserver(Observer);
+     removeObserver(Observer);
+     notifyObservers(Observer);
+}
+class Datasource extends Subject {
+}
+
+
+Observer <.right. Datasource: calls update()
+
+@enduml
