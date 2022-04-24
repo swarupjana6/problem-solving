@@ -2,14 +2,14 @@
 
 note: `&#x2705;` for checked
 
->  Stack 
+> &#x2705; Stack 
 
->  Sliding Window
+> &#x2705; Sliding Window
 
->  Recursion
+> &#x2705; Recursion
 
 > &#x2705; Heap
 
->  Binary Search
+> &#x2705; Binary Search
 
->  Dynamic Programming
+> &#x2705; Dynamic Programming
