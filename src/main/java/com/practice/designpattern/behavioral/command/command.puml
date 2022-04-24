@@ -1,0 +1,30 @@
+@startuml
+!define DARKGREEN
+!include https://raw.githubusercontent.com/Drakemor/RedDress-PlantUML/master/style.puml
+
+class Button {
+    click();
+}
+note top: <b>Invoker</b> \n(Framework level)
+
+class CustomerService {
+    addCustomer();
+}
+note bottom: <b>Receiver</b> \n(Application level)
+
+interface Command {
+    execute();
+}
+note top : <b>Command</b>
+
+class AddCustomer {
+    execute();
+}
+note bottom: <b>Concrete Command</b> \n(Application level)
+
+Command <|--  AddCustomer : implements
+Command <.right. Button: calls
+CustomerService <.right. AddCustomer : calls
+
+
+@enduml

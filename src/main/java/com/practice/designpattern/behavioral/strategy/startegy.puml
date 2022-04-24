@@ -1,0 +1,47 @@
+@startuml
+!define DARKGREEN
+!include https://raw.githubusercontent.com/Drakemor/RedDress-PlantUML/master/style.puml
+
+note "In strategy pattern it is possible to have multiple states in the Context \n Different behaviours are represented by different strategy object" as N1
+
+class ImageStorage {
+    -Compressor compressor;
+    -Filter filter;
+    store();
+}
+note top: CONTEXT, it maintains reference to strategy object
+
+class Compressor {
+    compress();
+}
+note top: STRATEGY A
+
+class JpegCompressor {
+}
+note bottom: Context Strategy A1
+class PngCompressor {
+}
+note bottom: Context Strategy A2
+
+class Filter {
+    apply()
+}
+note top: STRATEGY B
+
+class BlackAndWhite {
+}
+note bottom: Context Strategy B1
+
+class HighContrast {
+}
+note bottom: Context Strategy B2
+
+Compressor <|--  JpegCompressor : implements
+Compressor <|--  PngCompressor : implements
+Compressor <.left. ImageStorage
+
+Filter <|--  BlackAndWhite : implements
+Filter <|--  HighContrast : implements
+Filter <.right. ImageStorage
+
+@enduml

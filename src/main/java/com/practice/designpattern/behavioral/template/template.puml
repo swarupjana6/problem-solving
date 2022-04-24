@@ -1,0 +1,28 @@
+@startuml
+!define DARKGREEN
+!include https://raw.githubusercontent.com/Drakemor/RedDress-PlantUML/master/style.puml
+
+class TaskExecutor {
+    task.execute();
+}
+
+class Task {
+    execute();
+    doExecute();
+}
+note left: Abstract class A with templateMethod
+
+class TransferMoney {
+    doExecute();
+}
+note bottom: Concrete class A1
+class GenerateReport {
+    doExecute();
+}
+note bottom: Concrete class A2
+
+Task <|--  TransferMoney : implements
+Task <|--  GenerateReport : implements
+Task <.right. TaskExecutor
+
+@enduml

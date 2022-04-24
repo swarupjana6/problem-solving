@@ -1,0 +1,42 @@
+@startuml
+!define DARKGREEN
+!include https://raw.githubusercontent.com/Drakemor/RedDress-PlantUML/master/style.puml
+
+interface Command {
+    execute();
+}
+
+interface UndoableCommand {
+    unExecute();
+}
+
+class BoldCommand {
+    -String prevContent
+    -HTMLDocument document
+    -History history
+    execute();
+    unExecute();
+}
+
+class History {
+    makeBold();
+    pop();
+    push();
+}
+
+class UndoCommand {
+    -History history
+    execute();
+}
+
+class HTMLDocument {
+    makeBold();
+}
+
+Command <|--  UndoableCommand : extends
+UndoableCommand <|-- BoldCommand  : implements
+UndoCommand <|--  Command : implements
+HTMLDocument <.right. BoldCommand : calls makeBold()
+History <.left. BoldCommand : calls push()
+
+@enduml
