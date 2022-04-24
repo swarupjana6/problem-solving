@@ -1,6 +1,6 @@
 package com.practice.problems.adityaverma.binarysearch;
 
-import com.practice.lib.TriPredicate;
+import com.opengamma.strata.collect.function.TriPredicate;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -17,7 +17,7 @@ public interface Constants {
 
     Predicate<List<Integer>> IS_DESC = list -> list.get(0) > list.get(1);
 
-    BiPredicate<Integer, Integer> MIDDLE_EQUAL_TO_ELEMENT = (midElement, element) ->  midElement == element;
+    BiPredicate<Integer, Integer> MIDDLE_EQUAL_TO_ELEMENT = (midElement, element) -> midElement == element;
 
     BiPredicate<Integer, Integer> MIDDLE_LESS_THAN_ELEMENT = (midElement, element) -> midElement < element;
 
