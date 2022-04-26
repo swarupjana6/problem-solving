@@ -1,13 +1,10 @@
 package com.practice.problems.pepcoding.recursion;
 
-import java.util.Scanner;
-
 public class PrintNto1 {
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        Integer input = Integer.valueOf(scanner.next());
-        printNTo1(input);
+        String name = System.console().readLine();
+        System.out.println("You entered string " + name);
     }
 
     private static void printNTo1(Integer input) {
