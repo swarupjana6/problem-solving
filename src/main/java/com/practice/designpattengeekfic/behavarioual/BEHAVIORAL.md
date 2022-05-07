@@ -36,3 +36,13 @@ Communication and Assignment of Responsibilities between our objects
 
 > Delegates creating the states snapshots to the actual owner of the state
 > Hence, the original class can make snapshot since it has full access to its own state
+
+---
+### Observer
+
+> Notify multiple objects, or subscribes, about any events that happen to the object they're observing, or publisher
+
+---
+### State
+
+> Allows an object alter its behaviour when its internal state changes
