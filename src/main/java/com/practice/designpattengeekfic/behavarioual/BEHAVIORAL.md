@@ -46,3 +46,19 @@ Communication and Assignment of Responsibilities between our objects
 ### State
 
 > Allows an object alter its behaviour when its internal state changes
+
+---
+### Strategy
+
+> Defines a family of BEHAVIOUR, puts each of them into a SEPARATE CLASS, and make their OBJECTS INTERCHANGEABLE.
+> This makes the strategy replaceable and interchangeable at RUNTIME by clients
+---
+### Iterator
+
+> Extracts the iterator behaviour of a collection into a separate object called an iterator
+
+> Traverse elements without exposing the underlying representation
+---
+### Visitor
+
+> 
