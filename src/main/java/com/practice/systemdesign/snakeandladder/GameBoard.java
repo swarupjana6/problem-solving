@@ -1,4 +1,4 @@
-package com.practice.systemdesign.SnakeAndLadder;
+package com.practice.systemdesign.snakeandladder;
 
 import java.util.Map;
 import java.util.Queue;

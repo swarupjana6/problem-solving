@@ -1,4 +1,4 @@
-package com.practice.systemdesign.SnakeAndLadder;
+package com.practice.systemdesign.snakeandladder;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -9,8 +9,8 @@ import lombok.Setter;
 @Getter
 @EqualsAndHashCode
 @AllArgsConstructor
-public class Snake {
-    private int head;
+public class Ladder {
     @EqualsAndHashCode.Exclude
-    private int tail;
+    private int top;
+    private int bottom;
 }
