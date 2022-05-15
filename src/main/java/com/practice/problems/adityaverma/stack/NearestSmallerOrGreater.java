@@ -138,8 +138,8 @@ public class NearestSmallerOrGreater {
 
     private static void call(List<Integer> inputList) {
         nearestGreaterToRight(inputList, -1);
-        nearestGreaterToLeft(inputList, -1);
-        nearestSmallerToRight(inputList, -1);
-        nearestSmallerToLeft(inputList, -1);
+        //nearestGreaterToLeft(inputList, -1);
+        //nearestSmallerToRight(inputList, -1);
+        //nearestSmallerToLeft(inputList, -1);
     }
 }
