@@ -12,7 +12,7 @@ public abstract class NearestGreaterToRight extends NearestGreaterSmaller {
 
     @Override
     protected void execute() {
-        List<Integer> input = Arrays.asList(1, 3, 2, 4);
+        List<Integer> input = Arrays.asList(6, 8, 7, 9);
         List<Integer> actual = nearestGreaterToRight(input, -1);
         Consumer<List<Integer>> expectedValidator = actualOutput -> assertEquals(List.of(1, 3, 3, -1), actualOutput);
         test(input, actual, " 'i' moving from right2Left >>>>>>", expectedValidator);
