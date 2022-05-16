@@ -17,19 +17,13 @@ public class NearestGreaterToRightTapan extends NearestGreaterToRight {
         for (int i = inputList.size() - 1; i >= 0; i--) {
             int currentElement = inputList.get(i);
 
-            if (indexStack.empty()) {
-                outputList.add(-1);
-            } else if (inputList.get(indexStack.peek()) > currentElement) {
-                outputList.add(indexStack.peek());
-            } else if (indexStack.peek() <= currentElement) {
+            if (indexStack.empty()) outputList.add(pseudoIndex);
+            else if (inputList.get(indexStack.peek()) > currentElement) outputList.add(indexStack.peek());
+            else if (inputList.get(indexStack.peek()) <= currentElement) {
 
                 while (!indexStack.isEmpty() && inputList.get(indexStack.peek()) < currentElement) indexStack.pop();
 
-                if (indexStack.isEmpty()) {
-                    outputList.add(-1);
-                } else {
-                    outputList.add(indexStack.peek());
-                }
+                outputList.add(indexStack.isEmpty() ? pseudoIndex : indexStack.peek());
             }
 
             indexStack.push(i);
