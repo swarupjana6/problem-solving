@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @Log4j2
 public abstract class NearestGreaterSmaller {
 
-    protected String LOG_STR = """
+    protected final String LOG_STR = """
             {}                             
             I/P List        :: {}
             O/P Indexes     :: {}
