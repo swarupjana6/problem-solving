@@ -19,7 +19,7 @@ public abstract class NearestGreaterSmaller {
             O/P Expected    :: {}
             """;
 
-    protected abstract void execute();
+    public abstract void execute();
 
     protected void test(List<Integer> input, List<Integer> actual, String indexMovement, List<Integer> expected) {
         Consumer<List<Integer>> expectedValidator = actualOutput -> assertEquals(expected, actual);
