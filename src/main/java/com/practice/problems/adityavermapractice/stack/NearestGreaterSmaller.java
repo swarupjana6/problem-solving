@@ -6,16 +6,25 @@ import java.util.List;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 @Log4j2
 public abstract class NearestGreaterSmaller {
 
-    protected String LOG_STR = "{} {}\n I/P List \t\t\t:: {} \n O/P Indexes \t\t:: {} \n O/P Elements \t\t:: {} \n-------\n";
+    protected String LOG_STR = """
+            {}                             
+            I/P List        :: {}
+            O/P Indexes     :: {}
+            O/P Elements    :: {}
+            O/P Expected    :: {}
+            """;
 
     protected abstract void execute();
 
-    protected void test(List<Integer> input, List<Integer> actual, String indexMovement, Consumer<List<Integer>> expectedValidator) {
+    protected void test(List<Integer> input, List<Integer> actual, String indexMovement, List<Integer> expected) {
+        Consumer<List<Integer>> expectedValidator = actualOutput -> assertEquals(expected, actual);
         String outputStr = actual.stream().map(i -> i != -1 && i < actual.size() ? input.get(i) : i).collect(Collectors.toList()).toString();
-        log.debug(LOG_STR, new Exception().getStackTrace()[0].getMethodName(), indexMovement, input, actual, outputStr);
+        log.debug(LOG_STR, indexMovement, input, actual, expected, outputStr);
         expectedValidator.accept(actual);
     }
 }
