@@ -1,6 +1,5 @@
 package com.practice.problems.adityavermapractice.stack;
 
-import java.util.Arrays;
 import java.util.List;
 
 public abstract class NearestSmallerToLeft extends NearestGreaterSmaller {
@@ -9,7 +8,7 @@ public abstract class NearestSmallerToLeft extends NearestGreaterSmaller {
 
     @Override
     public void execute() {
-        List<Integer> input = Arrays.asList(6, 8, 7, 9);
+        List<Integer> input = List.of(6, 8, 7, 9);
         List<Integer> actual = nearestSmallerToLeft(input, -1);
         List<Integer> expected = List.of(-1, 0, 0, 2);
         test(input, actual, " 'i' moving from left2Right >>>>>>", expected);
