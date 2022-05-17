@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.function.BiConsumer;
 
 @Log4j2
-public abstract class MaximumAreaOfHistogram {
+public abstract class RainWaterTrapping {
 
     final BiConsumer<Integer, Integer> IS_ACTUAL_INTEGER_VALID = Assertions::assertEquals;
 
@@ -17,12 +17,12 @@ public abstract class MaximumAreaOfHistogram {
             O/P expected    :: {}
             """;
 
-    public abstract Integer maximumAreaOfHistogram(List<Integer> inputList);
+    public abstract Integer rainWaterTrapping(List<Integer> buildings);
 
     public void execute() {
-        List<Integer> input = List.of(6, 2, 5, 4, 5, 1, 6);
-        Integer actual = maximumAreaOfHistogram(input);
-        Integer expected = 12;
+        List<Integer> input = List.of(3, 0, 0, 1, 0, 4);
+        Integer actual = rainWaterTrapping(input);
+        Integer expected = 11;
 
         log.debug(LOG_STR, input, actual, expected);
         IS_ACTUAL_INTEGER_VALID.accept(actual, expected);
