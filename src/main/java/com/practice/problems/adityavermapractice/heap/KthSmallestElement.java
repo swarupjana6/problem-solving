@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Assertions;
 import java.util.List;
 import java.util.function.BiConsumer;
 
-
 /**
  * Given an integer array nums and an integer k, return the kth largest element in the array.
  * Note that it is the kth largest element in the sorted order, not the kth distinct element.
