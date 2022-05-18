@@ -7,10 +7,18 @@ import java.util.Collections;
 import java.util.List;
 import java.util.function.BiConsumer;
 
+/**
+ * Given a k–sorted array that is almost sorted
+ * such that each of the n elements may be misplaced by no more than k positions from the correct sorted order.
+ * Input: arr = [1, 4, 5, 2, 3, 7, 8, 6, 10, 9] k = 2
+ * Output:[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+ **/
 @Log4j2
 public abstract class KSortedArray {
     final BiConsumer<List<Integer>, List<Integer>> IS_EXPECTED = Assertions::assertEquals;
     protected String LOG_STR = """
+            
+            Problem         :: {}
             I/P input list  :: {}
             O/P actual      :: {}
             O/P expected    :: {}
@@ -24,7 +32,7 @@ public abstract class KSortedArray {
         List<Integer> expected = List.of(8, 9, 10);
 
         Collections.sort(actual);
-        log.debug(LOG_STR, input, actual, expected);
+        log.debug(LOG_STR, getClass().getSimpleName(), input, actual, expected);
         IS_EXPECTED.accept(expected, actual);
     }
 }
