@@ -17,14 +17,14 @@ import java.util.function.BiConsumer;
 public abstract class KSortedArray {
     final BiConsumer<List<Integer>, List<Integer>> IS_EXPECTED = Assertions::assertEquals;
     protected String LOG_STR = """
-            
+                        
             Problem         :: {}
             I/P input list  :: {}
             O/P actual      :: {}
             O/P expected    :: {}
             """;
 
-    public abstract List<Integer> kSortedArray(List<Integer> inputList, int k);
+    protected abstract List<Integer> kSortedArray(List<Integer> inputList, int k);
 
     public void execute() {
         List<Integer> input = List.of(6, 5, 3, 2, 8, 10, 9);

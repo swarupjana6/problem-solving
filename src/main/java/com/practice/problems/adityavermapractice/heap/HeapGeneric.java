@@ -29,7 +29,7 @@ public abstract class HeapGeneric<I, K, R> {
             O/P expected    :: {}
             """;
 
-    public abstract R solution(I input, K k);
+    protected abstract R solution(I input, K k);
 
     public void execute() {
         R actual = solution(input, k);

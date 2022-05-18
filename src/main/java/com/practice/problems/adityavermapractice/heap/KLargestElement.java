@@ -21,14 +21,14 @@ import java.util.function.BiConsumer;
 public abstract class KLargestElement {
     final BiConsumer<List<Integer>, List<Integer>> IS_EXPECTED = Assertions::assertEquals;
     protected String LOG_STR = """
-            
+                        
             Problem         :: {}
             I/P input list  :: {}
             O/P actual      :: {}
             O/P expected    :: {}
             """;
 
-    public abstract List<Integer> kLargest(List<Integer> inputList, int k);
+    protected abstract List<Integer> kLargest(List<Integer> inputList, int k);
 
     public void execute() {
         List<Integer> input = List.of(7, 10, 4, 3, 20, 15);

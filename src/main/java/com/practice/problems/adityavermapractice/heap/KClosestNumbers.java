@@ -34,7 +34,7 @@ public abstract class KClosestNumbers {
             O/P expected    :: {}
             """;
 
-    public abstract List<Integer> kClosest(List<Integer> inputList, int k, int x);
+    protected abstract List<Integer> kClosest(List<Integer> inputList, int k, int x);
 
     public void execute() {
         List<Integer> input = List.of(5, 6, 7, 8, 9);

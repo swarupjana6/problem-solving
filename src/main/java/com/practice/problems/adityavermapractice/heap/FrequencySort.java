@@ -39,12 +39,12 @@ public abstract class FrequencySort {
             O/P expected    :: {}
             """;
 
-    public abstract List<Integer> frequencySort(List<Integer> inputList);
+    protected abstract List<Integer> frequencySort(List<Integer> inputList);
 
     public void execute() {
         List<Integer> input = List.of(1, 1, 1, 3, 2, 2, 4);
         List<Integer> actual = frequencySort(input);
-        List<Integer> expected = List.of(1, 2);
+        List<Integer> expected = List.of(1, 1, 1, 2, 2, 3, 4);
 
         Collections.sort(actual);
         log.debug(LOG_STR, getClass().getSimpleName(), input, actual, expected);

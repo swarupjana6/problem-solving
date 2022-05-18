@@ -35,7 +35,7 @@ public abstract class TopKFrequentNumber {
             O/P expected    :: {}
             """;
 
-    public abstract List<Integer> kFrequentNumber(List<Integer> inputList, int k);
+    protected abstract List<Integer> kFrequentNumber(List<Integer> inputList, int k);
 
     public void execute() {
         List<Integer> input = List.of(1, 1, 1, 3, 2, 2, 4);
