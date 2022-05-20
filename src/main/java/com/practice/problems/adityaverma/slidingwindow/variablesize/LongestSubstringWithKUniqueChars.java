@@ -46,24 +46,21 @@ public class LongestSubstringWithKUniqueChars {
 
         while (windowEnd < input.length) {
             char currentElement = input[windowEnd];
+            int currentWindow = windowEnd - windowStart + 1;
 
             windowElements.merge(currentElement, 1, Integer::sum);
 
-            if (windowElements.size() < uniqueChar) {
-                windowEnd++;
-            } else if (windowElements.size() == uniqueChar) {
-                answer = Math.max(answer, windowEnd - windowStart + 1);
-                ++windowEnd;
+            if (windowElements.size() == uniqueChar) {
+                answer = Math.max(answer, currentWindow);
             } else if (windowElements.size() > uniqueChar) {
-
                 while (windowElements.size() > uniqueChar) {
                     char startElement = input[windowStart];
                     windowElements.merge(startElement, -1, Integer::sum);
                     if (windowElements.get(startElement) == 0) windowElements.remove(startElement);
                     windowStart++;
                 }
-                windowEnd++;
             }
+            windowEnd++;
         }
 
         return answer;
