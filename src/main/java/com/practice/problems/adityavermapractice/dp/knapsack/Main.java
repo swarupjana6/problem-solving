@@ -3,7 +3,7 @@ package com.practice.problems.adityavermapractice.dp.knapsack;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.practice.problems.adityavermapractice.dp.knapsack.KnapsackProblems.subsetSumTopdown;
+import static com.practice.problems.adityavermapractice.dp.knapsack.KnapsackProblems.*;
 import static com.practice.problems.adityavermapractice.dp.knapsack.ParentKnapsack.*;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -11,8 +11,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class Main {
 
     public static void main(String[] args) {
-        //executeSolve01Knapsack();
+        executeSolve01Knapsack();
         executeSubsetSum();
+        executeEqualSumPartition();
     }
 
     private static void executeSubsetSum() {
@@ -25,6 +26,22 @@ public class Main {
         assertFalse(subsetSumTopdown(inputs, 100));
         assertFalse(subsetSumTopdown(inputs, 1));
         assertFalse(subsetSumTopdown(inputs, 32));
+    }
+
+    private static void executeEqualSumPartition() {
+        assertTrue(equalSumPartitionRecursive(new int[]{1, 5, 11, 5}));
+        assertTrue(equalSumPartitionRecursive(new int[]{0, 5, 10, 5}));
+        assertTrue(equalSumPartitionRecursive(new int[]{3, 5, 13, 5}));
+        assertTrue(equalSumPartitionTopdown(new int[]{1, 5, 11, 5}));
+        assertTrue(equalSumPartitionTopdown(new int[]{0, 5, 10, 5}));
+        assertTrue(equalSumPartitionTopdown(new int[]{3, 5, 13, 5}));
+
+        assertFalse(equalSumPartitionRecursive(new int[]{2, 5, 11, 5}));
+        assertFalse(equalSumPartitionRecursive(new int[]{1, 5, 10, 5}));
+        assertFalse(equalSumPartitionRecursive(new int[]{3, 5, 1, 5}));
+        assertFalse(equalSumPartitionTopdown(new int[]{2, 5, 11, 5}));
+        assertFalse(equalSumPartitionTopdown(new int[]{1, 5, 10, 5}));
+        assertFalse(equalSumPartitionTopdown(new int[]{3, 5, 1, 5}));
     }
 
     private static void executeSolve01Knapsack() {
