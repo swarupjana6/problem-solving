@@ -10,7 +10,7 @@ import static com.practice.problems.adityavermapractice.dp.knapsack.SubsetSum.ex
 import static com.practice.problems.adityavermapractice.dp.knapsack.SubsetSum.executeSubsetSumTopdown;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class Main {
+public class Main1 {
 
     public static void main(String[] args) {
         executeSolve01Knapsack();
