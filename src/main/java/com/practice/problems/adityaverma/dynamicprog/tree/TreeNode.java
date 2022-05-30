@@ -1,20 +1,23 @@
 package com.practice.problems.adityaverma.dynamicprog.tree;
 
+import lombok.Data;
+
+@Data
 public class TreeNode<T> {
 
-	public T value;
+	public T val;
 	public TreeNode<T> left;
 	public TreeNode<T> right;
-	
+
 	public TreeNode() {
 	}
 
-	public TreeNode(T value) {
-		this.value = value;
+	public TreeNode(T val) {
+		this.val = val;
 	}
 
-	public TreeNode(T value, TreeNode<T> left, TreeNode<T> right) {
-		this.value = value;
+	public TreeNode(T val, TreeNode<T> left, TreeNode<T> right) {
+		this.val = val;
 		this.left = left;
 		this.right = right;
 	}
