@@ -2,6 +2,7 @@ package com.practice.problems.adityaverma.dynamicprog.tree;
 
 import lombok.extern.log4j.Log4j2;
 
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Consumer;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -38,37 +39,37 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class MaxPathSum {
 
     public static void main(String[] args) {
-        TreeNode<Integer> root = new TreeNode<>(12);
-        root.left = new TreeNode<>(7);
-        root.right = new TreeNode<>(1);
-        root.left.left = new TreeNode<>(9);
-        root.left.right = new TreeNode<>(2);
-        root.right.left = new TreeNode<>(10);
-        root.right.right = new TreeNode<>(5);
-        print(root, maxHeight -> assertEquals(28, maxHeight));
+        TreeNode<Integer> root = new TreeNode<>(-10);
+        root.left = new TreeNode<>(9);
+        root.right = new TreeNode<>(20);
+        root.right.left = new TreeNode<>(15);
+        root.right.right = new TreeNode<>(7);
+        print(root, maxHeight -> assertEquals(42, maxHeight));
     }
 
     private static void print(TreeNode root, Consumer<Integer> expected) {
         log.info("Input:: TreeNode: {} ", root);
-        Integer result = Integer.MIN_VALUE;
-        int maximumDiameter = solve(root, result);
-        log.info("Output:: Diameter of tree `{}` ", maximumDiameter);
-        expected.accept(maximumDiameter);
+        AtomicInteger result = new AtomicInteger(Integer.MIN_VALUE);
+        maxPathSum(root, result);
+        log.info("Output:: Diameter of tree `{}` ", result.get());
+        expected.accept(result.get());
     }
 
-    public static int solve(TreeNode<Integer> root, Integer result) {
-        /* BASE condition */
+    public static int maxPathSum(TreeNode<Integer> root, AtomicInteger result) {
+        /* BASE CONDITION */
         if (root == null) return 0;
 
         /* HYPOTHESIS */
-        int left = solve(root.left, result);
-        int right = solve(root.right, result);
+        int leftHeightSum = maxPathSum(root.left, result);
+        int rightHeightSum = maxPathSum(root.right, result);
 
         /* INDUCTION */
-        int temp = Math.max(Math.max(left, right) + root.value, root.value);
-        int answer = Math.max(temp, left + right + root.value);
-        result = Math.max(result, answer);
+        int heightSum = Math.max(leftHeightSum, rightHeightSum) + root.value;
+        heightSum = Math.max(heightSum, root.value);
 
-        return temp;
+        int diameterSum = leftHeightSum + rightHeightSum + root.value;
+        result.set(Math.max(result.get(), Math.max(heightSum, diameterSum)));
+
+        return heightSum;
     }
 }

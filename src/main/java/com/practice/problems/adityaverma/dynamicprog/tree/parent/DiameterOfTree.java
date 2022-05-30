@@ -3,6 +3,7 @@ package com.practice.problems.adityaverma.dynamicprog.tree.parent;
 import com.practice.problems.adityaverma.dynamicprog.tree.TreeNode;
 import lombok.extern.log4j.Log4j2;
 
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Consumer;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -14,6 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * This path may or may not pass through the root.
  * <p><br\>
  * The length of a path between two nodes is represented by the number of edges between them.
+ * Note: For our case we will calculate number of nodes.
  * <p><br\>
  * Input: root = [1,2,3,4,5]
  * Output: 3
@@ -41,31 +43,31 @@ public class DiameterOfTree {
         root.left.right = new TreeNode<>(2);
         root.right.left = new TreeNode<>(10);
         root.right.right = new TreeNode<>(5);
-        print(root, maxHeight -> assertEquals(3, maxHeight));
+        print(root, maxHeight -> assertEquals(5, maxHeight));
     }
 
     private static void print(TreeNode root, Consumer<Integer> expected) {
         log.info("Input:: TreeNode: {} ", root);
-        Integer result = Integer.MIN_VALUE;
-        int maximumDiameter = solve(root, result);
-        log.info("Output:: Diameter of tree `{}` ", maximumDiameter);
-        expected.accept(maximumDiameter);
+        AtomicInteger result = new AtomicInteger(0);
+        diameter(root, result);
+        log.info("Output:: No of nodes of tree's diameter `{}` ", result.get());
+        expected.accept(result.get());
     }
 
-    public static int solve(TreeNode root, Integer result) {
+    public static int diameter(TreeNode<Integer> root, AtomicInteger result) {
         /* BASE condition */
-        if (root == null)
-            return 0;
+        if (root == null) return 0;
 
         /* HYPOTHESIS */
-        int left = solve(root.left, result);
-        int right = solve(root.right, result);
+        int leftHeight = diameter(root.left, result);
+        int rightHeight = diameter(root.right, result);
 
         /* INDUCTION */
-        int temp = 1 + Math.max(left, right);
-        int answer = Math.max(temp, 1 + left + right);
-        result = Math.max(result, answer);
+        int height = 1 + Math.max(leftHeight, rightHeight);
 
-        return temp;
+        int diameter = 1 + leftHeight + rightHeight;
+        result.set(Math.max(result.get(), Math.max(diameter, height)));
+
+        return height;
     }
 }
