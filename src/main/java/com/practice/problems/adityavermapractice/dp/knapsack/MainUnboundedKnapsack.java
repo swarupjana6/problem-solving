@@ -2,7 +2,7 @@ package com.practice.problems.adityavermapractice.dp.knapsack;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class Main2 {
+public class MainUnboundedKnapsack {
 
     public static void main(String[] args) {
         executeRodCuttingProblem();
