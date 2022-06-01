@@ -64,10 +64,10 @@ public class MaxPathSumLeafToLeaf {
         int rightHeightSum = maxPathSum(root.right, result);
 
         /* INDUCTION */
-        int heightSum = Math.max(leftHeightSum, rightHeightSum) + root.value;
-        if (root.left == null && root.right == null) heightSum = Math.max(heightSum, root.value);
+        int heightSum = Math.max(leftHeightSum, rightHeightSum) + root.val;
+        if (root.left == null && root.right == null) heightSum = Math.max(heightSum, root.val);
 
-        int diameterSum = leftHeightSum + rightHeightSum + root.value;
+        int diameterSum = leftHeightSum + rightHeightSum + root.val;
         result.set(Math.max(result.get(), Math.max(heightSum, diameterSum)));
 
         return heightSum;
