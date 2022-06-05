@@ -50,7 +50,7 @@ public class MaxPathSumLeafToLeaf {
     private static void print(TreeNode root, Consumer<Integer> expected) {
         log.info("Input:: TreeNode: {} ", root);
         AtomicInteger result = new AtomicInteger(0);
-        maxPathSum(root, result);
+        maxPathSum1(root, result);
         log.info("Output:: Diameter of tree `{}` ", result.get());
         expected.accept(result.get());
     }
@@ -71,5 +71,19 @@ public class MaxPathSumLeafToLeaf {
         result.set(Math.max(result.get(), Math.max(heightSum, diameterSum)));
 
         return heightSum;
+    }
+
+    public static int maxPathSum1(TreeNode<Integer> root, AtomicInteger result) {
+        // BASE CONDITION
+        if (root == null) return 0;
+
+        // HYPOTHESIS
+        int leftNodeTreeSum = maxPathSum1(root.left, result);
+        int rightNodeTreeSum = maxPathSum1(root.right, result);
+
+        // INDUCTION
+        int currentNodeSum = root.val + leftNodeTreeSum + rightNodeTreeSum;
+        result.set(Math.max(currentNodeSum, result.get()));
+        return currentNodeSum;
     }
 }
