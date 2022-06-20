@@ -3,6 +3,7 @@ package com.practice.problems.adityavermapractice.recursion.tap;
 import com.practice.problems.adityavermapractice.recursion.Node;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -53,7 +54,7 @@ public class Main {
     }
 
     private static void groupSubsetMethod() {
-        //executeSubset();
+        executeSubset();
         out.println("------------");
         //executeSubsets();
         out.println("------------");
@@ -65,7 +66,7 @@ public class Main {
         out.println("------------");
         //executeNoOf1sAnd0s();
         out.println("------------");
-        executeJosephusMethod();
+        //executeJosephusMethod();
         out.println("------------");
     }
 
@@ -77,7 +78,7 @@ public class Main {
 
     private static void executeSubset() {
         List<String> outputs = new ArrayList<>();
-        subset("ab", "", outputs);
+        subset("123", "", outputs);
         out.println(outputs);
     }
 

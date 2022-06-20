@@ -66,7 +66,11 @@ public class EggDroppingRecursive {
 
         int minimum = Integer.MAX_VALUE;
         for (int partition = 1; partition < floors; partition++) {
-            int attempts = 1 + Math.max(solve(eggs - 1, partition - 1), solve(eggs, floors - partition));
+
+            int eggBroken = solve(eggs - 1, partition - 1);
+            int eggNotBroken = solve(eggs, floors - partition);
+
+            int attempts = 1 + Math.max(eggBroken, eggNotBroken);
             minimum = Math.min(minimum, attempts);
         }
 
