@@ -32,8 +32,4 @@ public class NearestGreaterToRightTapan extends NearestGreaterToRight {
         Collections.reverse(outputList);
         return outputList;
     }
-
-    public static void main(String[] args) {
-        new NearestGreaterToRightTapan().execute();
-    }
 }
