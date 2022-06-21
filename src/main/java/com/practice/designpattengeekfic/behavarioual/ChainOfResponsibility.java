@@ -1,4 +1,4 @@
-package com.practice.designpattengeekfic.creational;
+package com.practice.designpattengeekfic.behavarioual;
 
 import lombok.AllArgsConstructor;
 
