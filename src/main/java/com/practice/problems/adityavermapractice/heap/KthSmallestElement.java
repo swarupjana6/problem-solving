@@ -29,6 +29,7 @@ public abstract class KthSmallestElement {
                         
             Problem         :: {}
             I/P input list  :: {}
+            Kth             :: {}
             O/P actual      :: {}
             O/P expected    :: {}
             """;
@@ -37,10 +38,11 @@ public abstract class KthSmallestElement {
 
     public void execute() {
         List<Integer> input = List.of(7, 10, 4, 3, 20, 15);
-        Integer actual = kthSmallest(input, 3);
+        int k = 3;
+        Integer actual = kthSmallest(input, k);
         Integer expected = 7;
 
-        log.debug(LOG_STR, getClass().getSimpleName(), input, actual, expected);
+        log.debug(LOG_STR, getClass().getSimpleName(), input, k, actual, expected);
         IS_EXPECTED.accept(expected, actual);
     }
 }
