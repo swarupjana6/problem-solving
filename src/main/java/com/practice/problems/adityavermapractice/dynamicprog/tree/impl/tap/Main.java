@@ -4,7 +4,8 @@ public class Main {
 
     public static void main(String[] args) {
         //new HeightOfTreeTap().execute();
-        new DiameterOfTreeTap().execute();
-        new MaximumPathSumTap().execute();
+        //new DiameterOfTreeTap().execute();
+        //new MaximumPathSumTap().execute();
+        new MaximumPathSumLeafToLeafTap().execute();
     }
 }

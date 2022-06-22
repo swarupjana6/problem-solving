@@ -35,8 +35,9 @@ import java.util.function.BiConsumer;
  * -1000 <= Node.val <= 1000
  **/
 
+
 @Log4j2
-public abstract class MaximumPathSum {
+public abstract class MaximumPathSumLeafToLeaf {
 
     final BiConsumer<Integer, Integer> IS_EXPECTED = Assertions::assertEquals;
     protected String LOG_STR = """

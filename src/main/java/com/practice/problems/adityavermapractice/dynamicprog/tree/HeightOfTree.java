@@ -29,7 +29,6 @@ public abstract class HeightOfTree {
         root.right.right.left = new TreeNode<>(14);
         root.right.right.left.right = new TreeNode<>(15);
         Integer actualRecursive;
-        Integer actualMemoized;
         Integer expected;
 
         expected = 5;
