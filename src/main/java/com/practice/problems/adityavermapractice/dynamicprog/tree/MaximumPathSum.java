@@ -32,7 +32,8 @@ public abstract class MaximumPathSum {
 
         expected = 42;
         AtomicInteger maxPathSum = new AtomicInteger(Integer.MIN_VALUE);
-        actualRecursive = maxPathSum(root, maxPathSum);
+        maxPathSum(root, maxPathSum);
+        actualRecursive = maxPathSum.get();
         log.debug(LOG_STR, getClass().getSimpleName(), actualRecursive, expected);
         IS_EXPECTED.accept(expected, actualRecursive);
     }

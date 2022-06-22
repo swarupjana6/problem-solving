@@ -51,7 +51,7 @@ public class MaxPathSum {
         log.info("Input:: TreeNode: {} ", root);
         AtomicInteger result = new AtomicInteger(Integer.MIN_VALUE);
         maxPathSum(root, result);
-        log.info("Output:: Diameter of tree `{}` ", result.get());
+        log.info("Output:: MaxPathSum of tree `{}` ", result.get());
         expected.accept(result.get());
     }
 

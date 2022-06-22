@@ -9,20 +9,20 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class DiameterOfTreeTap extends DiameterOfTree {
 
     @Override
-    protected Integer diameter(TreeNode<Integer> root, AtomicInteger diameter) {
+    protected Integer diameter(TreeNode<Integer> root, AtomicInteger resDiameter) {
         /* BASE CONDITION */
         if (root == null) return 0;
 
         /* HYPOTHESIS */
-        int leftHeight = diameter(root.left, diameter);
-        int rightHeight = diameter(root.right, diameter);
+        int leftHeight = diameter(root.left, resDiameter);
+        int rightHeight = diameter(root.right, resDiameter);
 
         /* INDUCTION */
-        int currentHeight = Math.max(leftHeight, rightHeight) + 1;
-        int currentDiameter = leftHeight + rightHeight + 1;
-        diameter.set(Math.max(Math.max(currentDiameter, currentHeight), diameter.get()));
+        int height = Math.max(leftHeight, rightHeight) + 1;
+        int diameter = leftHeight + rightHeight + 1;
+        resDiameter.set(Math.max(Math.max(diameter, height), resDiameter.get()));
 
-        return currentHeight;
+        return height;
     }
 
 }

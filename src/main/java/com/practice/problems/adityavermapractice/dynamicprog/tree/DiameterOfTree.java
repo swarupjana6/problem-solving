@@ -27,15 +27,14 @@ public abstract class DiameterOfTree {
         root.left.right = new TreeNode<>(2);
         root.right.left = new TreeNode<>(10);
         root.right.right = new TreeNode<>(5);
-        root.right.right.left = new TreeNode<>(14);
-        root.right.right.left.right = new TreeNode<>(15);
         Integer actualRecursive;
         Integer actualMemoized;
         Integer expected;
 
         expected = 5;
         AtomicInteger diameter = new AtomicInteger(0);
-        actualRecursive = diameter(root, diameter);
+        diameter(root, diameter);
+        actualRecursive = diameter.get();
         log.debug(LOG_STR, getClass().getSimpleName(), actualRecursive, expected);
         IS_EXPECTED.accept(expected, actualRecursive);
     }
