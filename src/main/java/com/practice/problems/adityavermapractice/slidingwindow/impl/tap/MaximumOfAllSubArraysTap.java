@@ -7,7 +7,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-public class MaximumOfAllSubArraysTapan extends MaximumOfAllSubArrays {
+public class MaximumOfAllSubArraysTap extends MaximumOfAllSubArrays {
 
     @Override
     protected List<Integer> maxOfAllSubArrays(List<Integer> inputList, Integer window) {

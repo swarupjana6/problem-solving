@@ -6,7 +6,7 @@ import com.practice.problems.adityavermapractice.slidingwindow.LargestSizeSubArr
 import java.util.List;
 import java.util.stream.IntStream;
 
-public class LargestSizeSubArrayOfSumTapan extends LargestSizeSubArrayOfSum {
+public class LargestSizeSubArrayOfSumTap extends LargestSizeSubArrayOfSum {
     @Override
     protected Long largestSizeSubArrayOfSum(List<Integer> numbers, Integer sum) {
         return solution1(numbers, sum);

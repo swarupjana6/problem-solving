@@ -39,7 +39,7 @@ public abstract class MaximumOfAllSubArrays {
             O/P expected    :: {}
             """;
 
-    protected abstract List<Integer> maxOfAllSubArrays(List<Integer> numbers, Integer window);
+    public abstract List<Integer> maxOfAllSubArrays(List<Integer> numbers, Integer window);
 
     public void execute() {
         List<Integer> numbers = List.of(1, 3, -1, -3, 5, 3, 6, 7);

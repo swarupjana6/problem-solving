@@ -4,9 +4,9 @@ import com.practice.problems.adityavermapractice.slidingwindow.MaximumSumSubArra
 
 import java.util.List;
 
-public class MaximumSumSubArrayOfSizeKTapan extends MaximumSumSubArrayOfSizeK {
+public class MaximumSumSubArrayOfSizeKTap extends MaximumSumSubArrayOfSizeK {
     @Override
-    protected Integer maximumSumSubArrayOfSizeK(List<Integer> input, Integer windowSize) {
+    public Integer maximumSumSubArrayOfSizeK(List<Integer> input, Integer windowSize) {
         int answer = 0;
         int windowStart = 0;
         int windowEnd = 0;

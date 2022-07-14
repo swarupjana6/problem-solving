@@ -17,7 +17,7 @@ public abstract class MaximumSumSubArrayOfSizeK {
             O/P expected    :: {}
             """;
 
-    protected abstract Integer maximumSumSubArrayOfSizeK(List<Integer> inputList, Integer window);
+    public abstract Integer maximumSumSubArrayOfSizeK(List<Integer> inputList, Integer window);
 
     public void execute() {
         List<Integer> input = List.of(2, 5, 1, 8, 2, 5, 1);

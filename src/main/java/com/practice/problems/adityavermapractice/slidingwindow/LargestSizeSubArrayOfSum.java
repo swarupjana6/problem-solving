@@ -34,7 +34,7 @@ public abstract class LargestSizeSubArrayOfSum {
             O/P expected    :: {}
             """;
 
-    protected abstract Long largestSizeSubArrayOfSum(List<Integer> inputList, Integer sum);
+    public abstract Long largestSizeSubArrayOfSum(List<Integer> inputList, Integer sum);
 
     public void execute() {
         List<Integer> input = List.of(4, 1, 1, 1, 2, 3, 5);

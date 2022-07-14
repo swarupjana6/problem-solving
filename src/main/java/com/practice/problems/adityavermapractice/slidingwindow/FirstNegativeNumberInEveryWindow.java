@@ -35,7 +35,7 @@ public abstract class FirstNegativeNumberInEveryWindow {
             O/P expected    :: {}
             """;
 
-    protected abstract List<Integer> firstNegativeNumberInEveryWindow(List<Integer> inputList, Integer window);
+    public abstract List<Integer> firstNegativeNumberInEveryWindow(List<Integer> inputList, Integer window);
 
     public void execute() {
         List<Integer> input = List.of(12, -1, -7, 8, -15, 30, 16, 28);

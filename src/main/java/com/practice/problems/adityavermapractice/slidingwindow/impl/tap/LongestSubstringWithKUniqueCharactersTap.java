@@ -5,9 +5,9 @@ import com.practice.problems.adityavermapractice.slidingwindow.LongestSubstringW
 import java.util.HashMap;
 import java.util.Map;
 
-public class LongestSubstringWithKUniqueCharactersTapan extends LongestSubstringWithKUniqueCharacters {
+public class LongestSubstringWithKUniqueCharactersTap extends LongestSubstringWithKUniqueCharacters {
     @Override
-    protected Integer LongestStringWithUniqueChars(String input, Integer count) {
+    public Integer longestStringWithUniqueChars(String input, Integer count) {
         char[] inputArr = input.toCharArray();
         int answer = 0;
         int windowStart = 0;

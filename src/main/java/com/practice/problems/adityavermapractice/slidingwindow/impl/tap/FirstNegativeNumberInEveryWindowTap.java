@@ -7,7 +7,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-public class FirstNegativeNumberInEveryWindowTapan extends FirstNegativeNumberInEveryWindow {
+public class FirstNegativeNumberInEveryWindowTap extends FirstNegativeNumberInEveryWindow {
     @Override
     protected List<Integer> firstNegativeNumberInEveryWindow(List<Integer> inputList, Integer window) {
         List<Integer> result = new ArrayList<>();

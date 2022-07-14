@@ -1,6 +1,7 @@
 package com.practice.problems.adityavermapractice.slidingwindow;
 
 import lombok.extern.log4j.Log4j2;
+import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
 
 import java.util.function.BiConsumer;
@@ -39,12 +40,16 @@ public abstract class LongestSubstringWithKUniqueCharacters {
             O/P expected    :: {}
             """;
 
-    protected abstract Integer LongestStringWithUniqueChars(String input, Integer uniqueChar);
+    public static Logger getLog() {
+        return log;
+    }
+
+    public abstract Integer longestStringWithUniqueChars(String input, Integer uniqueChar);
 
     public void execute() {
         String input = "aabacbebebe";
         Integer uniqueChar = 3;
-        Integer actual = LongestStringWithUniqueChars(input, uniqueChar);
+        Integer actual = longestStringWithUniqueChars(input, uniqueChar);
         Integer expected = 7;
 
         log.debug(LOG_STR, getClass().getSimpleName(), input, actual, expected);

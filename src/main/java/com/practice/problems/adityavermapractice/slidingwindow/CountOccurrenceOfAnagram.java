@@ -39,7 +39,7 @@ public abstract class CountOccurrenceOfAnagram {
             O/P expected    :: {}
             """;
 
-    protected abstract Integer anagramCount(String inputList, String pattern);
+    public abstract Integer anagramCount(String inputList, String pattern);
 
     public void execute() {
         String input = "aabaabaa";
