@@ -1,5 +1,6 @@
 package com.practice.problems.adityaverma.dynamicprog.knapsack.zeroone;
 
+import com.practice.problems.adityavermapractice.dynamicprog.knapsack.zeroone.impl.tap.CountSubsetSumTap;
 import lombok.extern.log4j.Log4j2;
 
 import java.util.Arrays;
@@ -56,7 +57,7 @@ public class CountNumberOfSubsetsWithADifference {
         */
         int sum = (difference + Arrays.stream(numbers).sum()) / 2;
         log.debug("SUM :: {}", sum);
-        int count = CountOfSubsetSumWithGivenSum.solveKnapsack(numbers, sum);
+        int count = new CountSubsetSumTap().countingSubsetSum(numbers, sum);
         return count;
     }
 }

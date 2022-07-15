@@ -68,6 +68,7 @@ public abstract class Knapsack01 {
     }
 }
 
+
 class Knapsack01Recursive extends Knapsack01 {
 
     private int[] weights;
@@ -84,20 +85,23 @@ class Knapsack01Recursive extends Knapsack01 {
         // IF >> index out of bound OR knapsack capacity ZERO
         if (index == -1 || capacity == 0) return 0;
 
-        int result;
+        int resultValue;
         int value = values[index];
         int weight = weights[index];
 
-        int previousResult = knapsack(capacity, index - 1);
-        if (weight > capacity) result = previousResult;
+        int prevValue = knapsack(capacity, index - 1);
+        if (weight > capacity) resultValue = prevValue;
         else {
             int include = value + knapsack(capacity - weight, index - 1);
-            result = Math.max(include, previousResult);
+            resultValue = Math.max(include, prevValue);
         }
 
-        return result;
+        return resultValue;
     }
 }
+
+
+
 
 class Knapsack01Memoized extends Knapsack01 {
 
