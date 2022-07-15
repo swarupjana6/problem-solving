@@ -58,7 +58,7 @@ public abstract class Knapsack01 {
         IS_EXPECTED.accept(expected, actual);
     }
 
-    public static void main(String[] args) {
+    public static void main() {
         //Approach 1
         new Knapsack01Recursive().execute();
         //Approach 2

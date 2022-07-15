@@ -1,5 +1,6 @@
 package com.practice.problems.adityaverma.dynamicprog.knapsack.zeroone;
 
+import com.practice.problems.adityavermapractice.dynamicprog.knapsack.zeroone.impl.tap.SubsetSumTap;
 import lombok.extern.log4j.Log4j2;
 
 import java.util.Arrays;
@@ -35,6 +36,6 @@ public class EqualSumPartition {
 
     public static boolean solveKnapsack(int[] numbers) {
         int sum = Arrays.stream(numbers).sum();
-        return sum % 2 == 0 ? SubsetSum.solveKnapsack(numbers, sum / 2) : false;
+        return sum % 2 == 0 ? new SubsetSumTap().calculateSubsetSum(numbers, sum / 2) : false;
     }
 }

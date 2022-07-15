@@ -1,10 +1,10 @@
 package com.practice.problems.adityaverma.dynamicprog.knapsack.zeroone;
 
+import com.practice.problems.adityavermapractice.dynamicprog.knapsack.zeroone.impl.tap.SubsetSumTap;
 import lombok.extern.log4j.Log4j2;
 
 import java.util.Arrays;
 
-import static com.practice.problems.adityaverma.dynamicprog.knapsack.zeroone.SubsetSum.getKnapsackResults;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
@@ -41,7 +41,7 @@ public class MinimumSubsetSumDifference {
     }
 
     private static int knapsack(int[] numbers, int range) {
-        boolean[][] subsetSums = getKnapsackResults(numbers, range);
+        boolean[][] subsetSums = new SubsetSumTap().knapsack(numbers, range);
 
         int numsSize = numbers.length;
         int minimumSubsetSum = Integer.MAX_VALUE;
