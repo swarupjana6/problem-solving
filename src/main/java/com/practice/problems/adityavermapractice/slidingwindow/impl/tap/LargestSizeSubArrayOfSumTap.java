@@ -8,7 +8,7 @@ import java.util.stream.IntStream;
 
 public class LargestSizeSubArrayOfSumTap extends LargestSizeSubArrayOfSum {
     @Override
-    protected Long largestSizeSubArrayOfSum(List<Integer> numbers, Integer sum) {
+    public Long largestSizeSubArrayOfSum(List<Integer> numbers, Integer sum) {
         return solution1(numbers, sum);
     }
 

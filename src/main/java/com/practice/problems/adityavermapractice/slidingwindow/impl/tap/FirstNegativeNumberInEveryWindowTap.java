@@ -9,7 +9,7 @@ import java.util.Queue;
 
 public class FirstNegativeNumberInEveryWindowTap extends FirstNegativeNumberInEveryWindow {
     @Override
-    protected List<Integer> firstNegativeNumberInEveryWindow(List<Integer> inputList, Integer window) {
+    public List<Integer> firstNegativeNumberInEveryWindow(List<Integer> inputList, Integer window) {
         List<Integer> result = new ArrayList<>();
         Queue<Integer> negativesIndices = new LinkedList<>();
 

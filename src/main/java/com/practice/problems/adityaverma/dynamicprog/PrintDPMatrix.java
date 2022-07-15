@@ -1,5 +1,6 @@
 package com.practice.problems.adityaverma.dynamicprog;
 
+import java.util.Map;
 import java.util.stream.IntStream;
 
 public class PrintDPMatrix {
@@ -76,5 +77,22 @@ public class PrintDPMatrix {
     public static String printChar(Object value) {
         if (value instanceof Boolean val) return val ? "1\t" : "-\t";
         else return value.toString();
+    }
+
+    public static void printMemoizedMap(int[] numbers, int index, Map<String, Integer> results, int expectSum) {
+        System.out.print("Y\\X" + "\t|\t");
+        IntStream.rangeClosed(0, expectSum).forEach(X -> System.out.print(X != expectSum ? X + "\t\t" : X + "\t\t\n"));
+        IntStream.rangeClosed(0, expectSum).forEach(X -> System.out.print(X != expectSum ? "======\t" : "======\t======\n"));
+
+        int index1 = index;
+        while (index1 > 0) {
+            int Y = (index - index1);
+            System.out.print((Y != 0 ? numbers[Y - 1] + "\t\t|\t" : "(0)#" + "\t|\t"));
+            for (int i = 0; i <= expectSum; i++)
+                System.out.print(results.get((index - index1) + "-" + i) + "\t\t");
+
+            index1--;
+            System.out.println("");
+        }
     }
 }

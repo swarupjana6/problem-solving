@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class CountOccurrenceOfAnagramTap extends CountOccurrenceOfAnagram {
-    protected Integer anagramCount(String inputString, String pattern) {
+    public Integer anagramCount(String inputString, String pattern) {
         Integer answer = 0;
         char[] inputChars = inputString.toCharArray();
         Map<Character, Integer> charCounts = countChars(pattern);

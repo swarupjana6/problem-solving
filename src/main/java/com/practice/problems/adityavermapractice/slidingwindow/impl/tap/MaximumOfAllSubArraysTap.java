@@ -10,7 +10,7 @@ import java.util.Queue;
 public class MaximumOfAllSubArraysTap extends MaximumOfAllSubArrays {
 
     @Override
-    protected List<Integer> maxOfAllSubArrays(List<Integer> inputList, Integer window) {
+    public List<Integer> maxOfAllSubArrays(List<Integer> inputList, Integer window) {
         List<Integer> result = new ArrayList<>();
         Queue<Integer> maxQueue = new LinkedList<>();
 
