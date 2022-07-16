@@ -35,17 +35,17 @@ public class SubsetSumTap extends SubsetSum {
         int index = numbers.length;
         boolean[][] results = new boolean[index + 1][total + 1];
 
+        for (int sum = 0; sum < total + 1; sum++) results[0][sum] = false;
         for (int idx = 0; idx < index + 1; idx++) results[idx][0] = true;
-        for (int sum = 1; sum < total + 1; sum++) results[0][sum] = false;
 
         for (int idx = 1; idx < index + 1; idx++) {
             for (int sum = 1; sum < total + 1; sum++) {
                 int number = numbers[idx - 1];
 
-                boolean result = results[idx - 1][sum];
-                if (sum >= number) result = result || results[idx - 1][sum - number];
+                boolean previous = results[idx - 1][sum];
 
-                results[idx][sum] = result;
+                if (sum >= number) results[idx][sum] = results[idx - 1][sum - number] || previous;
+                else results[idx][sum] = previous;
             }
         }
 

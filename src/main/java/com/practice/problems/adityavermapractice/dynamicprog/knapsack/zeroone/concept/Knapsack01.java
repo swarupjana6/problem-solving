@@ -101,8 +101,6 @@ class Knapsack01Recursive extends Knapsack01 {
 }
 
 
-
-
 class Knapsack01Memoized extends Knapsack01 {
 
     private int[] weights;
