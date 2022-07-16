@@ -15,6 +15,7 @@ public abstract class RodCutting {
             Problem         :: {}
             Lengths         :: {}
             Prices          :: {}
+            RodLength       :: {}
             O/P actual      :: {}
             O/P expected    :: {}
             """;
@@ -31,10 +32,9 @@ public abstract class RodCutting {
         rodLength = 4;
         lengths = IntStream.rangeClosed(1, rodLength).toArray();
         prices = new int[]{5, 6, 8, 8};
-        log.info("Input:: Lengths: {}\t# Prices: {}\t# Knapsack Wt: {}", prices, lengths, rodLength);
         expected = 20;
         actual = cutRod(lengths, prices, rodLength);
-        log.info("Output:: Maximum Price: {}", actual);
+        log.debug(LOG_STR, getClass().getSimpleName(), lengths, prices, rodLength, actual, expected);
         IS_EXPECTED.accept(expected, actual);
     }
 }
