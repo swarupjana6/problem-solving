@@ -11,7 +11,7 @@ public class PrintDPMatrix {
         IntStream.rangeClosed(0, expectSum).forEach(X -> System.out.print(X != expectSum ? X + "\t\t" : X + "\t\t\n"));
         IntStream.rangeClosed(0, expectSum).forEach(X -> System.out.print(X != expectSum ? "======\t" : "======\t======\n"));
         for (int Y = 0; Y <= index; Y++) {
-            System.out.print((Y != 0 ? numbers[Y - 1] + "\t|\t" : "(0)#" + "|\t"));
+            System.out.print((Y != 0 ? Y + "\t|\t" : "(0)#" + "|\t"));
             for (int X = 0; X <= expectSum; X++) System.out.print(printChar(results[Y][X]) + "\t");
             System.out.println();
         }
@@ -33,7 +33,7 @@ public class PrintDPMatrix {
         IntStream.rangeClosed(0, expectSum).forEach(X -> System.out.print(X != expectSum ? X + "\t\t" : X + "\t\t\n"));
         IntStream.rangeClosed(0, expectSum).forEach(X -> System.out.print(X != expectSum ? "======\t" : "======\t======\n"));
         for (int Y = 0; Y <= index; Y++) {
-            System.out.print((Y != 0 ? numbers[Y - 1] + "\t|\t" : "(0)#" + "|\t"));
+            System.out.print((Y != 0 ? Y + "\t|\t" : "(0)#" + "|\t"));
             for (int X = 0; X <= expectSum; X++) System.out.print(printChar(results[Y][X]) + "\t\t");
             System.out.println();
         }

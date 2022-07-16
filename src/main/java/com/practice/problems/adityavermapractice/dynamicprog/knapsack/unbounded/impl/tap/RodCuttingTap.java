@@ -26,7 +26,7 @@ public class RodCuttingTap extends RodCutting {
 
                 int val = results.get((i - 1) + "-" + j);
                 if (currWeight <= j) {
-                    int newVal = currValue + results.get(i + "-" + (j - currWeight));
+                    int newVal = currValue + results.get((i) + "-" + (j - currWeight));
                     val = Math.max(val, newVal);
                 }
                 results.put(i + "-" + j, val);
