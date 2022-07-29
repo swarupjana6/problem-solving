@@ -33,9 +33,9 @@ public abstract class AllocateMinimumNoOfPages {
         int actual;
         int expected;
 
-        books = new int[]{10, 20, 30, 40, 50, 90};
+        books = new int[]{12, 34, 67, 90};
         students = 2;
-        expected = 2;
+        expected = 113;
         actual = allocateBooks(books, students);
         log.debug(LOG_STR, getClass().getSimpleName(), books, actual, expected);
         IS_EXPECTED.accept(expected, actual);
