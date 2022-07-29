@@ -2,6 +2,8 @@ package com.practice.problems.adityaverma.dynamicprog.knapsack.unbounded;
 
 import lombok.extern.log4j.Log4j2;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.function.Consumer;
 
 import static com.practice.problems.adityaverma.dynamicprog.PrintDPMatrix.printMatrix;
@@ -25,6 +27,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class CoinChangeMinimumNoOfCoins {
 
     public static void main(String[] args) {
+        System.out.println(maximize(new int[]{2, 9, 4, 7, 5, 2}));
+        System.out.println(maximize(new int[]{7, 4, 5, 2, 6, 5}));
         print(new int[]{1, 2, 3}, 5, count -> assertTrue(2 == count));
         print(new int[]{1, 2, 3}, 4, count -> assertTrue(2 == count));
         print(new int[]{2, 3, 5, 6}, 10, count -> assertTrue(2 == count));
@@ -67,5 +71,28 @@ public class CoinChangeMinimumNoOfCoins {
         printMatrix(coins, index, results, amount);
 
         return results;
+    }
+
+    private static int maximize(int[] stacks) {
+        int result = Integer.MIN_VALUE;
+        Map<Integer, Integer> sums = new HashMap<>();
+
+        for (int i = 0; i < stacks.length; i++) {
+            int sum = stacks[i];
+            int seed = stacks[i];
+            for (int j = i; j > 0; j--) {
+                --seed;
+                if (stacks[j - 1] < stacks[j] && stacks[j - 1] < seed) {
+                    if (sums.containsKey(j - 1)) {
+                        sum += sums.get(j - 1);
+                        break;
+                    }
+                }
+                sum += seed;
+            }
+            sums.put(i, sum);
+            result = Math.max(result, sum);
+        }
+        return result;
     }
 }

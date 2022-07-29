@@ -10,7 +10,7 @@ public class BinarySearch {
 
     public static void main(String[] args) {
         List<Integer> list = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
-        Integer search = 9;
+        Integer search = 112;
 
         log.info("Input: {} | Search for: {}", list, search);
         log.info("Output: Index of '{}' is {} ", search, binarySearch(list, search));
@@ -22,12 +22,12 @@ public class BinarySearch {
         return binarySearchElement(list, search, start, end);
     }
 
-    public static int binarySearchElement(List<Integer> list, int search, int start, int end) {
+    public static int binarySearchElement(List<Integer> nums, int target, int start, int end) {
         while (start <= end) {
             int mid = start + (end - start) / 2;        /* LESS OPTIMIZED --> (start + end) / 2; */
 
-            if (list.get(mid) == search) return mid;
-            else if (list.get(mid) < search) start = mid + 1;
+            if (nums.get(mid) == target) return mid;
+            else if (nums.get(mid) < target) start = mid + 1;
             else end = mid - 1;
         }
         return -1;

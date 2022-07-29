@@ -153,7 +153,6 @@ public class StreamsExamples {
         System.out.println(factorial);
 
         System.out.println("\n9. Flat map");
-        // Flat map is another concept which is not that simple, but might be useful.
         // Flat map is similar to map: it iterates over every item in the stream and calls the function which you
         // pass as the argument. But your function should return not a single value but a stream. And flat map then
         // concatenates all the streams returned.
