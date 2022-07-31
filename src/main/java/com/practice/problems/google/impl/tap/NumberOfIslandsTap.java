@@ -3,29 +3,32 @@ package com.practice.problems.google.impl.tap;
 import com.practice.problems.google.NumberOfIslands;
 
 public class NumberOfIslandsTap extends NumberOfIslands {
+
+    private Integer[][] grid;
+
     @Override
     protected Integer noOfIslands(Integer[][] grid) {
         if (grid == null || grid.length == 0) return 0;
+        this.grid = grid;
 
         Integer noOfIslands = 0;
-
-        for (int i = 0; i < grid.length; i++)
-            for (int j = 0; j < grid[i].length; j++)
-                if (grid[i][j] == 1) noOfIslands += checkIsland(grid, i, j);
+        for (int row = 0; row < grid.length; row++)
+            for (int col = 0; col < grid[row].length; col++)
+                if (grid[row][col] == 1) noOfIslands += checkIsland(row, col);
 
         return noOfIslands;
     }
 
-    private Integer checkIsland(Integer[][] grid, int i, int j) {
+    private Integer checkIsland(int row, int col) {
         // BASE CONDITION
-        if (i < 0 || i >= grid.length || j < 0 || j >= grid[i].length || grid[i][j] == 0) return 0;
+        if (row < 0 || row >= grid.length || col < 0 || col >= grid[row].length || grid[row][col] == 0) return 0;
 
         // HYPOTHESIS
-        grid[i][j] = 0;
-        checkIsland(grid, i + 1, j);
-        checkIsland(grid, i - 1, j);
-        checkIsland(grid, i, j + 1);
-        checkIsland(grid, i, j - 1);
+        grid[row][col] = 0;
+        checkIsland(row + 1, col);
+        checkIsland(row - 1, col);
+        checkIsland(row, col + 1);
+        checkIsland(row, col - 1);
 
         // INDUCTION
         return 1;

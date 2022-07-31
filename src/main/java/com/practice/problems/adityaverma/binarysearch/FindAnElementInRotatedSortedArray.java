@@ -29,8 +29,8 @@ import static com.practice.problems.adityaverma.binarysearch.NumberOfTimesASorte
 public class FindAnElementInRotatedSortedArray {
 
     public static void main(String[] args) {
-        List<Integer> list = List.of(11, 12, 15, 18, 2, 5, 6, 8);
-        int search = 15;
+        List<Integer> list = List.of(4, 5, 6, 7, 0, 1, 2);
+        int search = 0;
 
         log.info("Input: {} | Search for: {} ", list, search);
         log.info("Output: '{}' is located at {} ", search, findElement(list, search));

@@ -34,8 +34,13 @@ import static com.practice.problems.adityaverma.binarysearch.Constants.*;
 public class NumberOfTimesASortedArrayIsRotated {
 
     public static void main(String[] args) {
-        List<Integer> list = List.of(11, 12, 15, 18, 2, 5, 6, 8);
+        List<Integer> list;
 
+        list = List.of(11, 12, 15, 18, 2, 5, 6, 8);
+        log.info("Input: {} ", list);
+        log.info("Output: # of rotations required is '{}' ", findMinimumElement(list));
+
+        list = List.of(1, 2, 3, 4, 5, 6);
         log.info("Input: {} ", list);
         log.info("Output: # of rotations required is '{}' ", findMinimumElement(list));
     }
